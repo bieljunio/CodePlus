@@ -66,7 +66,7 @@ HEREDOC;
   		$s_CPF_Alterado = $s_Registro;
   		}
   	}
-  }
+  
   if ($cont == count($array_Campo_Registro)){
     pg_query("COMMIT");
   	return 1;
@@ -103,6 +103,7 @@ HEREDOC;
 //FUNÇÃO QUE RETORNA CPF BASEADO EM BUSCA COM EMAIL
 function retorna_cpf($s_Email)
 {
+  $s_Email = strtoupper($s_Email);
   $sql = <<<HEREDOC
         SELECT CPF FROM FUNCIONARIO WHERE EMAIL = '$s_Email';
 HEREDOC;
