@@ -103,6 +103,70 @@ HEREDOC;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//FUNÇÃO QUE REGISTRA ENTRADA
+//RETORNO 1 = SUCESSO, RETORNO 0 = FALHA;
+function registrar_entrada($s_CPF, $dt_Data, $tm_Entrada)
+{
+  pg_query("BEGIN");
+  $sql = <<<HEREDOC
+          SELECT registrar_ponto_entrada('$s_CPF', '$dt_Data', '$tm_Entrada');
+HEREDOC;
+  $query = pg_query($sql);
+  $result = pg_fetch_result($query, 0, 0);
+  if ($result > 0){
+    pg_query("COMMIT");
+    return 1;
+  }else{
+    pg_query("ROLLBACK");
+    return 0;
+  }
+}
+//FIM FUNÇÃO
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//FUNÇÃO QUE REGISTRA SAIDA
+//RETORNO 1 = SUCESSO, RETORNO 0 = FALHA;
+function registrar_saida($s_CPF, $dt_Data, $tm_Saida)
+{
+  $sql = <<<HEREDOC
+          SELECT registrar_ponto_saida('$s_CPF', '$dt_Data', '$tm_Saida');
+HEREDOC;
+  $query = pg_query($sql);
+  $result = pg_fetch_result($query, 0, 0);
+  if ($result > 0){
+    pg_query("COMMIT");
+    return 1;
+  }else{
+    pg_query("ROLLBACK");
+    return 0;
+  }
+}
+//FIM FUNÇÃO
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//FUNÇÃO QUE VERIFICA SE EXISTE PONTO DE DETERMINADO CPF EM DETERMINADA DATA
+//RETORNO 1 = NÃO EXISTE; 0 = EXISTE;
+function verificar_data($s_CPF, $dt_Data)
+{
+  $sql = <<<HEREDOC
+          SELECT verifica_data('$s_CPF', '$dt_Data');
+HEREDOC;
+  $query = pg_query($sql);
+  $result = pg_fetch_result($query, 0, 0);
+  if ($result > 0){
+    pg_query("COMMIT");
+    return 1;
+  }else{
+    pg_query("ROLLBACK");
+    return 0;
+  } 
+}
+//FIM FUNÇÃO
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //FUNÇÃO QUE RETORNA CPF BASEADO EM BUSCA COM EMAIL
 function retorna_cpf($s_Email)
 {
@@ -119,6 +183,8 @@ HEREDOC;
   }
 }
 //FIM FUNÇÃO
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
