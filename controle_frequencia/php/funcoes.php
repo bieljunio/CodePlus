@@ -100,6 +100,24 @@ HEREDOC;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//FUNÇÃO QUE RETORNA CPF BASEADO EM BUSCA COM EMAIL
+function retorna_cpf($s_Email)
+{
+  $sql = <<<HEREDOC
+        SELECT CPF FROM FUNCIONARIO WHERE EMAIL = '$s_Email';
+HEREDOC;
+  $query = pg_query($sql);
+  $result = pg_fetch_result($query, 0, 0);
+  if ($result){
+    return $result;
+  }else{
+    return null;
+  }
+}
+//FIM FUNÇÃO
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //TIPOS DE ARRAY E VALORES ESPERADOS PARA A FUNÇÃO update_e_log
 //NOTA: TODOS OS VALORES (CHAVE => REGISTRO) DEVEM SER PASSADOS COMO STRING
 //NOTA2: SOMENTE A TABELA PONTO_FUNCIONARIO RECEBE $i_ID, O RESTO RECEBE "NULL"
