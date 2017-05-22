@@ -872,6 +872,30 @@ $$ LANGUAGE plpgsql;
 
 --------------------------------------------------------------------------------------------------------------
 
+-- FUNÇÃO QUE VERIFICA SE EXISTE PONTO DE DETERMINADO CPF EM DETERMINADA DATA
+CREATE OR REPLACE FUNCTION verifica_data
+	(var_cpf VARCHAR(14), var_data DATE)
+
+RETURNS INTEGER AS $$
+
+DECLARE
+	cont INTEGER;
+
+BEGIN
+	SELECT COUNT(PF.DATA) INTO cont FROM PONTO_FUNCIONARIO PF
+	WHERE PF.CPF = var_cpf
+	AND PF.DATA = var_data;
+	IF cont < 0 THEN
+		RETURN 1;
+	ELSE
+		RETURN 0;
+	END IF;
+END;
+$$ LANGUAGE plpgsql;
+-- FIM FUNÇÃO
+
+--------------------------------------------------------------------------------------------------------------
+
 -- FUNÇÃO QUE INSERE PONTO DE SAÍDA
 CREATE OR REPLACE FUNCTION registrar_ponto_saida 
 	(var_cpf VARCHAR(14), var_data DATE, var_saida TIME)
