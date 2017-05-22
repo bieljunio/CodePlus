@@ -40,25 +40,4 @@ if ($S_PasswordHash) {
         header("Location: ../index.php?msg={$S_msgCode}");
 }
 
-
-
-
-//if ($S_Email) {
-//    
-//    
-//        // Obtém hash da senha no banco de dados
-//        $S_PasswordHash = pg_query("SELECT senha FROM login WHERE email='$S_AutenticationEmail'");
-//
-//        // Compara a senha informada com o banco de dados
-//        if (password_verify($S_AutenticationSenha, pg_fetch_result($S_PasswordHash, 0, 0))) {
-//            $_SESSION['logged'] = true;
-//            header('Location: home.php');
-//        } else {
-//            $_SESSION['logged'] = false;
-//            $_SESSION['user'] = $S_Email;
-//            $S_msgCode = md5('LOGIN_FAULT');
-//            
-//            header("Location: ../index.php?msg={$S_msgCode}");
-//        }
-
 ?>
