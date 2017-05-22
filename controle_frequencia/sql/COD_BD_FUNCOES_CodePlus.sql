@@ -2,7 +2,8 @@
 -- CHAMADA:
 -- efetuar_login('$email');
 -- RETURN: $senha VARCHAR(80)
-CREATE OR REPLACE FUNCTION efetuar_login (var_email VARCHAR(100)) 
+CREATE OR REPLACE FUNCTION efetuar_login
+	(var_email VARCHAR(100)) 
 
 RETURNS VARCHAR(80) AS $$
 
@@ -29,14 +30,14 @@ $$ LANGUAGE plpgsql;
 
 -- FUNÇÃO QUE UNE TODOS OS INSERTUPDATE_LOG
 -- CHAMADA:
--- master_insert_log('$tabela', '$campo', '$registro_novo', '$data_hora', '$cpf_alterado', '$cpf_responsavel', $id_eventual)
--- NOTA: $id_eventual usado somente para PONTO_FUNCIONARIO, campo ID_PONTO (VER CHAMADA DESSA FUNÇÃO)
+-- master_insert_log('$tabela', '$campo', '$registro_novo', '$data_hora', '$cpf_alterado', '$cpf_responsavel', $data_ponto)
+-- NOTA: $data_ponto usado somente para PONTO_FUNCIONARIO, campo ID_PONTO (VER CHAMADA DESSA FUNÇÃO)
 -- RETURN: 1 = SUCESSO; 0 = VALORES IGUAIS OU REGISTRO INEXISTENTE; -1 = CAMPO INEXISTENTE; -2 = TABELA INEXISTENTE OU CPF INVÁLIDO;
 CREATE OR REPLACE FUNCTION master_insert_log
 	(tabela VARCHAR(100), campo VARCHAR(100),
 	registro_novo VARCHAR(100), data_hora TIMESTAMP,
 	cpf_alterado VARCHAR(14), cpf_responsavel VARCHAR(14),
-	id_eventual INTEGER)
+	data_ponto DATE)
 
 RETURNS INTEGER AS $$
 
@@ -62,7 +63,7 @@ BEGIN
 			RETURN mensagem;
 		ELSIF tabela = 'PONTO_FUNCIONARIO' THEN
 			SELECT insertupdate_log_ponto_funcionario(tabela, campo, registro_novo,
-				data_hora, cpf_alterado, cpf_responsavel, id_eventual) INTO mensagem;
+				data_hora, cpf_alterado, cpf_responsavel, data_ponto) INTO mensagem;
 			RETURN mensagem;
 		ELSE
 			RETURN -2;
@@ -180,35 +181,47 @@ $$ LANGUAGE plpgsql;
 
 -- FUNÇÃO QUE INSERE NA TABELA LOG_ALTERACAO E DA UPDATE EM PONTO_FUNCIONARIO
 -- CHAMADA:
--- SELECT PF.ID_PONTO FROM PONTO_FUNCIONARIO PF WHERE PF.CPF = $cpf AND PF.ENTRADA = $timestamp_entrada AND PF.SAIDA = $timestamp_saida
--- $id_eventual = PF.ID_PONTO
--- insertupdate_log_ponto_funcionario('$tabela', '$campo', '$registro_novo', '$data_hora', '$cpf_alterado', '$cpf_responsavel', $id_eventual)
+-- insertupdate_log_ponto_funcionario('$tabela', '$campo', '$registro_novo', '$data_hora', '$cpf_alterado', '$cpf_responsavel', $data_ponto)
 CREATE OR REPLACE FUNCTION insertupdate_log_ponto_funcionario
 	(tabela VARCHAR(100), campo VARCHAR(100), 
 	registro_novo VARCHAR(100), data_hora TIMESTAMP,
 	cpf_alterado VARCHAR(14), cpf_responsavel VARCHAR(14),
-	id_eventual INTEGER)
+	data_ponto DATE)
 			
 RETURNS INTEGER as $$
 
 DECLARE
 	registro_antigo VARCHAR(100);
-	--time_registro_novo TIMESTAMP;
+	existe INTEGER;
 
 BEGIN
-	--time_registro_novo = CAST(registro_novo AS VARCHAR(100));
 	campo = UPPER(campo);
+	registro_antigo = data_ponto;
+	IF campo = 'DATA' THEN
+		SELECT COUNT(PF.DATA) INTO existe FROM PONTO_FUNCIONARIO PF
+		WHERE PF.CPF = cpf_alterado
+		AND PF.DATA = registro_novo;
+		IF registro_antigo <> registro_novo AND existe = 0 THEN
+			PERFORM inserir_log(data_hora, tabela, campo, registro_antigo,
+				cpf_alterado, cpf_responsavel);
+			UPDATE PONTO_FUNCIONARIO SET DATA = CAST(registro_novo AS DATE)
+				WHERE CPF = cpf_alterado
+				AND DATA = registro_antigo;
+			RETURN 1;
+		ELSE
+			RETURN 0;
+		END IF;
 
-	IF campo = 'ENTRADA' THEN
+	ELSIF campo = 'ENTRADA' THEN
 		SELECT PF.ENTRADA INTO registro_antigo FROM PONTO_FUNCIONARIO PF
 		WHERE PF.CPF = cpf_alterado
-		AND   PF.ID_PONTO = id_eventual;
+		AND PF.DATA = registro_antigo;
 		IF registro_antigo <> registro_novo THEN
 			PERFORM inserir_log(data_hora, tabela, campo, registro_antigo,
 				cpf_alterado, cpf_responsavel);
-			UPDATE  PONTO_FUNCIONARIO SET ENTRADA = CAST(registro_novo AS TIMESTAMP)--time_registro_novo
-				WHERE CPF = cpf_alterado --faltou id, ele estava dando update em todos
-				AND   ID_PONTO = id_eventual;
+			UPDATE  PONTO_FUNCIONARIO SET ENTRADA = CAST(registro_novo AS TIME)
+				WHERE CPF = cpf_alterado
+				AND DATA = registro_antigo;
 			RETURN 1;
 		ELSE 
 			RETURN 0;
@@ -217,13 +230,13 @@ BEGIN
 	ELSIF campo = 'SAIDA' THEN
 		SELECT PF.SAIDA INTO registro_antigo FROM PONTO_FUNCIONARIO PF
 		WHERE PF.CPF = cpf_alterado
-		AND   PF.ID_PONTO = id_eventual;
+		AND PF.DATA = registro_antigo;
 		IF registro_antigo <> registro_novo THEN
 			PERFORM  inserir_log(data_hora, tabela, campo, registro_antigo,
 				cpf_alterado, cpf_responsavel);
-			UPDATE PONTO_FUNCIONARIO SET SAIDA = CAST(registro_novo AS TIMESTAMP)--time_registro_novo
-				WHERE CPF = cpf_alterado --faltou id, ele estava dando update em todos
-				AND   ID_PONTO = id_eventual;
+			UPDATE PONTO_FUNCIONARIO SET SAIDA = CAST(registro_novo AS TIME)
+				WHERE CPF = cpf_alterado
+				AND DATA = registro_antigo;
 			RETURN 1;
 		ELSE 
 			RETURN 0;
@@ -648,7 +661,7 @@ $$ LANGUAGE plpgsql;
 -- CHAMADA:
 -- funcionario_cpf_ops('$cpf_antigo', '$cpf_novo')
 CREATE OR REPLACE FUNCTION funcionario_cpf_ops
-(cpf_antigo VARCHAR(14), cpf_novo VARCHAR(14))
+	(cpf_antigo VARCHAR(14), cpf_novo VARCHAR(14))
 
 RETURNS VOID AS $$
 
@@ -754,8 +767,8 @@ $$ LANGUAGE plpgsql;
 -- CHAMADA:
 -- inserir_log('$data_hora', '$tabela', '$campo', '$registro_antigo', '$cpf_alterado', '$cpf_responsavel')
 CREATE OR REPLACE FUNCTION inserir_log
-(datahora TIMESTAMP, tabelaalterada VARCHAR(100), campoalterado VARCHAR(100),
-registroantigo VARCHAR(100), cpfalterado VARCHAR(14), cpfresponsavel VARCHAR(14))
+	(datahora TIMESTAMP, tabelaalterada VARCHAR(100), campoalterado VARCHAR(100),
+	registroantigo VARCHAR(100), cpfalterado VARCHAR(14), cpfresponsavel VARCHAR(14))
 
 RETURNS VOID AS $$
 
@@ -777,20 +790,18 @@ $$ LANGUAGE plpgsql;
 -- $n_RA, $n_Coeficiente, $n_Periodo, $s_Rua, $s_Bairro, $s_Numero, $s_Complemento, $s_CEP, $i_ID_Cidade, $i_Vinculo,
 -- $i_Cargo, $i_Setor, $i_Estado_Civil, $s_Senha)
 CREATE OR REPLACE FUNCTION cadastrar_funcionario
-(var_cpf VARCHAR(14), var_rg VARCHAR(15), var_nome VARCHAR(100), var_nascimento DATE,
-var_sexo VARCHAR(1), var_nome_pai VARCHAR(100), var_nome_mae VARCHAR(100),
-var_admissao DATE, var_facebook VARCHAR(100),
-var_skype VARCHAR(100), var_linkedin VARCHAR(100), var_email VARCHAR(100),
-var_telefone NUMERIC(11), var_telefone_alt NUMERIC(11), var_email_alt VARCHAR(100),
-var_ra NUMERIC(7), var_coeficiente NUMERIC(5), var_periodo NUMERIC(1),
-var_end_rua VARCHAR(80), var_end_bairro VARCHAR(30), var_end_numero VARCHAR(5),
-var_end_complemento VARCHAR(30), var_end_cep VARCHAR(9), var_id_cidade INTEGER,
-var_id_vinculo INTEGER, var_id_cargo INTEGER, var_id_setor INTEGER, var_id_estado_civil INTEGER,
-var_login_senha VARCHAR(80))
+	(var_cpf VARCHAR(14), var_rg VARCHAR(15), var_nome VARCHAR(100), var_nascimento DATE,
+	var_sexo VARCHAR(1), var_nome_pai VARCHAR(100), var_nome_mae VARCHAR(100),
+	var_admissao DATE, var_facebook VARCHAR(100),
+	var_skype VARCHAR(100), var_linkedin VARCHAR(100), var_email VARCHAR(100),
+	var_telefone NUMERIC(11), var_telefone_alt NUMERIC(11), var_email_alt VARCHAR(100),
+	var_ra NUMERIC(7), var_coeficiente NUMERIC(5), var_periodo NUMERIC(1),
+	var_end_rua VARCHAR(80), var_end_bairro VARCHAR(30), var_end_numero VARCHAR(5),
+	var_end_complemento VARCHAR(30), var_end_cep VARCHAR(9), var_id_cidade INTEGER,
+	var_id_vinculo INTEGER, var_id_cargo INTEGER, var_id_setor INTEGER, var_id_estado_civil INTEGER,
+	var_login_senha VARCHAR(80))
 
 RETURNS INTEGER AS $$
-
-DECLARE
 
 BEGIN
 var_cpf = UPPER(var_cpf);
@@ -827,6 +838,50 @@ VALUES
 	(var_cpf, var_email, var_login_senha);
 
 RETURN 1;
+END;
+$$ LANGUAGE plpgsql;
+-- FIM FUNÇÃO
+
+--------------------------------------------------------------------------------------------------------------
+
+-- FUNÇÃO QUE INSERE PONTO DE ENTRADA
+-- RETORNO 1 = SUCESSO; RETORNO 2 = FALHA (JÁ EXISTE REGISTRO NAQUELA DATA);
+CREATE OR REPLACE FUNCTION registrar_ponto_entrada
+	(var_cpf VARCHAR(14), var_data DATE, var_entrada TIME)
+
+RETURNS INTEGER AS $$
+
+DECLARE
+	cont INTEGER;
+
+BEGIN
+	SELECT COUNT(PF.DATA) INTO cont FROM PONTO_FUNCIONARIO PF
+	WHERE PF.DATA = var_data
+	AND PF.CPF = var_cpf;
+	IF cont <= 0 THEN
+		INSERT INTO PONTO_FUNCIONARIO (DATA, ENTRADA, CPF)
+		VALUES
+			(var_data, var_entrada, var_cpf);
+		RETURN 1;
+	ELSE
+		RETURN 0;
+	END IF;
+END;
+$$ LANGUAGE plpgsql;
+-- FIM FUNÇÃO
+
+--------------------------------------------------------------------------------------------------------------
+
+-- FUNÇÃO QUE INSERE PONTO DE SAÍDA
+CREATE OR REPLACE FUNCTION registrar_ponto_saida 
+	(var_cpf VARCHAR(14), var_data DATE, var_saida TIME)
+
+RETURNS INTEGER AS $$
+
+BEGIN
+	UPDATE PONTO_FUNCIONARIO SET SAIDA = var_saida
+	WHERE CPF = var_cpf AND DATA = var_data;
+	RETURN 1;
 END;
 $$ LANGUAGE plpgsql;
 -- FIM FUNÇÃO
