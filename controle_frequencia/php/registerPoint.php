@@ -13,7 +13,7 @@ if(isset($_GET['in'])){
 				$sql = pg_query("INSERT INTO ponto_funcionario");
 			} else {
 				//retorna a mensagem de já haver um ponto registrado
-				
+				teste
 			}
 			
 			
