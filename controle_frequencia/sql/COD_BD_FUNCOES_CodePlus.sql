@@ -908,7 +908,7 @@ DECLARE
 BEGIN
 	SELECT PF.SAIDA INTO cont FROM PONTO_FUNCIONARIO
 	WHERE PF.CPF = var_cpf
-	AND PF.SAIDA = var_saida;
+	AND PF.DATA = var_data;
 	IF cont <= 0 THEN
 		UPDATE PONTO_FUNCIONARIO SET SAIDA = var_saida
 		WHERE CPF = var_cpf AND DATA = var_data;
