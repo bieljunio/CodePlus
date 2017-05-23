@@ -14,6 +14,7 @@ if(isset($_GET['in'])){
 			//faz consulta no banco para ver se já houve uma inserção nesta data
 			$EntryVerification = registrar_entrada($_SESSION['user'], $date, $tm_date);
 			if($EntryVerification == 1){
+				//envia mensagem de sucesso
 				$S_msg = md5('ENTRY_SUCCESS');
 				header("Location: home.php?msg={$S_msg}");
 			} else {
@@ -24,11 +25,15 @@ if(isset($_GET['in'])){
 			
 			break;
 		case md5('exit'):
+			//faz consulta no banco para ver se já ouve uma inserção de saída
 			$EntryVerification = registrar_saida($_SESSION['user'], $date, $tm_date);
+			//Retorna 1 se tiver uma inserção
 			if($EntryVerification == 1){
+				//envia mensagem de sucesso
 				$S_msg = md5('EXIT_SUCCESS');
 				header("Location: home.php?msg={$S_msg}");
 			} else {
+				//envia mensagem de ponto já inserido
 				$S_msg = md5('EXIT_FAIL');
 				header("Location: home.php?msg={$S_msg}");
 			}
