@@ -29,6 +29,7 @@ $S_complemento = filter_input(INPUT_POST, 'complemento');
 $I_cep = filter_input(INPUT_POST, 'cep');
 
 
+
 //Tabela estado civil
 $S_estadocivil = filter_input(INPUT_POST, 'estado_civil');
 

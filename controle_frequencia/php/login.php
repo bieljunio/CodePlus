@@ -40,6 +40,4 @@ if ($S_PasswordHash) {
         header("Location: ../index.php?msg={$S_msgCode}");
 }
 
-
-
 ?>
