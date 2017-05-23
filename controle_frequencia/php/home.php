@@ -21,6 +21,12 @@
 			case md5('ENTRY_FAIL'):
 				$S_msg = $dict[$_GET['msg']];
 				break;
+			case md5('EXIT_SUCCESS'):
+				$S_msg = $dict[$_GET['msg']];
+				break;
+			case md5('EXIT_FAIL'):
+				$S_msg = $dict[$_GET['msg']];
+				break;
 			default:
 				$S_msg = 'Operação já efetuada!';
 				break;
