@@ -2,7 +2,7 @@
 -- CHAMADA:
 -- efetuar_login('$email');
 -- RETURN: $senha VARCHAR(80)
-CREATE OR REPLACE FUNCTION efetuar_login
+CREATE OR REPLACE FUNCTION retorna_senha
 	(var_email VARCHAR(100)) 
 
 RETURNS VARCHAR(80) AS $$
@@ -845,7 +845,7 @@ $$ LANGUAGE plpgsql;
 --------------------------------------------------------------------------------------------------------------
 
 -- FUNÇÃO QUE INSERE PONTO DE ENTRADA
--- RETORNO 1 = SUCESSO; RETORNO 2 = FALHA (JÁ EXISTE REGISTRO NAQUELA DATA);
+-- RETORNO 1 = SUCESSO; RETORNO 0 = FALHA (JÁ EXISTE REGISTRO NAQUELA DATA);
 CREATE OR REPLACE FUNCTION registrar_ponto_entrada
 	(var_cpf VARCHAR(14), var_data DATE, var_entrada TIME)
 

@@ -188,6 +188,23 @@ HEREDOC;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//FUNÇÃO QUE RETORNA SENHA BASEADO EM BUSCA COM EMAIL
+function retorna_senha($s_Email)
+{
+  $s_Email = strtoupper($s_Email);
+  $sql = <<<HEREDOC
+        SELECT retorna_senha($s_Email);
+HEREDOC;
+  $query = pg_query($sql);
+  $result = pg_fetch_result($query, 0, 0);
+  if ($result){
+    return $result;
+  }else{
+    return null;
+  }
+}
+//FIM FUNÇÃO
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //TIPOS DE ARRAY E VALORES ESPERADOS PARA A FUNÇÃO update_e_log
