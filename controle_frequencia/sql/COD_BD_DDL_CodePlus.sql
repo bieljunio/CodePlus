@@ -1,6 +1,6 @@
 CREATE TABLE FUNCIONARIO
 (
---status varchar(1) (ou ENUM) not null [Ativo, inativo, ferias] 
+    --STATUS VARCHAR(1) NOT NULL, -- 'A' ativo, 'D' desligado, 'F' ferias
     CPF VARCHAR(14) NOT NULL,
     RG VARCHAR(15) NOT NULL,
     NOME VARCHAR(100) NOT NULL,
@@ -84,6 +84,8 @@ CREATE TABLE SETOR
 CREATE TABLE PONTO_FUNCIONARIO
 (
     DATA DATE NOT NULL,
+    --ENTRADA TIME,
+    --STATUS VARCHAR(1) NOT NULL,  -- 'A' ativo, 'D' desligado, 'F' ferias
     ENTRADA TIME NOT NULL,
     SAIDA TIME,
     CPF VARCHAR(14) NOT NULL,
