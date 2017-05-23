@@ -902,10 +902,20 @@ CREATE OR REPLACE FUNCTION registrar_ponto_saida
 
 RETURNS INTEGER AS $$
 
+DECLARE
+	cont INTEGER;
+
 BEGIN
-	UPDATE PONTO_FUNCIONARIO SET SAIDA = var_saida
-	WHERE CPF = var_cpf AND DATA = var_data;
-	RETURN 1;
+	SELECT PF.SAIDA INTO cont FROM PONTO_FUNCIONARIO
+	WHERE PF.CPF = var_cpf
+	AND PF.SAIDA = var_saida;
+	IF cont <= 0 THEN
+		UPDATE PONTO_FUNCIONARIO SET SAIDA = var_saida
+		WHERE CPF = var_cpf AND DATA = var_data;
+		RETURN 1;
+	ELSE
+		RETURN 0;
+	END IF;
 END;
 $$ LANGUAGE plpgsql;
 -- FIM FUNÇÃO
