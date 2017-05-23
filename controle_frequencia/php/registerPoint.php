@@ -14,14 +14,14 @@ if(isset($_GET['in'])){
 			//faz consulta no banco para ver se já houve uma inserção nesta data
 			$EntryVerification = registrar_entrada($_SESSION['user'], $date, $tm_date);
 			if($EntryVerification == 1){
-				header("Location: ../index.php");
+				$S_msg = md5('ENTRY_SUCCESS');
+				header("Location: home.php?msg={$S_msg}");
 			} else {
 				//retorna a mensagem de já haver um ponto registrado
-				echo "Erro";
+				$S_msg = md5('ENTRY_FAIL');
+				header("Location: home.php?msg={$S_msg}");
 			}
 			
-			
-			header("Location: home.php");
 			break;
 		case md5('exit'):
 			
