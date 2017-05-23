@@ -191,7 +191,7 @@ function retorna_senha($s_Email)
 {
   $s_Email = strtoupper($s_Email);
   $sql = <<<HEREDOC
-        SELECT retorna_senha($s_Email);
+        SELECT retorna_senha('$s_Email');
 HEREDOC;
   $query = pg_query($sql);
   $result = pg_fetch_result($query, 0, 0);
