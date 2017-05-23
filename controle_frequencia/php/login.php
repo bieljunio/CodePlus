@@ -30,4 +30,5 @@ if ($S_PasswordHash) {
 	$S_msgCode = md5('LOGIN_FAULT');
 	header("Location: ../index.php?msg={$S_msgCode}");
 }
+
 ?>

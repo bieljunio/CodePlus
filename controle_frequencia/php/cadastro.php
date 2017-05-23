@@ -29,12 +29,6 @@ $S_complemento = filter_input(INPUT_POST, 'complemento');
 $I_cep = filter_input(INPUT_POST, 'cep');
 
 
-cadastrar_funcionario ($S_cpf, $S_rg, $S_nome, $S_nascimento, $C_sexo, $S_nome_pai, $S_nome_mae, $S_data_admissao,
-          $S_facebook, $S_skype, $S_linkedin, $S_email, $I_telefone, $I_telefonealt, $S_emailalt,
-          $I_ra, $I_coeficiente, $I_periodo, $S_endereço, $S_bairro, $I_numero, $S_complemento, $I_cep, $S_cidade, $S_vinculo,
-          $S_cargo, $S_setor, $S_estadocivil, $S_senha);
-
-
 
 //Tabela estado civil
 $S_estadocivil = filter_input(INPUT_POST, 'estado_civil');
