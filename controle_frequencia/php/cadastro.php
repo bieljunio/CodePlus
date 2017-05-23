@@ -1,17 +1,17 @@
 <?php
-require 'validacaologin.php';
+
+require 'bd.php';
+require 'funcoes.php';
 
 //Tabela funcionário
 $S_cpf = filter_input(INPUT_POST, 'cpf');
 $S_rg = filter_input(INPUT_POST, 'rg');
 $S_nome = filter_input(INPUT_POST, 'nome');
-$S_sexo = filter_input(INPUT_POST, 'sexo');
+$C_sexo = filter_input(INPUT_POST, 'sexo');
 $S_nascimento = filter_input(INPUT_POST, 'nascimento');
-$S_nacionalidade = filter_input(INPUT_POST, 'nacionalidade');
 $S_nome_pai = filter_input(INPUT_POST, 'nome_pai');
 $S_nome_mae = filter_input(INPUT_POST, 'nome_mae');
 $S_data_admissao = filter_input(INPUT_POST, 'data_admissao');
-$S_data_desligamento = filter_input(INPUT_POST, 'data_desligamento');
 $S_facebook = filter_input(INPUT_POST, 'facebook');
 $S_skype = filter_input(INPUT_POST, 'skype');
 $S_linkedin = filter_input(INPUT_POST, 'linkedin');
@@ -38,8 +38,6 @@ $S_cidade = filter_input(INPUT_POST, 'cidade');
 //Tabela estado
 $S_estado = filter_input(INPUT_POST, 'estado');
 
-//Tabela país
-$S_pais = filter_input(INPUT_POST, 'pais');
 
 //Tabela setor
 $S_setor = filter_input(INPUT_POST, 'setor');
@@ -52,14 +50,13 @@ $S_vinculo = filter_input(INPUT_POST, 'vinculo');
 
 //Tabela login
 //$S_email = filter_input(INPUT_POST, 'email');
-$S_senha = filter_input(INPUT_POST, 'senha');
-
-//Hash da senha
-$S_senhahash = password_hash($S_senha, PASSWORD_DEFAULT);
-
-$sqlfucionario = "INSERT INTO funcionario"
+$S_senha = rand(100000, 9999999);
 
 
+cadastrar_funcionario ($S_cpf, $S_rg, $S_nome, $S_nascimento, $C_sexo, $S_nome_pai, $S_nome_mae, $S_data_admissao,
+          $S_facebook, $S_skype, $S_linkedin, $S_email, $I_telefone, $I_telefonealt, $S_emailalt,
+          $I_ra, $I_coeficiente, $I_periodo, $S_endere�o, $S_bairro, $I_numero, $S_complemento, $I_cep, $S_cidade, $S_vinculo,
+          $S_cargo, $S_setor, $S_estadocivil, $S_senha);
 
 
 
