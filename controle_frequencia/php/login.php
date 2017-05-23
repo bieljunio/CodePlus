@@ -9,7 +9,6 @@ require_once 'funcoes.php';
 $S_AutenticationEmail = filter_input(INPUT_POST, 'email');
 $S_AutenticationSenha = filter_input(INPUT_POST, 'password');
 // Verifica se o e-mail está cadastrado no banco
-//$S_Email = pg_query("SELECT email FROM login WHERE email = '$S_AutenticationEmail'");
 $sql = <<<HEREDOC
     SELECT efetuar_login('$S_AutenticationEmail');
 HEREDOC;
