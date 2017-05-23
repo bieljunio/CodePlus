@@ -1,5 +1,5 @@
 <?php
-<<<<<<< HEAD
+
 require 'bd.php';
 require 'validationLogin.php';
 require 'funcoes.php';
@@ -44,7 +44,4 @@ if(isset($_GET['in'])){
 	}
 }
 
-=======
-	
->>>>>>> master
 ?>
