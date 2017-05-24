@@ -12,12 +12,17 @@ $S_nascimento = filter_input(INPUT_POST, 'data_nascimento');
 $S_nome_pai = filter_input(INPUT_POST, 'nome_pai');
 $S_nome_mae = filter_input(INPUT_POST, 'nome_mae');
 $S_data_admissao = filter_input(INPUT_POST, 'data_admissao');
+$S_facebook = " ";
 $S_facebook = filter_input(INPUT_POST, 'facebook');
+$S_skype = " ";
 $S_skype = filter_input(INPUT_POST, 'skype');
+$S_linkedin = " ";
 $S_linkedin = filter_input(INPUT_POST, 'linkedin');
 $S_email = filter_input(INPUT_POST, 'email');
 $I_telefone = filter_input(INPUT_POST, 'telefone');
+$I_telefonealt = "0";
 $I_telefonealt = filter_input(INPUT_POST, 'telefone_alternativo');
+$S_emailalt = " ";
 $S_emailalt = filter_input(INPUT_POST, 'email_alternativo');
 $I_ra = filter_input(INPUT_POST, 'ra');
 $I_coeficiente = filter_input(INPUT_POST, 'coeficiente');
@@ -57,12 +62,10 @@ $S_senha = rand(100000, 9999999);
 
 $S_email = strtoupper($S_email);
 
-echo $S_email;
 
 
 $sql = pg_query("SELECT cpf, ra, rg, email FROM funcionario WHERE cpf = '$S_cpf' OR ra = '$I_ra' OR rg = '$S_rg' OR 'email' = '$S_email'");
 
-echo pg_num_rows($sql);
 
 if(pg_num_rows($sql)) {
 	echo "Usuário já cadastrado";
@@ -73,11 +76,9 @@ cadastrar_funcionario ($S_cpf, $S_rg, $S_nome, $S_nascimento, $C_sexo, $S_nome_p
           $I_ra, $I_coeficiente, $I_periodo, $S_endereço, $S_bairro, $I_numero, $S_complemento, $I_cep, $S_cidade, $S_vinculo,
           $S_cargo, $S_setor, $S_estadocivil, $S_senha);
 
+echo "Cadastro efetuado com sucesso!";
 
 }
-
-//CPF, RG, email, RA
-
 
 
 ?>
