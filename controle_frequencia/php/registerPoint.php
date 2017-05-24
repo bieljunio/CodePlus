@@ -33,10 +33,10 @@ function buttonResult(){
 	date_default_timezone_set('America/Sao_Paulo');
 	$date = date('Y-m-d');
 	$tm_date = date('H:i:s');
-	
+	//Recebe qual botão foi pressionado
 	if(isset($_GET['entry'])){
 	$msgResult = buttonEntry($_SESSION['user'], $date, $tm_date);
-	} else if(isset ($_GET['exit'])) {
+	} else if(isset($_GET['exit'])) {
 	$msgResult = buttonExit($_SESSION['user'], $date, $tm_date);
 	}
 	echo $msgResult;
