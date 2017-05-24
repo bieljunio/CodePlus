@@ -1,5 +1,4 @@
 <?php
-
 //FUNÇÃO QUE CADASTRA NOVO USUÁRIO (AUTOMATICAMENTE CADASTRA NOVO LOGIN)
 //NOTA: SENHA DEVE SER PASSADA TAMBÉM, UTILIZANDO FUNÇÃO DE RANDOMIZAÇÃO
 //PARA EFEITO DE TRATAMENTO, RETORNO: 1 = SUCESSO; 0 = FALHA;
@@ -246,3 +245,4 @@ $array_Ponto_Funcionario = array(
 //FIM ARRAY
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
