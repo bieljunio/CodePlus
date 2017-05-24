@@ -55,22 +55,12 @@ $S_vinculo = filter_input(INPUT_POST, 'vinculo');
 $S_senha = rand(100000, 9999999);
 
 
-
-
-$cpfbanco = pg_query("SELECT cpf FROM funcionario WHERE cpf = '$S_cpf'");
-$cpfbanco = pg_fetch_array($cpfbanco,0,0);
-echo $cpfbanco;
-
-
 cadastrar_funcionario ($S_cpf, $S_rg, $S_nome, $S_nascimento, $C_sexo, $S_nome_pai, $S_nome_mae, $S_data_admissao,
           $S_facebook, $S_skype, $S_linkedin, $S_email, $I_telefone, $I_telefonealt, $S_emailalt,
           $I_ra, $I_coeficiente, $I_periodo, $S_endereço, $S_bairro, $I_numero, $S_complemento, $I_cep, $S_cidade, $S_vinculo,
           $S_cargo, $S_setor, $S_estadocivil, $S_senha);
 
 
-} else {
-	echo "CPF já cadastrado";
-}
 
 //SENHA HASH PARA TESTE 123456 $2y$10$xZWQ3R6YuF/plo3m1OjzoePOYwejP6smnRKxKItps9wGa31nxBRDK
 
