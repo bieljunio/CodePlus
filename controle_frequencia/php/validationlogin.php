@@ -1,9 +1,7 @@
 <?php 
     session_start();
     
-    if($_SESSION['logged'] == true){
-        echo 'OK';        
-    }else{
+    if($_SESSION['logged'] == false){       
         header("Location: ../index.php");      
     }
 
