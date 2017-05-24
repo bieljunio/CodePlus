@@ -129,6 +129,7 @@ HEREDOC;
 //RETORNO 1 = SUCESSO, RETORNO 0 = FALHA;
 function registrar_saida($s_CPF, $dt_Data, $tm_Saida)
 {
+  pg_query("BEGIN");
   $sql = <<<HEREDOC
           SELECT registrar_ponto_saida('$s_CPF', '$dt_Data', '$tm_Saida');
 HEREDOC;
