@@ -3,7 +3,7 @@
 require 'bd.php';
 require 'funcoes.php';
 
-//Tabela funcionÃ¡rio
+//Tabela funcionÃƒÂ¡rio
 $S_cpf = filter_input(INPUT_POST, 'cpf');
 $S_rg = filter_input(INPUT_POST, 'rg');
 $S_nome = filter_input(INPUT_POST, 'nome');
@@ -22,7 +22,7 @@ $S_emailalt = filter_input(INPUT_POST, 'email_alternativo');
 $I_ra = filter_input(INPUT_POST, 'ra');
 $I_coeficiente = filter_input(INPUT_POST, 'coeficiente');
 $I_periodo = filter_input(INPUT_POST, 'periodo');
-$S_endereço = filter_input(INPUT_POST, 'endereco');
+$S_endereÃ§o = filter_input(INPUT_POST, 'endereco');
 $I_numero = filter_input(INPUT_POST, 'numero');
 $S_bairro = filter_input(INPUT_POST, 'bairro');
 $S_complemento = filter_input(INPUT_POST, 'complemento');
@@ -61,23 +61,20 @@ $cpfbanco = pg_query("SELECT cpf FROM funcionario WHERE cpf = '$S_cpf'");
 $cpfbanco = pg_fetch_array($cpfbanco,0,0);
 echo $cpfbanco;
 
-/*
-if (!$cpfbanco) {
-	
 
 cadastrar_funcionario ($S_cpf, $S_rg, $S_nome, $S_nascimento, $C_sexo, $S_nome_pai, $S_nome_mae, $S_data_admissao,
           $S_facebook, $S_skype, $S_linkedin, $S_email, $I_telefone, $I_telefonealt, $S_emailalt,
-          $I_ra, $I_coeficiente, $I_periodo, $S_endereço, $S_bairro, $I_numero, $S_complemento, $I_cep, $S_cidade, $S_vinculo,
+          $I_ra, $I_coeficiente, $I_periodo, $S_endereÃ§o, $S_bairro, $I_numero, $S_complemento, $I_cep, $S_cidade, $S_vinculo,
           $S_cargo, $S_setor, $S_estadocivil, $S_senha);
 
 
 } else {
-	echo "CPF já cadastrado";
+	echo "CPF jÃ¡ cadastrado";
 }
-*/
+
 //SENHA HASH PARA TESTE 123456 $2y$10$xZWQ3R6YuF/plo3m1OjzoePOYwejP6smnRKxKItps9wGa31nxBRDK
 
-//FAZER TRATAMENTO QUANDO CPF JÁ FOI CADASTRADO
+//FAZER TRATAMENTO QUANDO CPF JÃ FOI CADASTRADO
 
 
 ?>
