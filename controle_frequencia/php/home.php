@@ -7,6 +7,8 @@
     
     <head>
     	<title>Code Plus - Home</title>
+    	<!-- Favicon -->
+    	<link rel="icon" href="../img/favicon.png" type="image/png">
     	<!-- inclusões iniciais do arquivo html -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
