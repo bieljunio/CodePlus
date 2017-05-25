@@ -2,7 +2,7 @@
 -- CHAMADA:
 -- efetuar_login('$email');
 -- RETURN: $senha VARCHAR(80)
-CREATE OR REPLACE FUNCTION efetuar_login
+CREATE OR REPLACE FUNCTION retorna_senha
 	(var_email VARCHAR(100)) 
 
 RETURNS VARCHAR(80) AS $$
@@ -280,6 +280,19 @@ BEGIN
 			UPDATE  FUNCIONARIO SET EMAIL = registro_novo
 				WHERE CPF = cpf_alterado;
 			INSERT INTO LOGIN VALUES (cpf_alterado, registro_novo, var_senha, var_ultimo_acesso);
+			RETURN 1;
+		ELSE 
+			RETURN 0;
+		END IF;
+
+	ELSIF campo = 'STATUS' THEN
+		SELECT F.STATUS INTO registro_antigo FROM FUNCIONARIO F
+		WHERE F.CPF = cpf_alterado;
+		IF registro_antigo <> registro_novo THEN
+			PERFORM inserir_log(data_hora, tabela, campo, registro_antigo,
+				cpf_alterado, cpf_responsavel);
+			UPDATE  FUNCIONARIO SET STATUS = CAST(registro_novo AS STATUS)
+				WHERE CPF = cpf_alterado;
 			RETURN 1;
 		ELSE 
 			RETURN 0;
@@ -823,7 +836,7 @@ var_end_cep = UPPER(var_end_cep);
 
 INSERT INTO FUNCIONARIO
 VALUES
-	(var_cpf, var_rg, var_nome, var_nascimento,
+	('ATIVO', var_cpf, var_rg, var_nome, var_nascimento,
 	var_sexo, var_nome_pai, var_nome_mae,
 	var_admissao, null, var_facebook,
 	var_skype, var_linkedin, var_email,
@@ -845,7 +858,7 @@ $$ LANGUAGE plpgsql;
 --------------------------------------------------------------------------------------------------------------
 
 -- FUNÇÃO QUE INSERE PONTO DE ENTRADA
--- RETORNO 1 = SUCESSO; RETORNO 2 = FALHA (JÁ EXISTE REGISTRO NAQUELA DATA);
+-- RETORNO 1 = SUCESSO; RETORNO 0 = FALHA (JÁ EXISTE REGISTRO NAQUELA DATA);
 CREATE OR REPLACE FUNCTION registrar_ponto_entrada
 	(var_cpf VARCHAR(14), var_data DATE, var_entrada TIME)
 
@@ -902,10 +915,20 @@ CREATE OR REPLACE FUNCTION registrar_ponto_saida
 
 RETURNS INTEGER AS $$
 
+DECLARE
+	cont INTEGER;
+
 BEGIN
-	UPDATE PONTO_FUNCIONARIO SET SAIDA = var_saida
-	WHERE CPF = var_cpf AND DATA = var_data;
-	RETURN 1;
+	SELECT COUNT(PF.SAIDA) INTO cont FROM PONTO_FUNCIONARIO PF
+	WHERE PF.CPF = var_cpf
+	AND PF.DATA = var_data;
+	IF cont <= 0 THEN
+		UPDATE PONTO_FUNCIONARIO SET SAIDA = var_saida
+		WHERE CPF = var_cpf AND DATA = var_data;
+		RETURN 1;
+	ELSE
+		RETURN 0;
+	END IF;
 END;
 $$ LANGUAGE plpgsql;
 -- FIM FUNÇÃO

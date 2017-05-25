@@ -129,6 +129,7 @@ HEREDOC;
 //RETORNO 1 = SUCESSO, RETORNO 0 = FALHA;
 function registrar_saida($s_CPF, $dt_Data, $tm_Saida)
 {
+  pg_query("BEGIN");
   $sql = <<<HEREDOC
           SELECT registrar_ponto_saida('$s_CPF', '$dt_Data', '$tm_Saida');
 HEREDOC;
@@ -185,6 +186,23 @@ HEREDOC;
 //FIM FUNÇÃO
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//FUNÇÃO QUE RETORNA SENHA BASEADO EM BUSCA COM EMAIL
+function retorna_senha($s_Email)
+{
+  $s_Email = strtoupper($s_Email);
+  $sql = <<<HEREDOC
+        SELECT retorna_senha('$s_Email');
+HEREDOC;
+  $query = pg_query($sql);
+  $result = pg_fetch_result($query, 0, 0);
+  if ($result){
+    return $result;
+  }else{
+    return null;
+  }
+}
+//FIM FUNÇÃO
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

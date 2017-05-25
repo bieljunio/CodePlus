@@ -11,23 +11,16 @@ require_once 'funcoes.php';
 $S_AutenticationEmail = filter_input(INPUT_POST, 'email');
 $S_AutenticationSenha = filter_input(INPUT_POST, 'password');
 
-// Verifica se o e-mail está cadastrado no banco
-//$S_Email = pg_query("SELECT email FROM login WHERE email = '$S_AutenticationEmail'");
 
-
-$sql = <<<HEREDOC
-    SELECT efetuar_login('$S_AutenticationEmail');
-HEREDOC;
-
-$S_PasswordHash = pg_query($sql);
-
+$S_PasswordHash = retorna_senha($S_AutenticationEmail);
 
 if ($S_PasswordHash) {
  
         // Compara a senha informada com o banco de dados
-        if (password_verify($S_AutenticationSenha, pg_fetch_result($S_PasswordHash, 0, 0))) {
+        if (password_verify($S_AutenticationSenha, $S_PasswordHash)) {
             $_SESSION['logged'] = true;
             $_SESSION['user'] = retorna_cpf($S_AutenticationEmail);
+            $_SESSION['email'] = $S_AutenticationEmail;
             header('Location: home.php');
         } else {
             $_SESSION['logged'] = false;
@@ -39,4 +32,5 @@ if ($S_PasswordHash) {
     $S_msgCode = md5('LOGIN_FAULT');
         header("Location: ../index.php?msg={$S_msgCode}");
 }
+
 ?>

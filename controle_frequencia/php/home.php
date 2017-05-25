@@ -1,3 +1,4 @@
+
 <?php
     require 'validationlogin.php';
     require_once 'dict.inc.php';
@@ -7,7 +8,11 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="utf-8"/>        
+        <meta charset="utf-8"/> 
+      
+        <script src="../javascript/jquery-3.2.1.min.js"></script>
+        <script src="../javascript/jquery.js"></script>
+      
         <title>Home</title>
 
 
@@ -33,11 +38,6 @@
         }
         ?>
 
-
-
-
-
-
     </head>
     <body>
     <?php 
@@ -48,6 +48,12 @@
 	?>
         WELCOME!
         <br><br>
+      
+         <br><br>
+       	<p><a href="" onclick="return registerEntry();">Registrar Entrada</a></p>
+        <p><a href="" onclick="return registerExit();">Registrar Saída</a></p>
+        <h3><a href="logout.php">LOGOUT</a></h3>
+        
         
         <h4>Alterar Senha:</h4> 
           <form name="alterar_senha" id="alterar_senha" method="post" action="alterar_senha.php">
