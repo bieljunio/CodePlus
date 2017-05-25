@@ -52,6 +52,16 @@ header{
     position: relative;
 }
 
+.redondo:hover{
+    height: 82px;
+    width: 82px;
+    border-radius: 50%;
+    float: left;
+    position: relative;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
 .seta{
     height: 15px;
     width: 15px;
@@ -59,6 +69,17 @@ header{
     display: inline-block;
     margin-top: 35px;
 }
+
+.seta:hover{
+    height: 17px;
+    width: 17px;
+    float: right;
+    display: inline-block;
+    margin-top: 35px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
 
 .dropdown{
     position: relative;
