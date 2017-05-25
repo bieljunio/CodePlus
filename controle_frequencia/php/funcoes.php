@@ -64,8 +64,8 @@ HEREDOC;
   			$s_CPF_Responsavel = $s_Registro;
   		}
   		$s_CPF_Alterado = $s_Registro;
-  		}
   	}
+  }
   if ($cont == count($array_Campo_Registro)){
     pg_query("COMMIT");
   	return 1;
