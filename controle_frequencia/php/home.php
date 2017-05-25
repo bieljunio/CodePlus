@@ -58,6 +58,6 @@
         
         <br><br>
         <h3><a href="logout.php">LOGOUT</a></h3>
-        <script type="text/javascript" src="../js/alterasenha.js"></script>
+        <script type="text/javascript" src="../javascript/alterasenha.js"></script>
     </body>
 </html>
