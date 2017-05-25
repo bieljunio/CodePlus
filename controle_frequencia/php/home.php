@@ -7,14 +7,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
+    	<title>Home</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="utf-8"/> 
-      
+        <meta charset="utf-8"/>
         <script src="../javascript/jquery-3.2.1.min.js"></script>
         <script src="../javascript/jquery.js"></script>
-      
-        <title>Home</title>
-
 
 
         <?php
@@ -39,20 +37,14 @@
         ?>
 
     </head>
+	
     <body>
-    <?php 
-    $S_in = md5('entry');
-    $S_out = md5('exit');
-    echo "<p><a href='registerPoint.php?in={$S_in}'>Registrar Entrada</a></p>";
-    echo "<p><a href='registerPoint.php?in={$S_out}'>Registrar Saída</a></p>";
-	?>
-        WELCOME!
+    
+		<p>WELCOME!</p>
         <br><br>
-      
-         <br><br>
        	<p><a href="" onclick="return registerEntry();">Registrar Entrada</a></p>
         <p><a href="" onclick="return registerExit();">Registrar Saída</a></p>
-        <h3><a href="logout.php">LOGOUT</a></h3>
+        
         
         
         <h4>Alterar Senha:</h4> 
