@@ -48,13 +48,14 @@ header{
 }
 
 .img_fundo{
-    background-image: url('../img/note2.jpg');
+    background-image: url('Imagens/note2.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
     height: 300px;
     color: whitesmoke;
+
 }
 
 #inserir{
@@ -86,3 +87,9 @@ header{
     position: relative;
     margin-top: -15px;
 }
+
+
+
+
+
+
