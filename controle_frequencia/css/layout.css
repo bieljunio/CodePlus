@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: whitesmoke;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+}
+
+header{
+    height: 130px;
+    width: 100%;
+    display: inline-flex;
+}
+
+.logomarca{
+    height: 130px;
+    width: 350px;
+    float: left;
+    display: inline;
+    margin-right: auto;
+}
+
+.logo{
+    margin: 20px 0 0 30px;
+    height: 80px;
+}
+
+.box{
+    height: 130px;
+    width: 300px;
+    float: right;
+    display: inline;
+    margin-left: auto;
+    padding-right: 50px;
+}
+
+.redondo{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    float: left;
+    position: relative;
+}
+
+.seta{
+    height: 15px;
+    width: 15px;
+    float: right;
+    display: inline-block;
+    margin-top: 35px;
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+    width: 105px;
+    float: right;
+    margin: 30px 0 0 0;
+    height: 85px;
+}
+
+.dropdown_content{
+    display: none;
+    position: absolute;
+    background-color: #F9F9F9;
+    min-width: 133px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 85px;
+}
+
+.dropdown .dropdown_content a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown_content a:hover{
+    background-color: #D6D6D6;
+}
+
+.dropdown:hover .dropdown_content{
+    display: block;
+}
+
+.dropdown:hover .redondo{
+    background-color: #3E8E41;
+}
+
+#registros{
+    align-items: center;
+    text-align: center;
+    height: 130px;
+    width: 455px;
+    float: left;
+    display: inline;
+    clear: both;
+    margin-left: auto;
+}
+
+#registros ul li{
+    align-content: center;
+    margin-top: 40px;
+    display: inline-block;
+    width: 160px;
+    height: 40px;
+    vertical-align: middle;
+    padding: 2px 10px;
+}
+
+#registros ul li a{
+    height: 30px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #EDEDED;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 3px solid #EDEDED;
+    display: block;
+    padding-top: 10px;
+    transition: 0.5s;
+}
+
+#registros ul li a:hover{
+    background-color: #D6D6D6;
+    color: #6D6D6D;
+    border-bottom: 3px solid #55A5DA;
+}
+
+#menu{
+    background-color: #EDEDED;
+    list-style: none;
+    text-align: center;
+    width: 100%;
+    height: 25px;
+}
+
+#menu ul li{
+    display: inline-block;
+}
+
+#menu ul li a{
+    padding: 0 10px 0 10px;
+    background-color: #EDEDED;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 3px solid #EDEDED;
+}
+
+#menu ul li a:hover {
+    background-color: #D6D6D6;
+    color: #6D6D6D;
+    border-bottom: 3px solid #ED3237;
+} 
+
+.cont{
+    margin: 01px 200px 5px 200px;
+    background-color: white;
+}
