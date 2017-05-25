@@ -48,11 +48,11 @@ HEREDOC;
 
 	} else {
 		$S_senhafault = md5('SENHA_FAULT');
-		header("Location: home.php?msg={$S_senhafault}");
+		header("Location: alteracaoSenha.php?msg={$S_senhafault}");
 
 	}
 } else {
-	header("Location: home.php");
+	header("Location: alteracaoSenha.php");
 }
 
 
