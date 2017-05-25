@@ -21,6 +21,19 @@ if ($S_PasswordHash) {
             $_SESSION['logged'] = true;
             $_SESSION['user'] = retorna_cpf($S_AutenticationEmail);
             $_SESSION['email'] = $S_AutenticationEmail;
+
+            //Faz update do último acesso
+            $cpf = $_SESSION['user'];
+            date_default_timezone_set('America/Sao_Paulo');
+            $datahora = date('d-m-Y H:i:s');
+            $sql = <<<HEREDOC
+            UPDATE login 
+            SET ultimo_acesso = '$datahora' 
+            WHERE cpf = '$cpf'
+HEREDOC;
+
+        pg_query($sql);
+        
             header('Location: home.php');
         } else {
             $_SESSION['logged'] = false;
