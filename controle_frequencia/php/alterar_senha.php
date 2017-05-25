@@ -27,7 +27,7 @@ HEREDOC;
 
 	date_default_timezone_set('America/Sao_Paulo');
 	$datahora = date('d-m-Y H:i:s');
-	echo $datahora;
+	
 
 	$slqlog = <<<HEREDOC
 		INSERT INTO log_alteracao (data_hora, tabela, campo, registro_antigo, cpf_alterado, cpf_responsavel)
