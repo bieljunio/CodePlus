@@ -17,8 +17,8 @@ require_once 'php/dict.inc.php';
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico|Roboto+Slab:400,700" 
         rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" 
-        href="../css/login.css">
-        <link rel="icon" href="../img/favicon.png" sizes="16x16" type="image/png">
+        href="css/login.css">
+        <link rel="icon" href="img/favicon.png" sizes="16x16" type="image/png">
         
         <?php
         if (isset($_GET['msg'])) {
@@ -48,7 +48,7 @@ require_once 'php/dict.inc.php';
         <!--CABEÇALHO COM LOGO-->
         <header>
             <section>
-                <img src="../img/logo.png" alt="logo" class="logo">
+                <img src="img/logo.png" alt="logo" class="logo">
             </section>
             
             <section>    
