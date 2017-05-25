@@ -12,42 +12,49 @@ $S_SenhaAntigaHash = retorna_senha($_SESSION['email']);
 
 $I_cpf = $_SESSION['user'];
 
-	
-if (password_verify($S_SenhaAntiga, $S_SenhaAntigaHash)) {
+if($S_SenhaNova === $S_ConfirmacaoSenhaNova){	
 
-	$S_SenhaNovaHash = password_hash($S_SenhaNova, PASSWORD_DEFAULT);
+	if (password_verify($S_SenhaAntiga, $S_SenhaAntigaHash)) {
 
-	$sql = <<<HEREDOC
-	    UPDATE login
-		SET senha = '$S_SenhaNovaHash'
-		WHERE cpf = '$I_cpf'
+		$S_SenhaNovaHash = password_hash($S_SenhaNova, PASSWORD_DEFAULT);
+
+		$sql = <<<HEREDOC
+		    UPDATE login
+			SET senha = '$S_SenhaNovaHash'
+			WHERE cpf = '$I_cpf'
 HEREDOC;
 
-	pg_query($sql);
+		pg_query($sql);
 
-	date_default_timezone_set('America/Sao_Paulo');
-	$datahora = date('d-m-Y H:i:s');
-	
+		date_default_timezone_set('America/Sao_Paulo');
+		$datahora = date('d-m-Y H:i:s');
+		
 
-	$slqlog = <<<HEREDOC
-		INSERT INTO log_alteracao (data_hora, tabela, campo, registro_antigo, cpf_alterado, cpf_responsavel)
-		VALUES ('$datahora', 'login', 'senha', '$S_SenhaAntigaHash', '$I_cpf', '$I_cpf')
+		$slqlog = <<<HEREDOC
+			INSERT INTO log_alteracao (data_hora, tabela, campo, registro_antigo, cpf_alterado, cpf_responsavel)
+			VALUES ('$datahora', 'login', 'senha', '$S_SenhaAntigaHash', '$I_cpf', '$I_cpf')
 HEREDOC;
 
-	pg_query($slqlog);
-	?>
+		pg_query($slqlog);
+		?>
 
-	<script type="text/javascript">
-		alert('Senha alterada com sucesso');
-		window.location='logout.php';
-	</script>
+		<script type="text/javascript">
+			alert('Senha alterada com sucesso');
+			window.location='logout.php';
+		</script>
 
-	<?php
+		<?php
 
+
+	} else {
+		$S_senhafault = md5('SENHA_FAULT');
+		header("Location: home.php?msg={$S_senhafault}");
+
+	}
 } else {
-	$S_senhafault = md5('SENHA_FAULT');
-	header("Location: home.php?msg={$S_senhafault}");
-
+	header("Location: home.php");
 }
+
+
 
 ?>
