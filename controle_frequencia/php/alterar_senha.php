@@ -35,9 +35,7 @@ HEREDOC;
 HEREDOC;
 
 	pg_query($slqlog);
-	
-	$S_senhasuccess = md5('SENHA_SUCCESS');
-	header("Location: logout.php?msg={$S_senhasuccess}");
+	header("Location: logout.php");
 
 } else {
 	$S_senhafault = md5('SENHA_FAULT');
