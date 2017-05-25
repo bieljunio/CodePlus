@@ -35,7 +35,14 @@ HEREDOC;
 HEREDOC;
 
 	pg_query($slqlog);
-	header("Location: logout.php");
+	?>
+
+	<script type="text/javascript">
+		alert('Senha alterada com sucesso');
+		window.location='logout.php';
+	</script>
+
+	<?php
 
 } else {
 	$S_senhafault = md5('SENHA_FAULT');
