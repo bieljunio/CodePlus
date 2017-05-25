@@ -14,11 +14,10 @@ require_once 'php/dict.inc.php';
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Code Plus - Login</title>
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico|Roboto+Slab:400,700" 
-        rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" 
-        href="css/login.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico|Roboto+Slab:400,700" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="css/login.css">
         <link rel="icon" href="img/favicon.png" sizes="16x16" type="image/png">
+ 
         
         <?php
         if (isset($_GET['msg'])) {
