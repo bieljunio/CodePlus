@@ -1,5 +1,5 @@
-
 <?php
+clearstatcache();
 if((isset($_SESSION['logged'])) && $_SESSION['logged']) {
     header("Location: php/home.php");
     exit;
@@ -67,7 +67,7 @@ require_once 'php/dict.inc.php';
             <div id="inserir">
                 <form name="formlogin" method="post" action="php/login.php">
                     <label for="email">E-mail:</label>
-                    <input id="email" type="text" name="email" placeholder="exemplo@mail.com" required><br />
+                    <input id="email" type="text" name="email" placeholder="exemplo@codeplus.com.br" required><br />
                     <label for="senha">Senha:</label>
                     <input id="senha" type="password" name="senha" placeholder="**********"><br><br>
         <!--"BOTÕES" ESQUECI A SENHA E ENTRAR-->
