@@ -31,8 +31,7 @@ header{
 }
 
 #login_fun{
-    text-shadow: 2px 2px 4px black;
-    color: white;
+    color: #55A5DA;
     font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
     font-weight: bold;
     font-size: 31px;
