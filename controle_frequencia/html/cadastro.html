@@ -4,130 +4,162 @@
     <head>
     <meta charset="utf-8">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="../css/cadatro.css"/>
+    <script type="text/javascript" src="CodePlus/controle_frequencia/javascript/jquery-3.2.1.min.js"></script>
     </head>
-
+    
     <body>
-        <div id="interface">
-           <header id="cabecalho">
+       <header id="cabecalho">
+           
+          <div id="topo">
+           <img src="logo1.png">
+           <h2>Fornecendo soluções inteligentes para você</h2>
+           <input id="ponto" type="submit" name="Registrar Entrada" value="Entrada"/>
+           <input id="ponto" type="submit" name="Registrar Saída" value="Saída"/>
+           <h4>Perfil</h4> <br> <h4>Alterar Saída</h4> <br> <h4>Sair</h4>
+           <img src="perfil.jpg">
+          </div>
+           
+           <nav id="menu">
+            <ul>
+              <li>Contorle de Frequência</li>
+              <li>Funcionários</li>
+              <li><a href="cadastro.html">Novo Cadastro</a></li>
+            </ul>
+           </nav>
+
+       </header>
+       <script>
+           
+           $(document).ready(function(){
+           $('#telefone').mask('(00) 0000-0000');
+           });
         
-            <h1>Cadastro</h1>
-            <h2>Novo Cadastro </h2>
-            <h3>Dados pessoais</h3>
-            
-            </header>
+       </script>
         
-        <section>
-            
-            <form id="formNovoCad" name="formNovoCad" method="post" action="#">
+         <div id="interface">
+             
+         <form id="formNovoCad" name="formNovoCad" method="post" action="cadastro.php">
+             
+        <h3>Dados Pessoais</h3>
+        
+        <section id="dados_pessoais">
                 
-            <p>Nome: <input maxlength="100" type="text" size="45" name="nome" placeholder="Ex: Luís Felipe Faria"> 
-            CPF: <input type="text" size="16" maxlength="14" name="cpf" placeholder="Ex: 123.456.789-01">
-            RG: <input type="text" maxlength="10" size="12" name="rg" placeholder="Ex: 123.456.78"> 
-            </p>   
-                
-            <p>Sexo:
+            Nome: <input required maxlength="100" type="text" size="45" name="nome" placeholder="Ex: Luís Felipe Faria"> 
+            CPF: <input required type="number" min="0" max="99999999999999" name="cpf" placeholder="Ex: 123.456.789-01">
+            RG: <input required type="number" min="0" max="99999999999" name="rg" placeholder="Ex: 123.456.78"> 
+            <br/>Sexo:
             <select name="sexo"> 
                 <option name="masculino" value="M">Masculino</option>
                 <option name="feminino" value="F">Feminino</option>
                 <option name="outro" value="O">Outro</option>
             </select>
-            Data de Nascimento: <input type="text" name="data_nascimento" size="12" placeholder="Ex: DD/MM/AA">
-            Nacionalidade: <input type="text" name="nacionalidade" size="20" placeholder="Ex: Brasileiro">
-            </p>
-            <p>
-            Nome do Pai: <input type="text" maxlength="100" size="45" name="nome_pai" placeholder="Ex: Roberto Faria"> 
-            Nome da Mãe: <input type="text" maxlength="100" size="45" name="nome_mae" placeholder="Ex: Arlete Faria"> 
-            </p>
-                
-            </form>
-            
+            Data de Nascimento: <input required type="date" name="data_nascimento" size="12" placeholder="Ex: DD/MM/AA">
+            Estado civil: <select name="estado_civil">
+                <option name="1°" value="1">Solteiro</option>
+                <option name="2°" value="2">Casado</option>
+                <option name="3°" value="3">Divorciado</option>                
+            </select>
+            <br/>Nome do Pai: <input required type="text" maxlength="100" size="45" name="nome_pai" placeholder="Ex: Roberto Faria"> 
+            Nome da Mãe: <input required type="text" maxlength="100" size="45" name="nome_mae" placeholder="Ex: Arlete Faria">
+                 
         </section>
         
-         <h4>Endereço</h4>
+         <h3>Endereço</h3>
     
         <section>
             
-            <p>Endereço:
-            <input type="text" maxlength="80" size="40" name="endereco" placeholder="Ex: Rua do Comércio">
-            Número:
-            <input type="text" maxlength="5" size="8" name="numero" placeholder="Ex: 1500">
-            Complemento:
-            <input type="text" maxlength="30" size="37" name="complemento" placeholder="Ex: Fundos">
-            </p>
-            <p>
-            Bairro:
-            <input type="text" maxlength="30" size="40" name="bairro" placeholder="Ex: Maria da Glória">
             Endereço:
-            <input type="text" maxlength="65" size="40" name="endereco" placeholder="Ex: Rua do Comércio">
-            CEP: <input type="text" name="cep" maxlength="9" size="12" placeholder="Ex: 85660-000">
-            </p>
-            <p>
+            <input required type="text" maxlength="80" size="40" name="endereco" placeholder="Ex: Rua do Comércio">
+            Número:
+            <input required type="number"min="0" max="99999" name="numero" placeholder="Ex: 1500">
+            Complemento:
+            <input required type="text" maxlength="30" size="33" name="complemento" placeholder="Ex: Fundos">
+            
+            <br/>Bairro:
+            <input required type="text" maxlength="30" size="40" name="bairro" placeholder="Ex: Maria da Glória">
+            
+            CEP: <input required type="number" name="cep" min="0" max="99999999" placeholder="Ex: 85660-000">
             Estado:
             <select name="estado">
-                <option name="Acre" value="AC">Acre</option>
-                <option name="Alagoas" value="AL">Acre</option>
-                <option name="Amapá" value="AP">Amapá</option>
-                <option name="Amazonas" value="AM">Amazonas</option>
-                <option name="Bahia" value="BH">Bahia</option>
-                <option name="Ceará" value="CE">Ceará</option>   
-                <option name="Distrito Federal" value="DF">Distrito Federal</option>             
-                <option name="Espírito Santo" value="ES">Espírito Santo</option>                             
-                <option name="Goiás" value="GO">Goiás</option>   
-                <option name="Maranhão" value="MA">Maranhão</option>                 
-                <option name="Mato Grosso" value="MT">Mato Grosso</option>                           
-                <option name="Mato Grosso do Sul" value="MS">Mato Grosso do Sul</option>
-                <option name="Minas Gerais" value="MG">Minas Gerais</option>
-                <option name="Pará" value="PA">Pará</option>
-                <option name="Paraíba" value="PB">Paraíba</option>     
+                 
                 <option name="Paraná" value="PR">Paraná</option> 
-                <option name="Pernambuco" value="PE">Pernambuco</option>
-                <option name="Piauí" value="PI">Piuaí</option>     
-                <option name="Rio de Janeiro" value="RJ">Rio de Janeiro</option>
-                <option name="Rio Grande so Norte" value="RN">Rio Grande so Norte</option> 
-                <option name="Rio Grande so Sul" value="RS">Rio Grande so Sul</option> 
-                <option name="Rondônia" value="RO">Rondônia</option>                 
-                <option name="Roraima" value="RR">Roraima</option>
-                <option name="Santa Catarina" value="SC">Santa Catarina</option>       
-                <option name="São Paulo" value="SP">São Paulo</option>       
-                <option name="Sergipe" value="SE">Sergipe</option>                 
-                <option name="Tocantins" value="TO">Tocantins</option>
+                
             </select>
-            Cidade: <input type="text" name="cidade" maxlength="30" size="30" placeholder="Ex: São Paulo">
-            </p>
-            
+            Cidade: <select name="cidade">
+                <option name="1°" value="1">Ampére</option>
+                <option name="2°" value="2">Barracão</option>
+                <option name="3°" value="3">Bela Vista do Caroba</option>
+                <option name="4°" value="4">Boa Esperança do Iguaçu</option>
+                <option name="5°" value="5">Bom Jesus do Sul</option>
+                <option name="6°" value="6">Bom sucesso do Sul</option>
+                <option name="7°" value="7">Capanema</option>
+                <option name="8°" value="8">Chopinzinho</option>
+                <option name="9°" value="9">Clevelândia </option>
+                <option name="10°" value="10">Coronel Domingos Soares</option>
+                <option name="11°" value="11">Coronel Vivida</option>
+                <option name="12°" value="12">Cruzeiro do Iguaçu</option>
+                <option name="13°" value="13">Dois Vizinhos</option>
+                <option name="14°" value="14">Enéas Marques</option>
+                <option name="15°" value="15">Flor da Serra do Sul</option>
+                <option name="16°" value="16">Francisco Beltrão</option>
+                <option name="17°" value="17">Honório Serpa</option>
+                <option name="18°" value="18">Itapejara do Oeste</option>
+                <option name="19°" value="19">Manfrinópolis</option>
+                <option name="20°" value="20">Mangueirinha</option>
+                <option name="21°" value="21">Mariópolis</option>
+                <option name="22°" value="22">Marmeleiro</option>
+                <option name="23°" value="23">Nova Esperança do Sudoeste</option>
+                <option name="24°" value="24">Palmas</option>
+                <option name="25°" value="25">Pato Branco</option>
+                <option name="26°" value="26">Pérola do Oeste</option>
+                <option name="27°" value="27">Pinhal de São Bento</option>
+                <option name="28°" value="28">Planalto</option>
+                <option name="29°" value="29">Pranchita</option>
+                <option name="30°" value="30">Realeza</option>
+                <option name="31°" value="31">Renascença</option>
+                <option name="32°" value="32">Salgado Filho</option>
+                <option name="33°" value="33">Salto do Lontra</option>
+                <option name="34°" value="34">Santa Izabel do Oeste</option>
+                <option name="35°" value="35">Santo Antônio do Sudoeste</option>
+                <option name="36°" value="36">São João</option>
+                <option name="37°" value="37">São Jorge do Oeste</option>
+                <option name="38°" value="38">Saudade do Iguaçu</option>
+                <option name="39°" value="39">Sulina</option>
+                <option name="40°" value="40">Verê</option>
+                <option name="41°" value="41">Vitorino</option>
+               
+            </select>   
                         
         </section>
         
-         <h5>Contatos</h5>
+         <h3>Contatos</h3>
     
         <section>
 
                     
-            <p>Facebook:
+            Facebook:
             <input type="text" name="facebook" placeholder="Ex: facebook.com\lealluisf">
             Skype:
             <input type="text" name="skype" placeholder="Ex: *Luís Felipe Leal">
             LinkedIn:
             <input type="text" name="linkedin" placeholder="Ex: *Luís Felipe Leal">
-            E-mail:
-            <input type="text" name="email" maxlength="30" size="25" placeholder="Ex: luisfelipeleal@outlook.com">
-            </p>
-            <p>
-            E-mail Alternativo:
-            <input type="text" name="email_alternativo" maxlength="30" size="25" placeholder="Ex: luisfelipeleal@outlook.com">  
             Telefone:   
-            <input type="text" name="telefone" maxlength="14" size="15" placeholder="Ex: (11) 1 1111-1111">
-            Telefone Alternativo:    
-            <input type="text" name="telefone_alternativo" maxlength="14" size="15" placeholder="Ex: (11) 1 1111-1111">
+            <input required type="text" name="telefone" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" />
+            <br/>Telefone Alternativo:    
+            <input  type="number" name="telefone_alternativo" min="0" max="9999999999999" placeholder="Ex: (11) 1 1111-1111">
+            E-mail:
+            <input required type="email" name="email" maxlength="100" size="25" placeholder="Ex: luisfelipeleal@outlook.com">
+            E-mail Alternativo:
+            <input  type="email" name="email_alternativo" maxlength="30" size="25" placeholder="Ex: luisfelipeleal@outlook.com">  
                 
         </section>
         
-         <h6>Dados Acadêmicos</h6>
+         <h3>Dados Acadêmicos</h3>
     
         <section>    
             
-            <p>
+            
             Período:
             <select name="periodo">
                 <option name="1°" value="1">1° Período</option>
@@ -140,20 +172,44 @@
                 <option name="8°" value="8">8º Período</option>
             </select>
             R.A:
-            <input type="text" name="ra" maxlength="7" size="7" placeholder="Ex: 0000000">  
+            <input required type="number" name="ra" min="0" max="9999999" placeholder="Ex: 0000000">  
             Coeficiente:
-            <input type="text" name="coeficiente" maxlength="6" size="5" placeholder="Ex: 0,0000">
+            <input required type="number" name="coeficiente" min="0" max="999999" placeholder="Ex: 0,0000">
             Data de Admissão:
-            <input type="text" name="data_admissao" size="10" placeholder="Ex: DD/MM/AA">
-            Data de Desligamento:
-            <input type="text" name="data_desligamento" size="10" placeholder="Ex: DD/MM/AA">
-            </p>
+            <input required type="date" name="data_admissao" placeholder="Ex: DD/MM/AA">
             
-            <br><br>
-                  
-            <input id="botao" type="submit" name="Entrar" value="Finalizar"/>
+            
+            </section>
+            
+             <h3>Dados Empresariais</h3>
+            
+            <section>
                 
-         </section>
+            Vínculo: <select name="vinculo">
+                <option name="1°" value="1">Trainee</option>
+                <option name="2°" value="2">Efetivo</option>                
+            </select>
+            
+            Cargo: <select name="cargo">
+                <option name="1°" value="1">Funcionário</option>
+                <option name="2°" value="2">Gestor</option>
+                <option name="3°" value="3">Diretor</option>                
+            </select>
+            
+            Setor: <select name="setor">
+                <option name="1°" value="1">Marketing</option>
+                <option name="2°" value="2">Qualidade</option>
+                <option name="3°" value="3">RH</option>
+                <option name="1°" value="1">ADM/Financeiro</option>
+                <option name="2°" value="2">Vice-Presidência</option>
+                <option name="3°" value="3">Presidência</option>   
+            </select>
+            
+            </section>
+
+            <input id="botao" type="submit" name="Entrar" value="Finalizar"/>
+            
+            </form>
                 
             
                 
