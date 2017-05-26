@@ -16,7 +16,7 @@ body {
 
 header{
     background-color: whitesmoke; 
-    height: 80px;
+    height: 90px;
     width: 100%;
     display: inline-block;
 }
@@ -24,8 +24,6 @@ header{
 .logo{
     margin-top: 5px;
     margin-left: 15px;
-    height: 70px;
-    width: 190px;
     display: inline-block;
     float: left;
 }
