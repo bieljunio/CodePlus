@@ -9,10 +9,11 @@ require_once 'funcoes.php';
 
 // Obtém dados do formulário de login
 $S_AutenticationEmail = filter_input(INPUT_POST, 'email');
-$S_AutenticationSenha = filter_input(INPUT_POST, 'password');
+$S_AutenticationSenha = filter_input(INPUT_POST, 'senha');
 
 
 $S_PasswordHash = retorna_senha($S_AutenticationEmail);
+
 
 if ($S_PasswordHash) {
  
@@ -34,10 +35,11 @@ HEREDOC;
 
         pg_query($sql);
         
-            header('Location: home.php');
+        header('Location: home.php');
+
         } else {
             $_SESSION['logged'] = false;
-            $S_msgCode = md5('LOGIN_FAULT');            
+            $S_msgCode = md5('LOGIN_FAULT');      
             header("Location: ../index.php?msg={$S_msgCode}");
         }
 } else {
