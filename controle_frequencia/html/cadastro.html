@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+    <head>
+    <meta charset="utf-8">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="cadastro.css">
+    </head>
+
+    <body>
+        <div id="interface">
+           <header id="cabecalho">
+        
+            <h1>Cadastro</h1>
+            <h2>Novo Cadastro </h2>
+            <h3>Dados pessoais</h3>
+            
+            </header>
+        
+        <section>
+            
+            <form id="formNovoCad" name="formNovoCad" method="post" action="#">
+                
+            <p>Nome: <input maxlength="100" type="text" size="45" name="nome" placeholder="Ex: Luís Felipe Faria"> 
+            CPF: <input type="text" size="16" maxlength="14" name="cpf" placeholder="Ex: 123.456.789-01">
+            RG: <input type="text" maxlength="10" size="12" name="rg" placeholder="Ex: 123.456.78"> 
+            </p>   
+                
+            <p>Sexo:
+            <select name="sexo"> 
+                <option name="masculino" value="M">Masculino</option>
+                <option name="feminino" value="F">Feminino</option>
+                <option name="outro" value="O">Outro</option>
+            </select>
+            Data de Nascimento: <input type="text" name="data_nascimento" size="12" placeholder="Ex: DD/MM/AA">
+            Nacionalidade: <input type="text" name="nacionalidade" size="20" placeholder="Ex: Brasileiro">
+            </p>
+            <p>
+            Nome do Pai: <input type="text" maxlength="100" size="45" name="nome_pai" placeholder="Ex: Roberto Faria"> 
+            Nome da Mãe: <input type="text" maxlength="100" size="45" name="nome_mae" placeholder="Ex: Arlete Faria"> 
+            </p>
+                
+            </form>
+            
+        </section>
+        
+         <h4>Endereço</h4>
+    
+        <section>
+            
+            <p>Endereço:
+            <input type="text" maxlength="80" size="40" name="endereco" placeholder="Ex: Rua do Comércio">
+            Número:
+            <input type="text" maxlength="5" size="8" name="numero" placeholder="Ex: 1500">
+            Complemento:
+            <input type="text" maxlength="30" size="37" name="complemento" placeholder="Ex: Fundos">
+            </p>
+            <p>
+            Bairro:
+            <input type="text" maxlength="30" size="40" name="bairro" placeholder="Ex: Maria da Glória">
+            Endereço:
+            <input type="text" maxlength="65" size="40" name="endereco" placeholder="Ex: Rua do Comércio">
+            CEP: <input type="text" name="cep" maxlength="9" size="12" placeholder="Ex: 85660-000">
+            </p>
+            <p>
+            Estado:
+            <select name="estado">
+                <option name="Acre" value="AC">Acre</option>
+                <option name="Alagoas" value="AL">Acre</option>
+                <option name="Amapá" value="AP">Amapá</option>
+                <option name="Amazonas" value="AM">Amazonas</option>
+                <option name="Bahia" value="BH">Bahia</option>
+                <option name="Ceará" value="CE">Ceará</option>   
+                <option name="Distrito Federal" value="DF">Distrito Federal</option>             
+                <option name="Espírito Santo" value="ES">Espírito Santo</option>                             
+                <option name="Goiás" value="GO">Goiás</option>   
+                <option name="Maranhão" value="MA">Maranhão</option>                 
+                <option name="Mato Grosso" value="MT">Mato Grosso</option>                           
+                <option name="Mato Grosso do Sul" value="MS">Mato Grosso do Sul</option>
+                <option name="Minas Gerais" value="MG">Minas Gerais</option>
+                <option name="Pará" value="PA">Pará</option>
+                <option name="Paraíba" value="PB">Paraíba</option>     
+                <option name="Paraná" value="PR">Paraná</option> 
+                <option name="Pernambuco" value="PE">Pernambuco</option>
+                <option name="Piauí" value="PI">Piuaí</option>     
+                <option name="Rio de Janeiro" value="RJ">Rio de Janeiro</option>
+                <option name="Rio Grande so Norte" value="RN">Rio Grande so Norte</option> 
+                <option name="Rio Grande so Sul" value="RS">Rio Grande so Sul</option> 
+                <option name="Rondônia" value="RO">Rondônia</option>                 
+                <option name="Roraima" value="RR">Roraima</option>
+                <option name="Santa Catarina" value="SC">Santa Catarina</option>       
+                <option name="São Paulo" value="SP">São Paulo</option>       
+                <option name="Sergipe" value="SE">Sergipe</option>                 
+                <option name="Tocantins" value="TO">Tocantins</option>
+            </select>
+            Cidade: <input type="text" name="cidade" maxlength="30" size="30" placeholder="Ex: São Paulo">
+            </p>
+            
+                        
+        </section>
+        
+         <h5>Contatos</h5>
+    
+        <section>
+
+                    
+            <p>Facebook:
+            <input type="text" name="facebook" placeholder="Ex: facebook.com\lealluisf">
+            Skype:
+            <input type="text" name="skype" placeholder="Ex: *Luís Felipe Leal">
+            LinkedIn:
+            <input type="text" name="linkedin" placeholder="Ex: *Luís Felipe Leal">
+            E-mail:
+            <input type="text" name="email" maxlength="30" size="25" placeholder="Ex: luisfelipeleal@outlook.com">
+            </p>
+            <p>
+            E-mail Alternativo:
+            <input type="text" name="email_alternativo" maxlength="30" size="25" placeholder="Ex: luisfelipeleal@outlook.com">  
+            Telefone:   
+            <input type="text" name="telefone" maxlength="14" size="15" placeholder="Ex: (11) 1 1111-1111">
+            Telefone Alternativo:    
+            <input type="text" name="telefone_alternativo" maxlength="14" size="15" placeholder="Ex: (11) 1 1111-1111">
+                
+        </section>
+        
+         <h6>Dados Acadêmicos</h6>
+    
+        <section>    
+            
+            <p>
+            Período:
+            <select name="periodo">
+                <option name="1°" value="1">1° Período</option>
+                <option name="2°" value="2">2° Período</option>
+                <option name="3°" value="3">3° Período</option>
+                <option name="4°" value="4">4° Período</option>
+                <option name="5°" value="5">5° Período</option>
+                <option name="6°" value="6">6º Período</option>
+                <option name="7°" value="7">7° Período</option>
+                <option name="8°" value="8">8º Período</option>
+            </select>
+            R.A:
+            <input type="text" name="ra" maxlength="7" size="7" placeholder="Ex: 0000000">  
+            Coeficiente:
+            <input type="text" name="coeficiente" maxlength="6" size="5" placeholder="Ex: 0,0000">
+            Data de Admissão:
+            <input type="text" name="data_admissao" size="10" placeholder="Ex: DD/MM/AA">
+            Data de Desligamento:
+            <input type="text" name="data_desligamento" size="10" placeholder="Ex: DD/MM/AA">
+            </p>
+            
+            <br><br>
+                  
+            <input id="botao" type="submit" name="Entrar" value="Finalizar"/>
+                
+         </section>
+                
+            
+                
+      </div>
+    </body>
+
+
+</html>
