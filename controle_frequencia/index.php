@@ -1,7 +1,8 @@
+
 <?php
 if((isset($_SESSION['logged'])) && $_SESSION['logged']) {
-	header("Location: php/home.php");
-	exit;
+    header("Location: php/home.php");
+    exit;
 }
 
 require_once 'php/dict.inc.php';
@@ -14,11 +15,12 @@ require_once 'php/dict.inc.php';
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Code Plus - Login</title>
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico|Roboto+Slab:400,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico|Roboto+Slab:400,700" 
+        rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="css/login.css">
         <link rel="icon" href="img/favicon.png" sizes="16x16" type="image/png">
- 
-        
+
+
         <?php
         if (isset($_GET['msg'])) {
             switch ($_GET['msg']) {
@@ -39,7 +41,6 @@ require_once 'php/dict.inc.php';
         <?php
         }
         ?>
-    
         
     </head> 
     
@@ -64,7 +65,7 @@ require_once 'php/dict.inc.php';
         <section>
                 <!--DIV 2 COM CAMPOS DE E-MAIL E SENHA-->
             <div id="inserir">
-                <form name="formlogin" method="post" action="login.php">
+                <form name="formlogin" method="post" action="php/login.php">
                     <label for="email">E-mail:</label>
                     <input id="email" type="text" name="email" placeholder="exemplo@mail.com" required><br />
                     <label for="senha">Senha:</label>
