@@ -78,3 +78,4 @@ require_once 'php/dict.inc.php';
         </section>
         
     </body>
+</html>
