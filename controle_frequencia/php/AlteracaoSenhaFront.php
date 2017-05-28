@@ -81,7 +81,7 @@
                 <ul>
                     <li><a href="#">FUNCIONÁRIOS</a></li>
                     <li><a href="#">CONSULTAR FREQUÊNCIA</a></li>
-                    <li><a href="#">NOVO CADASTRO</a></li>
+                    <li><a href="form_cadastro.php">NOVO CADASTRO</a></li>
                 </ul>
             </nav>
         
