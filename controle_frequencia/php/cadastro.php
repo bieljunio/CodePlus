@@ -1,3 +1,4 @@
+<!--<script src="../javascript/jquery.js"></script>-->
 <?php
 
 require 'bd.php';
@@ -57,10 +58,29 @@ $S_cargo = filter_input(INPUT_POST, 'cargo');
 $S_vinculo = filter_input(INPUT_POST, 'vinculo');
 
 //Tabela login
-$S_senha = rand(100000, 9999999);
+$S_senha = password_hash(rand(100000, 9999999), PASSWORD_DEFAULT);
 
 
 $S_email = strtoupper($S_email);
+
+
+
+							//Remoção de máscaras
+
+//CPF
+$maskCPF = array(".","-");
+$S_cpf = str_replace($maskCPF, "", $S_cpf);
+//RG
+$maskRG = array(".");
+$S_rg = str_replace($maskRG, "", $S_rg);
+//CEP
+$maskCEP = array("-");
+$I_cep = str_replace($maskCEP, "", $I_cep);
+//Telefone
+$maskTelefone = array("(",")","-");
+$I_telefone = str_replace($maskTelefone, "", $I_telefone);
+//Telefone Alternativo
+$I_telefonealt = str_replace($maskTelefone, "", $I_telefonealt);
 
 
 
