@@ -499,7 +499,7 @@ BEGIN
 		IF registro_antigo <> registro_novo THEN
 			PERFORM inserir_log(data_hora, tabela, campo, registro_antigo,
 				cpf_alterado, cpf_responsavel);
-			UPDATE  FUNCIONARIO SET COEFICIENTE = CAST (registro_novo AS NUMERIC)
+			UPDATE  FUNCIONARIO SET COEFICIENTE = registro_novo
 				WHERE CPF = cpf_alterado;
 			RETURN 1;
 		ELSE 
@@ -696,7 +696,7 @@ DECLARE
     var_telefone_alt NUMERIC(11);
     var_email_alt VARCHAR(100);
     var_ra NUMERIC(7);
-    var_coeficiente NUMERIC(5);
+    var_coeficiente VARCHAR(6);
     var_periodo NUMERIC(1);
     var_end_rua VARCHAR(80);
     var_end_bairro VARCHAR(30);
@@ -808,7 +808,7 @@ CREATE OR REPLACE FUNCTION cadastrar_funcionario
 	var_admissao DATE, var_facebook VARCHAR(100),
 	var_skype VARCHAR(100), var_linkedin VARCHAR(100), var_email VARCHAR(100),
 	var_telefone NUMERIC(11), var_telefone_alt NUMERIC(11), var_email_alt VARCHAR(100),
-	var_ra NUMERIC(7), var_coeficiente NUMERIC(5), var_periodo NUMERIC(1),
+	var_ra NUMERIC(7), var_coeficiente VARCHAR(6), var_periodo NUMERIC(1),
 	var_end_rua VARCHAR(80), var_end_bairro VARCHAR(30), var_end_numero VARCHAR(5),
 	var_end_complemento VARCHAR(30), var_end_cep VARCHAR(9), var_id_cidade INTEGER,
 	var_id_vinculo INTEGER, var_id_cargo INTEGER, var_id_setor INTEGER, var_id_estado_civil INTEGER,
