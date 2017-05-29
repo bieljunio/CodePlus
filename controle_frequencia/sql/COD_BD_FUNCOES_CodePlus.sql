@@ -36,7 +36,7 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION master_insert_log
 	(tabela VARCHAR(100), campo VARCHAR(100),
 	registro_novo VARCHAR(100), data_hora TIMESTAMP,
-	cpf_alterado VARCHAR(14), cpf_responsavel VARCHAR(14),
+	cpf_alterado VARCHAR(12), cpf_responsavel VARCHAR(12),
 	data_ponto DATE)
 
 RETURNS INTEGER AS $$
@@ -83,7 +83,7 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION insertupdate_log_login
 	(tabela VARCHAR(100), campo VARCHAR(100),
 	registro_novo VARCHAR(100), data_hora TIMESTAMP,
-	cpf_alterado VARCHAR(14), cpf_responsavel VARCHAR(14))
+	cpf_alterado VARCHAR(12), cpf_responsavel VARCHAR(12))
 
 RETURNS INTEGER AS $$
 
@@ -121,7 +121,7 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION insertupdate_log_conta_bancaria
 	(tabela VARCHAR(100), campo VARCHAR(100),
 	registro_novo VARCHAR(100), data_hora TIMESTAMP,
-	cpf_alterado VARCHAR(14), cpf_responsavel VARCHAR(14))
+	cpf_alterado VARCHAR(12), cpf_responsavel VARCHAR(12))
 
 RETURNS INTEGER AS $$
 
@@ -185,7 +185,7 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION insertupdate_log_ponto_funcionario
 	(tabela VARCHAR(100), campo VARCHAR(100), 
 	registro_novo VARCHAR(100), data_hora TIMESTAMP,
-	cpf_alterado VARCHAR(14), cpf_responsavel VARCHAR(14),
+	cpf_alterado VARCHAR(12), cpf_responsavel VARCHAR(12),
 	data_ponto DATE)
 			
 RETURNS INTEGER as $$
@@ -257,7 +257,7 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION insertupdate_log_funcionario
 	(tabela VARCHAR(100), campo VARCHAR(100), 
 	registro_novo VARCHAR(100), data_hora TIMESTAMP,
-	cpf_alterado VARCHAR(14), cpf_responsavel VARCHAR(14))
+	cpf_alterado VARCHAR(12), cpf_responsavel VARCHAR(12))
 
 RETURNS INTEGER as $$
 
