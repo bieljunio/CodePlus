@@ -226,7 +226,7 @@ $array_Funcionario = array(
     "TELEFONE_ALT" => "",     //NUMERIC(11)
     "EMAIL_ALT" => "",        //VARCHAR(100)
     "RA" => "",               //NUMERIC(7) NOT NULL
-    "COEFICIENTE" => "",      //NUMERIC(5) NOT NULL
+    "COEFICIENTE" => "",      //VARCHAR(6) NOT NULL
     "PERIODO" => "",          //NUMERIC(1) NOT NULL
     "END_RUA" => "",          //VARCHAR(80) NOT NULL
     "END_BAIRRO" => "",       //VARCHAR(30) NOT NULL
@@ -263,3 +263,17 @@ $array_Ponto_Funcionario = array(
 //FIM ARRAY
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+FUNCIONARIOS
+  DADOS DE PERFIL:
+    Consulta: SELECT FROM FUNCIONARIO
+    Edição: UPDATE FUNCIONARIO
+  DADOS DE FREQUENCIA:
+    Consulta: SELECT FROM PONTO_FUNCIONARIO
+    Edição: UPDATE PONTO_FUNCIONARIO
+////
+CONSULTA FREQUENCIA
+  Consulta: SELECT FROM PONTO_FUNCIONARIO
+
+*/
