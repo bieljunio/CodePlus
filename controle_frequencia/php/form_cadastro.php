@@ -30,7 +30,7 @@
                $("input[name='numero']").mask('0000');
                $("input[name='telefone']").mask('(00) 00000-0000');
                $("input[name='telefone_alternativo']").mask('(00) 00000-0000');
-               $("input[name='coeficiente']").mask('0.000');
+               $("input[name='coeficiente']").mask('0.0000');
                $("input[name='ra']").mask('0000000');
             });
     </script>
@@ -216,7 +216,7 @@
             R.A:
             <input required size="8" type="text" name="ra" placeholder="Ex: 1234567"> 
             Coeficiente:
-            <input required size="6" type="text" name="coeficiente" placeholder="Ex: 0.123">
+            <input required size="6" type="text" name="coeficiente" placeholder="Ex: 0.1234">
             Data de Admissão:
             <input required type="date" name="data_admissao" placeholder="Ex: DD/MM/AA">
             
