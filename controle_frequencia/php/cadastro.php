@@ -28,7 +28,7 @@ $S_emailalt = filter_input(INPUT_POST, 'email_alternativo');
 $I_ra = filter_input(INPUT_POST, 'ra');
 $I_coeficiente = filter_input(INPUT_POST, 'coeficiente');
 $I_periodo = filter_input(INPUT_POST, 'periodo');
-$S_endereço = filter_input(INPUT_POST, 'endereco');
+$S_endereï¿½o = filter_input(INPUT_POST, 'endereco');
 $I_numero = filter_input(INPUT_POST, 'numero');
 $S_bairro = filter_input(INPUT_POST, 'bairro');
 $S_complemento = filter_input(INPUT_POST, 'complemento');
@@ -65,7 +65,7 @@ $S_email = strtoupper($S_email);
 
 
 
-							//Remoção de máscaras
+							//RemoÃ§Ã£o de mÃ¡scaras
 
 //CPF
 $maskCPF = array(".","-");
@@ -88,17 +88,73 @@ $sql = pg_query("SELECT cpf, ra, rg, email FROM funcionario WHERE cpf = '$S_cpf'
 
 
 if(pg_num_rows($sql)) {
-	echo "Usuário já cadastrado";
+	echo "UsuÃ¡rio jÃ¡ cadastrado";
 } else {
 	
 cadastrar_funcionario ($S_cpf, $S_rg, $S_nome, $S_nascimento, $C_sexo, $S_nome_pai, $S_nome_mae, $S_data_admissao,
           $S_facebook, $S_skype, $S_linkedin, $S_email, $I_telefone, $I_telefonealt, $S_emailalt,
-          $I_ra, $I_coeficiente, $I_periodo, $S_endereço, $S_bairro, $I_numero, $S_complemento, $I_cep, $S_cidade, $S_vinculo,
+          $I_ra, $I_coeficiente, $I_periodo, $S_endereï¿½o, $S_bairro, $I_numero, $S_complemento, $I_cep, $S_cidade, $S_vinculo,
           $S_cargo, $S_setor, $S_estadocivil, $S_senha);
 
 echo "Cadastro efetuado com sucesso!";
 
 }
 
+//Faz o hash do e-mail
+$EmailHash = md5($S_email);
 
+/////////////////////////MÃ³dulo de envio de e-mail para redefiniÃ§Ã£o de senha///////////////////////
+//Prepara o arquivo a ser enviado
+$arquivo = "<style type='text/css'>
+body {
+	margin: 0px;
+	font-family: Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666666; 
+}
+
+a {
+	color: #FF0000;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #FF0000;
+	text-decoration: none;
+}
+</style>
+<html>
+	<table width='510' border='1' cellpadding='1' cellspacing='1' bgcolor='#CCCCCC'>
+		<tr>
+			<td>
+				<h1>Este e-mail foi gerado automaticamente!</h1>
+				<h3>Para cadastrar sua senha, acesse o link a seguir:</p></h3>
+				<p><a href='http://localhost/codeplus/controle_frequencia/pass.php?e={$EmailHash}'>http://localhost/codeplus/controle_frequencia/pass.php?e={$EmailHash}</a></p>
+			</td>
+		</tr>
+	</table>
+</html>";
+
+//envio do e-mail
+	//DefiniÃ§Ã£o do destinatÃ¡rio
+	$emailenviar = 'presidencia@codeplus.com';
+	$assunto = 'Cadastre sua senha no sistema Code Plus!';
+	
+	//indica que o formato do e-mail Ã© html
+	$headers = 'MIME-Version 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$headers .= 'From: $emailenviar';
+	
+	$enviaremail = mail($S_email, $assunto, $arquivo, $headers);
+	if($enviaremail){
+		$mgm = "E-MAIL ENVIADO COM SUCESSO PARA $S_email";
+		header('Location: form_cadastro.php');
+		exit;
+	} else {
+		$mgm = "ERRO AO ENVIAR E-MAIL PARA $S_email";
+		header('Location: form_cadastro.php');
+		exit;
+	}
+	
+//agora falta implementar a pÃ¡gina pass.php?$EmailHash
 ?>
