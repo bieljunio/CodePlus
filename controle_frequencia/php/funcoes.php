@@ -14,7 +14,7 @@ function cadastrar_funcionario ($s_CPF, $s_RG, $s_Nome, $dt_Nascimento, $c_Sexo,
 	$sql = <<<HEREDOC
 	    SELECT cadastrar_funcionario('$s_CPF', '$s_RG', '$s_Nome', '$dt_Nascimento', '$c_Sexo', '$s_Nome_Pai', '$s_Nome_Mae', '$dt_Admissao',
 	    '$s_Facebook', '$s_Skype', '$s_Linkedin', '$s_Email', $n_Telefone, $n_Telefone_Alt, '$s_Email_Alt',
-	    $n_RA, $n_Coeficiente, $n_Periodo, '$s_Rua', '$s_Bairro', '$s_Numero', '$s_Complemento', '$s_CEP', $i_ID_Cidade, $i_Vinculo,
+	    $n_RA, '$n_Coeficiente', $n_Periodo, '$s_Rua', '$s_Bairro', '$s_Numero', '$s_Complemento', '$s_CEP', $i_ID_Cidade, $i_Vinculo,
 	    $i_Cargo, $i_Setor, $i_Estado_Civil, '$s_Senha');
 HEREDOC;
 	//EFETUA FUNÇÃO
@@ -107,6 +107,25 @@ HEREDOC;
 //RETORNO 1 = SUCESSO, RETORNO 0 = FALHA;
 function registrar_entrada($s_CPF, $dt_Data, $tm_Entrada)
 {
+  $sql = <<<HEREDOC
+        SELECT SAIDA FROM PONTO_FUNCIONARIO
+        WHERE CPF = $s_CPF
+        AND DATA = (SELECT MAX(DATA) AS MAXDATA FROM PONTO_FUNCIONARIO
+        WHERE CPF = $s_CPF);
+HEREDOC;
+  $query = pg_query($sql);
+  $result = pg_fetch_result($query, 0, 0);
+  if (!$result){
+    pg_query("BEGIN");
+    $sql = <<<HEREDOC
+          UPDATE PONTO_FUNCIONARIO SET SAIDA = '19:00:00'
+          WHERE CPF = $s_CPF
+          AND DATA = (SELECT MAX(DATA) AS MAXDATA FROM PONTO_FUNCIONARIO
+        WHERE CPF = $s_CPF);
+HEREDOC;
+    pg_query($sql);
+    pg_query("COMMIT");
+  }
   pg_query("BEGIN");
   $sql = <<<HEREDOC
           SELECT registrar_ponto_entrada('$s_CPF', '$dt_Data', '$tm_Entrada');

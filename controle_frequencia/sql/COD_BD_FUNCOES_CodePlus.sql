@@ -803,7 +803,7 @@ $$ LANGUAGE plpgsql;
 -- $n_RA, $n_Coeficiente, $n_Periodo, $s_Rua, $s_Bairro, $s_Numero, $s_Complemento, $s_CEP, $i_ID_Cidade, $i_Vinculo,
 -- $i_Cargo, $i_Setor, $i_Estado_Civil, $s_Senha)
 CREATE OR REPLACE FUNCTION cadastrar_funcionario
-	(var_cpf VARCHAR(14), var_rg VARCHAR(15), var_nome VARCHAR(100), var_nascimento DATE,
+	(var_cpf VARCHAR(12), var_rg VARCHAR(15), var_nome VARCHAR(100), var_nascimento DATE,
 	var_sexo VARCHAR(1), var_nome_pai VARCHAR(100), var_nome_mae VARCHAR(100),
 	var_admissao DATE, var_facebook VARCHAR(100),
 	var_skype VARCHAR(100), var_linkedin VARCHAR(100), var_email VARCHAR(100),
@@ -860,7 +860,7 @@ $$ LANGUAGE plpgsql;
 -- FUNÇÃO QUE INSERE PONTO DE ENTRADA
 -- RETORNO 1 = SUCESSO; RETORNO 0 = FALHA (JÁ EXISTE REGISTRO NAQUELA DATA);
 CREATE OR REPLACE FUNCTION registrar_ponto_entrada
-	(var_cpf VARCHAR(14), var_data DATE, var_entrada TIME)
+	(var_cpf VARCHAR(12), var_data DATE, var_entrada TIME)
 
 RETURNS INTEGER AS $$
 
@@ -887,7 +887,7 @@ $$ LANGUAGE plpgsql;
 
 -- FUNÇÃO QUE VERIFICA SE EXISTE PONTO DE DETERMINADO CPF EM DETERMINADA DATA
 CREATE OR REPLACE FUNCTION verifica_data
-	(var_cpf VARCHAR(14), var_data DATE)
+	(var_cpf VARCHAR(12), var_data DATE)
 
 RETURNS INTEGER AS $$
 
@@ -911,7 +911,7 @@ $$ LANGUAGE plpgsql;
 
 -- FUNÇÃO QUE INSERE PONTO DE SAÍDA
 CREATE OR REPLACE FUNCTION registrar_ponto_saida 
-	(var_cpf VARCHAR(14), var_data DATE, var_saida TIME)
+	(var_cpf VARCHAR(12), var_data DATE, var_saida TIME)
 
 RETURNS INTEGER AS $$
 
