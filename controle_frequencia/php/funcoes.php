@@ -108,25 +108,35 @@ HEREDOC;
 function registrar_entrada($s_CPF, $dt_Data, $tm_Entrada)
 {
   $sql = <<<HEREDOC
-        SELECT COUNT(SAIDA) FROM PONTO_FUNCIONARIO
-        WHERE CPF = '$s_CPF'
-        AND DATA = (SELECT MAX(DATA) AS MAXDATA FROM PONTO_FUNCIONARIO
-        WHERE CPF = '$s_CPF');
+        SELECT MAX(DATA) AS DATA FROM PONTO_FUNCIONARIO
+        WHERE CPF = '$s_CPF';
 HEREDOC;
   $query = pg_query($sql);
   if ($query){
     $result = pg_fetch_result($query, 0, 0);
- 
-    if (!$result){
-      pg_query("BEGIN");
+    if ($result != $dt_Data){
       $sql = <<<HEREDOC
-            UPDATE PONTO_FUNCIONARIO SET SAIDA = '19:00:00'
-            WHERE CPF = '$s_CPF'
-            AND DATA = (SELECT MAX(DATA) AS MAXDATA FROM PONTO_FUNCIONARIO
-          WHERE CPF = '$s_CPF');
+              SELECT COUNT(SAIDA) FROM PONTO_FUNCIONARIO
+              WHERE CPF = '$s_CPF'
+              AND DATA = (SELECT MAX(DATA) AS MAXDATA FROM PONTO_FUNCIONARIO
+              WHERE CPF = '$s_CPF');
 HEREDOC;
-      pg_query($sql);
-      pg_query("COMMIT");
+      $query = pg_query($sql);
+      if ($query){
+        $result = pg_fetch_result($query, 0, 0);
+     
+        if (!$result){
+          pg_query("BEGIN");
+          $sql = <<<HEREDOC
+                UPDATE PONTO_FUNCIONARIO SET SAIDA = '19:00:00'
+                WHERE CPF = '$s_CPF'
+                AND DATA = (SELECT MAX(DATA) AS MAXDATA FROM PONTO_FUNCIONARIO
+              WHERE CPF = '$s_CPF');
+HEREDOC;
+          pg_query($sql);
+          pg_query("COMMIT");
+        }
+      }
     }
   }
   pg_query("BEGIN");
