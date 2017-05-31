@@ -1,0 +1,49 @@
+.cont{
+    width: 1100px;
+    height: auto;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#interface {
+    box-shadow: 5px 2px 5px rgba( 0, 0, 0, .1);
+}
+.cont section {
+    border: 1px solid black;
+    padding: 20px 10px 20px 10px;
+    
+}
+
+section input {
+    
+    margin: 10px 5px 10px 5px;
+}
+
+section select {
+    
+    margin: 10px 5px 10px 5px;
+}
+section input[type=number]::-webkit-inner-spin-button,section input[type=number]::-webkit-outer-spin-button {
+    
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0px;
+    
+}
+
+
+h3 {
+    background-color: rgba( 0, 0, 0, .7);
+    padding-left: 8px;
+    color: white;
+    margin-bottom: 0px;
+}
+
+
+#botao {
+    display: block; 
+    float: right;
+    width: 150px;
+}
+

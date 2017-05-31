@@ -1,6 +1,5 @@
-
-
 <?php
+clearstatcache();
 if((isset($_SESSION['logged'])) && $_SESSION['logged']) {
     header("Location: php/home.php");
     exit;
@@ -18,9 +17,10 @@ require_once 'php/dict.inc.php';
         <title>Code Plus - Login</title>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico|Roboto+Slab:400,700" 
         rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" 
-        href="css/login.css">
-        
+        <link rel="stylesheet" type="text/css" href="css/login.css">
+        <link rel="icon" href="img/favicon.png" sizes="16x16" type="image/png">
+
+
         <?php
         if (isset($_GET['msg'])) {
             switch ($_GET['msg']) {
@@ -42,27 +42,35 @@ require_once 'php/dict.inc.php';
         }
         ?>
         
-        
     </head> 
     
     <body>
-        <!--CABEÃ‡ALHO COM LOGO-->
+        <!--CABEÇALHO COM LOGO-->
         <header>
-            <h1>Code Plus</h1>
+            <section>
+                <img src="img/logo.png" alt="logo" class="logo">
+            </section>
+            
+            <section>    
+                <div id="login_fun">
+                    <h1>Login de Funcionários</h1>
+                </div>
+            </section>
         </header>
+        
+        <section class="img_fundo">
+            
+        </section>
+        
         <section>
-        <!--DIV 1 COM DESCRIÃ‡ÃƒO DO OBJETIVO-->
-            <div id="registro">
-                <h2>Login de Funcionários</h2>
-            </div>
-        <!--DIV 2 COM CAMPOS DE E-MAIL E SENHA-->
+                <!--DIV 2 COM CAMPOS DE E-MAIL E SENHA-->
             <div id="inserir">
                 <form name="formlogin" method="post" action="php/login.php">
                     <label for="email">E-mail:</label>
-                    <input id="email" type="text" name="email" placeholder="exemplo@mail.com" required><br />
+                    <input id="email" type="text" name="email" placeholder="exemplo@codeplus.com.br" required><br />
                     <label for="senha">Senha:</label>
-                    <input id="senha" type="password" name="password" placeholder="Senha"><br><br>
-        <!--"BOTÃ•ES" ESQUECI A SENHA E ENTRAR-->
+                    <input id="senha" type="password" name="senha" placeholder="**********"><br><br>
+        <!--"BOTÕES" ESQUECI A SENHA E ENTRAR-->
                     <a href="#">Esqueci minha senha?</a> 
                     <button id="enviar" type="submit" name="entrar">Entrar</button>
                 </form>
@@ -70,3 +78,4 @@ require_once 'php/dict.inc.php';
         </section>
         
     </body>
+</html>
