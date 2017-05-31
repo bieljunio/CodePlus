@@ -93,7 +93,7 @@ if(pg_num_rows($sql)) {
 	
 cadastrar_funcionario ($S_cpf, $S_rg, $S_nome, $S_nascimento, $C_sexo, $S_nome_pai, $S_nome_mae, $S_data_admissao,
           $S_facebook, $S_skype, $S_linkedin, $S_email, $I_telefone, $I_telefonealt, $S_emailalt,
-          $I_ra, $I_coeficiente, $I_periodo, $S_endere�o, $S_bairro, $I_numero, $S_complemento, $I_cep, $S_cidade, $S_vinculo,
+          $I_ra, $I_coeficiente, $I_periodo, $S_endereco, $S_bairro, $I_numero, $S_complemento, $I_cep, $S_cidade, $S_vinculo,
           $S_cargo, $S_setor, $S_estadocivil, $S_senha);
 
 echo "Cadastro efetuado com sucesso!";
