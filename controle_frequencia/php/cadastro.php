@@ -60,7 +60,7 @@ $S_vinculo = filter_input(INPUT_POST, 'vinculo');
 //Tabela login
 $S_senha = password_hash(rand(100000, 9999999), PASSWORD_DEFAULT);
 
-
+$emailEnviar = $S_email;
 $S_email = strtoupper($S_email);
 
 
@@ -101,7 +101,7 @@ echo "Cadastro efetuado com sucesso!";
 }
 
 //Faz o hash do e-mail
-$EmailHash = md5($S_email);
+$emailHash = md5($S_email);
 
 /////////////////////////Módulo de envio de e-mail para redefinição de senha///////////////////////
 //Prepara o arquivo a ser enviado
@@ -129,7 +129,7 @@ a:hover {
 			<td>
 				<h1>Este e-mail foi gerado automaticamente!</h1>
 				<h3>Para cadastrar sua senha, acesse o link a seguir:</p></h3>
-				<p><a href='http://localhost/codeplus/controle_frequencia/pass.php?e={$EmailHash}'>http://localhost/codeplus/controle_frequencia/pass.php?e={$EmailHash}</a></p>
+				<p><a href='http://localhost/codeplus/controle_frequencia/pass.php?e={$emailHash}'>http://localhost/codeplus/controle_frequencia/pass.php?e={$emailHash}</a></p>
 			</td>
 		</tr>
 	</table>
@@ -137,24 +137,22 @@ a:hover {
 
 //envio do e-mail
 	//Definição do destinatário
-	$emailenviar = 'presidencia@codeplus.com';
+	//$emailEnviar
 	$assunto = 'Cadastre sua senha no sistema Code Plus!';
 	
 	//indica que o formato do e-mail é html
 	$headers = 'MIME-Version 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-		$headers .= 'From: $emailenviar';
+		$headers .= "From: <$emailEnviar>" . "\r\n";
 	
-	$enviaremail = mail($S_email, $assunto, $arquivo, $headers);
-	if($enviaremail){
-		$mgm = "E-MAIL ENVIADO COM SUCESSO PARA $S_email";
-		header('Location: form_cadastro.php');
+	$mail = mail($emailEnviar, $assunto, $arquivo, $headers);
+	if($mail){
+		$mgm = "E-MAIL ENVIADO COM SUCESSO PARA $emailEnviar";
+		echo $mgm;
 		exit;
 	} else {
-		$mgm = "ERRO AO ENVIAR E-MAIL PARA $S_email";
-		header('Location: form_cadastro.php');
+		$mgm = "ERRO AO ENVIAR E-MAIL PARA $emailEnviar";
+		echo $mgm;
 		exit;
 	}
-	
-//agora falta implementar a página pass.php?$EmailHash
 ?>
