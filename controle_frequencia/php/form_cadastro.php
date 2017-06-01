@@ -1,5 +1,5 @@
 <?php
-    //require 'validationlogin.php';
+    require 'validationlogin.php';
     require_once 'dict.inc.php';
 ?>
 <!DOCTYPE html>
@@ -218,7 +218,7 @@
             R.A:
             <input required size="8" type="text" name="ra" placeholder="Ex: 1234567"> 
             Coeficiente:
-            <input required size="6" type="text" name="coeficiente" placeholder="Ex: 0.123">
+            <input required size="6" type="text" name="coeficiente" placeholder="Ex: 0.1234">
             Data de Admissão:
             <input required type="date" name="data_admissao" placeholder="Ex: DD/MM/AA">
             
