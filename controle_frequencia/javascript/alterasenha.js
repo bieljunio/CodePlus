@@ -1,4 +1,4 @@
-var form = document.getElementById("alterar_senha");
+var form = document.getElementById("alterarsenha");
 
 form.onsubmit = function() {
 
