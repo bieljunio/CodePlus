@@ -1,49 +1,101 @@
-.cont{
+
+div#interface {
+    
     width: 1100px;
     height: auto;
     margin: auto;
-    margin-top: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba( 0, 0, 0, .6); 
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
 }
-
-#interface {
-    box-shadow: 5px 2px 5px rgba( 0, 0, 0, .1);
+input::placeholder {
+  color: #baadad;
 }
-.cont section {
+section .form {
+    
+     border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    font-family: helvetica;
+    background-color: #ddd2d2;
     border: 1px solid black;
     padding: 20px 10px 20px 10px;
-    
+    margin-top: 0px;
 }
-
-section input {
+section input, select{
     
-    margin: 10px 5px 10px 5px;
+    border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    box-shadow: 1px 1px 2px #333333;    
+    -moz-box-shadow: 1px 1px 2px #333333;
+    -webkit-box-shadow: 1px 1px 2px #333333;
+    background: #cccccc; 
+    border:1px solid #000000;
+    height:20px;
+    margin: 5px 5px 10px 5px;
 }
-
 section select {
     
-    margin: 10px 5px 10px 5px;
+    height:23px;
+       
 }
-section input[type=number]::-webkit-inner-spin-button,section input[type=number]::-webkit-outer-spin-button {
+input, select:hover, textarea:hover{ 
+         background: #ffffff; border:1px solid black;
+          
+}
+input, select, textarea {
+    
+    padding-left: 5px;
+    
+}
+section input, select{
+        background: whitesmoke;
+        color:black;
+        font-size: 12pt;
+}
+input[type=date]::-webkit-inner-spin-button { 
     
     -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0px;
-    
 }
-
-
-h3 {
+input[type=date]::placeholder{
+    font-family: arial;
+}
+h3
+{
+     border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    font-family: helvetica;
     background-color: rgba( 0, 0, 0, .7);
-    padding-left: 8px;
+    padding-left: 10px;
     color: white;
     margin-bottom: 0px;
 }
 
-
-#botao {
-    display: block; 
-    float: right;
-    width: 150px;
+input[type=submit] {
+    border-style: outset;
+    border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border: 2px solid #EDEDED;
+    margin: 30px 0px 0px 1020px;
+    width: 80px;
+    height: 30px;
+    font-weight: bolder;
+    color: #333;
+    border-bottom: 2px solid #EDEDED;
+    background-color: #d3cbcb;
+    border-right-color: #6D6D6D;
+}
+input[type=submit]:hover {
+    background-color: #D6D6D6;
+    color: #6D6D6D;
+    border-bottom: 2px solid #FAA954;
 }
 
+form {
+    margin-top: 5px;
+}

@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 * {
     margin: 0;
     padding: 0;
@@ -8,12 +7,6 @@
 body {
     background-color: whitesmoke;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
-}
-
-h1, h2, h3 {
-    margin: 0;
-    font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
-    font-weight: 700;
 }
 
 header{
@@ -144,7 +137,7 @@ header{
     height: 30px;
     border-radius: 8px;
     text-align: center;
-    background-color: #EDEDED;
+    background-color: #d3cbcb;
     color: #333;
     text-decoration: none;
     border-bottom: 3px solid #EDEDED;
@@ -160,27 +153,38 @@ header{
 }
 
 #menu{
-    background-color: #EDEDED;
+    background-color: #d3cbcb ;
     list-style: none;
     text-align: center;
-    width: 100%;
-    height: 25px;
+    height:50px;
 }
 
 #menu ul li{
     display: inline-block;
+    margin: 8px 50px 10px 15px;
 }
 
 #menu ul li a{
-    padding: 0 10px 0 10px;
-    background-color: #EDEDED;
+    
+    font-size: 16pt;
     color: #333;
     text-decoration: none;
-    border-bottom: 3px solid #EDEDED;
 }
 
 #menu ul li a:hover {
-    background-color: #D6D6D6;
-    color: #6D6D6D;
-    border-bottom: 3px solid #ED3237;
+    
+    border-bottom: 2px solid #ED3237;
+} 
+
+#rodape {
+    
+    display: block;
+    position: relative;
+    bottom: 0;
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    background-color: #D3CBCB ;
+    padding: 20px;
+    padding-bottom: 25px;
 }
