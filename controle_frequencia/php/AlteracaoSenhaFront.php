@@ -15,11 +15,13 @@
         <!-- fontes do google -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico|Roboto+Slab:400,700" 
         rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="../css/layout.css">
+        <!--<link rel="stylesheet" type="text/css" href="../css/layout.css">-->
         <!-- Inserção de jquery -->
         <script src="../javascript/jquery-3.2.1.min.js"></script>
         <!--  Inserção de funções para os botões -->
         <script src="../javascript/jquery.js"></script>
+        <!--Css de alteração de senha-->
+        <link rel="stylesheet" type="text/css" href="../css/alt_senha.css">
         <!--Mensagem de erro para senha incorreta-->
         <?php
         if (isset($_GET['msg'])) {
@@ -92,8 +94,7 @@
         <section class="cont">
         <!--INSIRA OS DADOS AQUI-->
         
-        <!--Formulário para alteração de senha-->
-        <center><br><br>
+        <!--Formulário para alteração de senha        <center><br><br>
         <h4>Alterar Senha:</h4> 
           <form name="alterar_senha" id="alterar_senha" method="post" action="alterar_senha.php">
              <p><input type="password" id="old_password" name="old_password" placeholder="Senha Antiga"></input></p> <br>
@@ -105,6 +106,30 @@
         
         <script type="text/javascript" src="../javascript/alterasenha.js"></script>
         </center>
+-->
+
+
+        <div id="alterar_senha">
+             
+             <h1>ALTERAR SENHA</h1>
+             <form action="alterar_senha.php" method="post" name="alterar_senha" id="alterarsenha">
+             <h2>Senha atual: <input required name="old_password" type="password" maxlength="25" size="25"  placeholder="Digite sua senha atual"></h2>
+
+             <br/> <h2>Nova senha: <input required id="new_password" name="new_password" type="password" maxlength="25" size="25"  placeholder="Digite sua nova senha"></h2><br/> 
+             <h2>Confirme sua senha: <input required id="confirm_new_password" name="confirm_new_password" type="password" maxlength="25" size="25"  placeholder="Confirme sua nova senha"></h2>
+             
+             <input id="botao" type="submit" name="Alterar senha" value="Alterar"/>
+             </form>
+             <script type="text/javascript" src="../javascript/alterasenha.js"></script>
+        </div>
+        
+        <div id="rodape">
+        
+            <br>
+            <p>Copyright &copy; 2017 - CodePlus</p>
+        
+        </div>
+
 
         </section>
         
