@@ -17,6 +17,8 @@
 		<input type="text" name="email" />
 		<label>Senha:</label>
 		<input type="password" name="password" />
+		<label>Senha:</label>
+		<input type="password" name="password" />
 		<input type="submit" value="Cadastrar" />
 	</form>
 </body>
