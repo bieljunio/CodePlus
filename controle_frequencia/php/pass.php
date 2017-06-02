@@ -1,6 +1,7 @@
 <?php
 	clearstatcache();
 	$e = @$_GET['e'];
+	echo $e;
 	//retornar erro e sucesso
 ?>
 <!DOCTYPE html>
@@ -12,13 +13,14 @@
 </head>
 <body>
 	<div id="input-email"></div>
-	<form name="login" action="passCadastration.php?e=<?php echo "$e" ?>" method="post">
+	<form name="login" action="passCadastration.php?e=<?php echo $e ?>" method="post">
 		<label>E-mail:</label>
 		<input type="text" name="email" />
 		<label>Senha:</label>
 		<input type="password" name="password" />
 		<label>Senha:</label>
-		<input type="password" name="password" />
+		<input type="password" name="passwordConfirm" />
+		
 		<input type="submit" value="Cadastrar" />
 	</form>
 </body>
