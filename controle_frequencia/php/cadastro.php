@@ -71,7 +71,7 @@ $S_email = strtoupper($S_email);
 $maskCPF = array(".","-");
 $S_cpf = str_replace($maskCPF, "", $S_cpf);
 //RG
-$maskRG = array(".");
+$maskRG = array(".", "-");
 $S_rg = str_replace($maskRG, "", $S_rg);
 //CEP
 $maskCEP = array("-");

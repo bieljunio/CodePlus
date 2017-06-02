@@ -27,7 +27,7 @@
         <script>
            $(document).ready(function(){
                $("input[name='cpf']").mask('000.000.000-00');
-               $("input[name='rg']").mask('00.000.000');
+               $("input[name='rg']").mask('00.000.000-0');
                $("input[name='cep']").mask('00000-000');
                $("input[name='numero']").mask('0000');
                $("input[name='telefone']").mask('(00) 00000-0000');
@@ -120,7 +120,7 @@
             Número:
             <input required size="5" type="text" name="numero" placeholder="Ex: 1234">
             Complemento:
-            <input required type="text" maxlength="30" size="33" name="complemento" placeholder="Ex: Fundos">
+            <input type="text" maxlength="30" size="33" name="complemento" placeholder="Ex: Fundos">
             <br/>Bairro:
             <input required type="text" maxlength="30" size="40" name="bairro" placeholder="Ex: Maria da Glória">
             CEP: <input required size="10" type="text" name="cep" placeholder="Ex: 12345-000">
