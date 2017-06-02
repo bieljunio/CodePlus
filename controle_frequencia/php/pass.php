@@ -1,7 +1,6 @@
 <?php
 	clearstatcache();
 	$e = @$_GET['e'];
-	echo $e;
 	//retornar erro e sucesso
 ?>
 <!DOCTYPE html>
