@@ -91,82 +91,84 @@ if(pg_num_rows($sql)) {
 	echo "Já cadastrado";
 }else {
 	
-	cadastrar_funcionario ($S_cpf, $S_rg, $S_nome, $S_nascimento, $C_sexo, $S_nome_pai, $S_nome_mae, $S_data_admissao,
-	          $S_facebook, $S_skype, $S_linkedin, $S_email, $I_telefone, $I_telefonealt, $S_emailalt,
-	          $I_ra, $I_coeficiente, $I_periodo, $S_endereco, $S_bairro, $I_numero, $S_complemento, $I_cep, $S_cidade, $S_vinculo,
-	          $S_cargo, $S_setor, $S_estadocivil, $S_senha);
-	
-	//Faz o hash do e-mail
-	$emailHash = md5($emailEnviar);
-	
-	/////////////////////////Módulo de envio de e-mail para redefinição de senha///////////////////////
-	//Prepara o arquivo a ser enviado
-	$arquivo = "<style type='text/css'>
-	body {
-	margin: 0px;
-	font-family: Helvetica, sans-serif;
-	font-size: 12px;
-	color: #666666;
-	}
-	
-	a {
-	color: #FF0000;
-	text-decoration: none;
-	}
-	
-	a:hover {
-	color: #FF0000;
-	text-decoration: none;
-	}
-	</style>
-	<html>
-	<table width='510' border='0' cellpadding='1' cellspacing='1'>
-	<tr>
-	<td>
-	<h1>Este e-mail foi gerado automaticamente!</h1>
-	<h3>Para cadastrar sua senha, acesse o link a seguir:</p></h3>
-	<p><a href='http://localhost/codeplus/controle_frequencia/php/pass.php?e=$emailHash'>http://localhost/codeplus/controle_frequencia/php/pass.php?e=$emailHash</a></p>
-	</td>
-	</tr>
-	</table>
-	</html>";
-	
-	//envio do e-mail
-	require_once('phpmailer/class.phpmailer.php'); //chama a classe de onde você a colocou.
-	
-	$mail = new PHPMailer(); // instancia a classe PHPMailer
-	
-	$mail->IsSMTP();
-	
-	//configuração do gmail
-	$mail->Port = '465'; //porta usada pelo gmail.
-	$mail->Host = 'smtp.gmail.com';
-	$mail->IsHTML(true);
-	$mail->Mailer = 'smtp';
-	$mail->SMTPSecure = 'ssl';
-	
-	//configuração do usuário do gmail
-	$mail->SMTPAuth = true;
-	$mail->Username = 'codepluisejota@gmail.com'; // usuario gmail.
-	$mail->Password = 'codeplusej'; // senha do email.
-	
-	$mail->SingleTo = true;
-	
-	// configuração do email a ver enviado.
-	$mail->From = "codepluisejota@gmail.com";
-	$mail->FromName = "Code Plus";
-	
-	$mail->addAddress($emailEnviar); // email do destinatario.
-	
-	$mail->Subject = "Cadastramento de senha!";
-	$mail->Body = $arquivo;
-	
-	if(!$mail->Send()){
-		echo "Não foi possível enviar e-mail de cadastro de senha para $emailEnviar";
+	$newCadastro = cadastrar_funcionario ($S_cpf, $S_rg, $S_nome, $S_nascimento, $C_sexo, $S_nome_pai, $S_nome_mae, $S_data_admissao,
+				$S_facebook, $S_skype, $S_linkedin, $S_email, $I_telefone, $I_telefonealt, $S_emailalt,
+	          	$I_ra, $I_coeficiente, $I_periodo, $S_endereco, $S_bairro, $I_numero, $S_complemento, $I_cep, $S_cidade, $S_vinculo,
+	          	$S_cargo, $S_setor, $S_estadocivil, $S_senha);
+	if($newCadastro == 1){
+		//Faz o hash do e-mail
+		$emailHash = md5($emailEnviar);
+		
+		/////////////////////////Módulo de envio de e-mail para redefinição de senha///////////////////////
+		//Prepara o arquivo a ser enviado
+		$arquivo = "<style type='text/css'>
+		body {
+		margin: 0px;
+		font-family: Helvetica, sans-serif;
+		font-size: 12px;
+		color: #666666;
+		}
+		
+		a {
+		color: #FF0000;
+		text-decoration: none;
+		}
+		
+		a:hover {
+		color: #FF0000;
+		text-decoration: none;
+		}
+		</style>
+		<html>
+		<table width='510' border='0' cellpadding='1' cellspacing='1'>
+		<tr>
+		<td>
+		<h1>Este e-mail foi gerado automaticamente!</h1>
+		<h3>Para cadastrar sua senha, acesse o link a seguir:</p></h3>
+		<p><a href='http://localhost/codeplus/controle_frequencia/php/pass.php?e=$emailHash'>http://localhost/codeplus/controle_frequencia/php/pass.php?e=$emailHash</a></p>
+		</td>
+		</tr>
+		</table>
+		</html>";
+		
+		//envio do e-mail
+		require_once('phpmailer/class.phpmailer.php'); //chama a classe de onde você a colocou.
+		
+		$mail = new PHPMailer(); // instancia a classe PHPMailer
+		
+		$mail->IsSMTP();
+		
+		//configuração do gmail
+		$mail->Port = '465'; //porta usada pelo gmail.
+		$mail->Host = 'smtp.gmail.com';
+		$mail->IsHTML(true);
+		$mail->Mailer = 'smtp';
+		$mail->SMTPSecure = 'ssl';
+		
+		//configuração do usuário do gmail
+		$mail->SMTPAuth = true;
+		$mail->Username = 'codepluisejota@gmail.com'; // usuario gmail.
+		$mail->Password = 'codeplusej'; // senha do email.
+		
+		$mail->SingleTo = true;
+		
+		// configuração do email a ver enviado.
+		$mail->From = "codepluisejota@gmail.com";
+		$mail->FromName = "Code Plus";
+		
+		$mail->addAddress($emailEnviar); // email do destinatario.
+		
+		$mail->Subject = "Cadastramento de senha!";
+		$mail->Body = $arquivo;
+		
+		if(!$mail->Send()){
+			echo "Não foi possível enviar e-mail de cadastro de senha para $emailEnviar";
+		}else{
+			echo "E-mail de cadastro de senha enviado com sucesso";
+		}
 	}else{
-		echo "E-mail de cadastro de senha enviado com sucesso";
+		echo "Erro ao efetuar cadastro!";
 	}
-
 }
 
 
