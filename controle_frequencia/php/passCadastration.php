@@ -19,6 +19,8 @@
 			} else {
 				echo "As senhas não conferem!";
 			}
+		} else {
+			echo 'Link inválido';
 		}
 	} else {
 		echo 'Link inválido';
