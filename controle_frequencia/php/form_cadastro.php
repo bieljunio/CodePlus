@@ -12,7 +12,7 @@
         <!-- Favicon page -->
         <link rel="icon" href="../img/favicon.png" sizes="16x16" type="image/png">
         <!-- Folhas de estilos -->
-        <link rel="stylesheet" href="../css/cadastro.css" />
+        <link rel="stylesheet" type="text/css" href="../css/cadastro.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico|Roboto+Slab:400,700" 
         rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="../css/layout.css">
@@ -20,12 +20,14 @@
         <script src="../javascript/jquery-3.2.1.min.js"></script>
         <!--  Inserção de funções para os botões -->
         <script src="../javascript/jquery.js"></script>
+        <!--Folha de estilo cadastro-->
+
         <!--Aplicação das máscaras de cadastro-->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.min.js"></script>
         <script>
            $(document).ready(function(){
                $("input[name='cpf']").mask('000.000.000-00');
-               $("input[name='rg']").mask('00.000.000');
+               $("input[name='rg']").mask('00.000.000-0');
                $("input[name='cep']").mask('00000-000');
                $("input[name='numero']").mask('0000');
                $("input[name='telefone']").mask('(00) 00000-0000');
@@ -81,17 +83,17 @@
         </section>
         
         <section class="cont">
-             <div id="interface">
-
-              <form id="formNovoCad" name="formNovoCad" method="post" action="../php/cadastro.php">
+            <div id="interface">
              
+         <form id="formNovoCad" name="formNovoCad" method="post" action="cadastro.php">
+             <br>
         <h3>Dados Pessoais</h3>
         
-        <section id="dados_pessoais">
+        <section id="dados_pessoais" class="form">
                 
-            Nome: <input required maxlength="100" type="text" size="45" name="nome" placeholder="Ex: Luís Felipe Faria"> 
-            CPF: <input required size="13" type="text" name="cpf" placeholder="Ex: 123.456.789-10">
-            RG: <input required size="10" type="text" name="rg" placeholder="Ex: 12.315.678">
+            Nome:<input required maxlength="100" type="text" size="45" name="nome" placeholder="Ex: Luís Felipe Faria">
+            CPF: <input required size="14" type="text" name="cpf" placeholder="Ex: 123.456.789-10">
+            RG: <input required size="13" type="text" name="rg" placeholder="Ex: 12.315.678-1">
             <br/>Sexo:
             <select name="sexo"> 
                 <option name="masculino" value="M">Masculino</option>
@@ -108,17 +110,17 @@
             Nome da Mãe: <input required type="text" maxlength="100" size="45" name="nome_mae" placeholder="Ex: Arlete Faria">
                  
         </section>
-        
+        <br>
          <h3>Endereço</h3>
     
-        <section>
+        <section class="form">
             
             Endereço:
             <input required type="text" maxlength="80" size="40" name="endereco" placeholder="Ex: Rua do Comércio">
             Número:
             <input required size="5" type="text" name="numero" placeholder="Ex: 1234">
             Complemento:
-            <input required type="text" maxlength="30" size="33" name="complemento" placeholder="Ex: Fundos">
+            <input type="text" maxlength="30" size="33" name="complemento" placeholder="Ex: Fundos">
             <br/>Bairro:
             <input required type="text" maxlength="30" size="40" name="bairro" placeholder="Ex: Maria da Glória">
             CEP: <input required size="10" type="text" name="cep" placeholder="Ex: 12345-000">
@@ -174,10 +176,10 @@
             </select>   
                         
         </section>
-        
+        <br>
          <h3>Contatos</h3>
     
-        <section>
+        <section class="form">
 
                     
             Facebook:
@@ -186,20 +188,20 @@
             <input type="text" name="skype" placeholder="Ex: *Luís Felipe Leal">
             LinkedIn:
             <input type="text" name="linkedin" placeholder="Ex: *Luís Felipe Leal">
-            Telefone:   
-            <input required size="14" type="text" name="telefone" placeholder="Ex: (99) 99999-9999">
-            <br/>Telefone Alternativo:    
-            <input required size="14" type="text" name="telefone_alternativo" placeholder="Ex: (99) 99999-9999">
-            E-mail:
+            <br/>Telefone:   
+            <input required size="15" type="text" name="telefone" placeholder="Ex: (99) 99999-9999">
+            Telefone Alternativo:    
+            <input required size="15" type="text" name="telefone_alternativo" placeholder="Ex: (99) 99999-9999">
+            <br/>E-mail:
             <input required type="email" name="email" maxlength="100" size="25" placeholder="Ex: luisfelipeleal@outlook.com">
             E-mail Alternativo:
             <input  type="email" name="email_alternativo" maxlength="30" size="25" placeholder="Ex: luisfelipeleal@outlook.com">  
                 
         </section>
-        
+        <br>
          <h3>Dados Acadêmicos</h3>
     
-        <section>    
+        <section class="form">    
             
             
             Período:
@@ -222,10 +224,10 @@
             
             
             </section>
-            
+            <br>
              <h3>Dados Empresariais</h3>
             
-            <section>
+            <section class="form">
                 
             Vínculo: <select name="vinculo">
                 <option name="1°" value="1">Trainee</option>
@@ -252,8 +254,19 @@
             <input id="botao" type="submit" name="Entrar" value="Finalizar"/>
             
             </form>
-            </div>
+                
+            
+                
+      </div>
     </section>
+
+    <div id="rodape">
+        
+            <br>
+            <p>Copyright &copy; 2017 - CodePlus</p>
+        
+        </div>
+    
     </body>
 
 
