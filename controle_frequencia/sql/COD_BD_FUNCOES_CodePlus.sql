@@ -674,7 +674,7 @@ $$ LANGUAGE plpgsql;
 -- CHAMADA:
 -- funcionario_cpf_ops('$cpf_antigo', '$cpf_novo')
 CREATE OR REPLACE FUNCTION funcionario_cpf_ops
-	(cpf_antigo VARCHAR(14), cpf_novo VARCHAR(14))
+	(cpf_antigo VARCHAR(12), cpf_novo VARCHAR(12))
 
 RETURNS VOID AS $$
 
@@ -781,7 +781,7 @@ $$ LANGUAGE plpgsql;
 -- inserir_log('$data_hora', '$tabela', '$campo', '$registro_antigo', '$cpf_alterado', '$cpf_responsavel')
 CREATE OR REPLACE FUNCTION inserir_log
 	(datahora TIMESTAMP, tabelaalterada VARCHAR(100), campoalterado VARCHAR(100),
-	registroantigo VARCHAR(100), cpfalterado VARCHAR(14), cpfresponsavel VARCHAR(14))
+	registroantigo VARCHAR(100), cpfalterado VARCHAR(12), cpfresponsavel VARCHAR(12))
 
 RETURNS VOID AS $$
 
