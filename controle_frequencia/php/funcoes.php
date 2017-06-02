@@ -244,7 +244,7 @@ HEREDOC;
 //NOTA2: SOMENTE A TABELA PONTO_FUNCIONARIO RECEBE $i_ID, O RESTO RECEBE "NULL"
 //TABELA FUNCIONARIO
 $array_Funcionario = array(
-    "CPF" => "",              //VARCHAR(14) NOT NULL
+    "CPF" => "",              //VARCHAR(12) NOT NULL
     "RG" => "",               //VARCHAR(15) NOT NULL
     "NOME" => "",             //VARCHAR(100) NOT NULL
     "NASCIMENTO" => "",       //DATE NOT NULL
