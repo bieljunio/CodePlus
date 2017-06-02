@@ -77,7 +77,7 @@ $S_rg = str_replace($maskRG, "", $S_rg);
 $maskCEP = array("-");
 $I_cep = str_replace($maskCEP, "", $I_cep);
 //Telefone
-$maskTelefone = array("(",")","-");
+$maskTelefone = array("(",")","-", " ");
 $I_telefone = str_replace($maskTelefone, "", $I_telefone);
 //Telefone Alternativo
 $I_telefonealt = str_replace($maskTelefone, "", $I_telefonealt);
