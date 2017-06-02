@@ -129,30 +129,44 @@ a:hover {
 			<td>
 				<h1>Este e-mail foi gerado automaticamente!</h1>
 				<h3>Para cadastrar sua senha, acesse o link a seguir:</p></h3>
-				<p><a href='http://localhost/codeplus/controle_frequencia/pass.php?e={$emailHash}'>http://localhost/codeplus/controle_frequencia/pass.php?e={$emailHash}</a></p>
+				<p><a href='http://localhost/codeplus/controle_frequencia/pass.php?e=$emailHash'>http://localhost/codeplus/controle_frequencia/pass.php?e=$emailHash</a></p>
 			</td>
 		</tr>
 	</table>
 </html>";
 
 //envio do e-mail
-	//Definição do destinatário
-	//$emailEnviar
-	$assunto = 'Cadastre sua senha no sistema Code Plus!';
-	
-	//indica que o formato do e-mail é html
-	$headers = 'MIME-Version 1.0' . "\r\n";
-		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-		$headers .= "From: <$emailEnviar>" . "\r\n";
-	
-	$mail = mail($emailEnviar, $assunto, $arquivo, $headers);
-	if($mail){
-		$mgm = "E-MAIL ENVIADO COM SUCESSO PARA $emailEnviar";
-		echo $mgm;
-		exit;
-	} else {
-		$mgm = "ERRO AO ENVIAR E-MAIL PARA $emailEnviar";
-		echo $mgm;
-		exit;
-	}
+require_once('phpmailer/class.phpmailer.php'); //chama a classe de onde você a colocou.
+
+$mail = new PHPMailer(); // instancia a classe PHPMailer
+
+$mail->IsSMTP();
+
+//configuração do gmail
+$mail->Port = '465'; //porta usada pelo gmail.
+$mail->Host = 'smtp.gmail.com';
+$mail->IsHTML(true);
+$mail->Mailer = 'smtp';
+$mail->SMTPSecure = 'ssl';
+
+//configuração do usuário do gmail
+$mail->SMTPAuth = true;
+$mail->Username = 'codepluisejota@gmail.com'; // usuario gmail.
+$mail->Password = 'codeplusej'; // senha do email.
+
+$mail->SingleTo = true;
+
+// configuração do email a ver enviado.
+$mail->From = "codepluisejota@gmail.com";
+$mail->FromName = "Code Plus";
+
+$mail->addAddress($emailEnviar); // email do destinatario.
+
+$mail->Subject = "Cadastramento de senha!";
+$mail->Body = $arquivo;
+
+if(!$mail->Send())
+	echo "<script>alert(Não foi possível enviar e-mail de cadastro de senha para $emailEnviar);</script>";
+else
+	echo "<script>alert(E-mail de cadastro de senha enviado com sucesso);</script>";
 ?>
