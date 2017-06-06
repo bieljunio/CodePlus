@@ -35,9 +35,13 @@ function search(){
 	var name = document.getElementsByName("nameFilter")[0].value;
 	if(name != ""){
 		cp.call("buscaColaborador.php", name, tableConsult);
+	} else {
+		alert("Por favor, insira um nome válido");
 	}
 }
 
-function tableConsult(Retorno){
-	
+function tableConsult(msg){
+	for(i = 0; i < 1; i++){
+		alert(msg[i]);
+	}
 }
