@@ -17,5 +17,6 @@
 <body>
 	<p><input type="text" name="nameFilter" /></p>
 	<p><a href="" onclick="search();">Pesquisar</a></p>
+	<p><script>tableConsult(msg);</script>
 </body>
 </html>
