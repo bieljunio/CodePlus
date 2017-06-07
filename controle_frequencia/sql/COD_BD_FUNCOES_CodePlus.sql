@@ -46,7 +46,7 @@ DECLARE
 	contcpf INTEGER;
 BEGIN
 	SELECT COUNT(CPF) INTO contcpf FROM FUNCIONARIO WHERE CPF = cpf_alterado OR CPF = cpf_responsavel;
-	IF contcpf > 1 THEN
+	IF contcpf > 1 THEN -- MAIOR QUE 1 POIS DEVE HAVER CPF_ALTERADO E CPF_RESPONSAVEL, PORTANTO DEVE SER 2
 		tabela = UPPER(tabela);
 		registro_novo = UPPER(registro_novo);
 		IF tabela = 'LOGIN' THEN
