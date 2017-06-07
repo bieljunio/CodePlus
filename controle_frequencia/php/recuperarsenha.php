@@ -107,6 +107,8 @@ HEREDOC;
 		require_once('phpmailer/class.phpmailer.php'); //Chama a classe de onde você a colocou.
 		
 		$mail = new PHPMailer(); // instancia a classe PHPMailer
+
+		$mail->CharSet = "utf-8";
 		
 		$mail->IsSMTP();
 		
