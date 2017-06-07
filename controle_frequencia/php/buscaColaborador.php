@@ -3,9 +3,8 @@
 	header("Cache-Control: post-check=0, pre-check=0", false);
 	header("Pragma: no-cache");
 	require 'bd.php';
-	$name = filter_input(INPUT_POST, "nameFilter");
-	echo $name;
-	$name = strtoupper($name);
+	$name = filter_input(INPUT_POST, 'nameFilter');
+	$name = strtoupper(strval($name));
 	$sql = <<<HEREDOC
 		SELECT F.NOME, S.NOME AS SETOR
 		FROM FUNCIONARIO F INNER JOIN SETOR S

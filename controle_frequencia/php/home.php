@@ -30,7 +30,7 @@
 		<style>	
 			a:visited{color: black; text-decoration:none;}
 			a:active{color: black; text-decoration:none;}
-			table,tbody{text-align: center; width: 900px; opacity: 0; border: 1px solid #000;}
+			table{text-align: center; width: 900px; opacity: 0;}
 		</style>
     </head>
 
@@ -79,6 +79,7 @@
         </section>
         
         <section class="cont">
+        <!-- Pesquisa por nome do colaborador -->
         <form method="POST" class="form">
 			<p><input type="text" name="nameFilter" /></p>
 			<p><input type="submit" value="Pesquisar" /></p>
