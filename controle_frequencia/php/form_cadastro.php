@@ -61,7 +61,7 @@
                     <img class="seta" src="../img/seta.png" alt="seta" />
                     <img class="redondo" src="../img/perfil.png"   alt="Foto Perfil" />
                     <div class="dropdown_content">
-                        <a class="ac_perfil" href="#">Acessar perfil</a>
+                        <a class="ac_perfil" href="perfil.php">Acessar perfil</a>
                         <a class="al_senha" href="AlteracaoSenhaFront.php">Alterar senha</a>
                         <a class="sair" href="logout.php">Sair</a>
                     </div>
