@@ -16,10 +16,9 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico|Roboto+Slab:400,700" 
         rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="../css/layout.css">
-        <!-- Inserção de jquery -->
-        <script src="../javascript/jquery-3.2.1.min.js"></script>
-        <!--  Inserção de funções para os botões -->
-        <script src="../javascript/jquery.js"></script>
+        <!--  JavaScript, Jquery, AJAX -->
+		<script src="../javascript/jquery-3.2.1.min.js" type="text/javascript"></script>
+		<script src="../javascript/ajax.js" type="text/javascript"></script>
     </head>
 
     <body>
@@ -66,10 +65,12 @@
         
         </section>
         
-        <!--FAÇA O CONTEUDO DO CODIGO A PARTIR DESSE PONTO-->
-        
         <section class="cont">
-        <!--INSIRA OS DADOS AQUI-->
+        <form method="POST" class="form">
+			<p><input type="text" name="nameFilter" /></p>
+			<p><input type="submit" value="Pesquisar" /></p>
+		</form>
+		<div class="consultResult"></div>
         </section>
         
     </body>
