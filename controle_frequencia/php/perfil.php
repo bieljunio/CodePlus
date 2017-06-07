@@ -58,10 +58,7 @@ HEREDOC;
 $dados = pg_query($sql);
 $arraydados = pg_fetch_array($dados);
 
-
-
-
-
+//Atribui masculino ou feminino à variável sexo
 if ($arraydados[4]==="M") {
 	$arraydados[4] = "Masculino";
 } else {
@@ -78,97 +75,95 @@ if ($arraydados[4]==="M") {
 </head>
 <body>
 
-<p>
-<?php echo <<<HEREDOC
-	<h3>Dados Pessoais</h3>
-	<section>
-		Nome: 
-		$arraydados[2] <br>
-		CPF: 
-		$arraydados[0] <br>
-		RG: 
-		$arraydados[1] <br>
-		Sexo: 
-		$arraydados[4] <br>
-		Estado Civil: 
-		$arraydados[28] <br>
-		Nome do pai: 
-		$arraydados[5] <br>
-		Nome da mãe: 
-		$arraydados[6] <br>
-	</section>
+	<p> <!--DADOS CADASTRAIS-->
+		<?php echo <<<HEREDOC
+			<h3>Dados Pessoais</h3>
+			<section>
+				Nome: 
+				$arraydados[2] <br>
+				CPF: 
+				$arraydados[0] <br>
+				RG: 
+				$arraydados[1] <br>
+				Sexo: 
+				$arraydados[4] <br>
+				Estado Civil: 
+				$arraydados[28] <br>
+				Nome do pai: 
+				$arraydados[5] <br>
+				Nome da mãe: 
+				$arraydados[6] <br>
+			</section>
 
-	<br>
+			<br>
 
-	<h3>Endereço</h3>
-	<section>
-		Endereço: 
-		$arraydados[18] <br>
-		Número: 
-		$arraydados[20] <br>
-		Complemento: 
-		$arraydados[21] <br>
-		Bairro:
-		$arraydados[19] <br>
-		CEP:
-		$arraydados[22] <br>
-		Estado:
-		$arraydados[24] <br>
-		Cidade:
-		$arraydados[23] <br>
-	</section>
+			<h3>Endereço</h3>
+			<section>
+				Endereço: 
+				$arraydados[18] <br>
+				Número: 
+				$arraydados[20] <br>
+				Complemento: 
+				$arraydados[21] <br>
+				Bairro:
+				$arraydados[19] <br>
+				CEP:
+				$arraydados[22] <br>
+				Estado:
+				$arraydados[24] <br>
+				Cidade:
+				$arraydados[23] <br>
+			</section>
 
-	<br>
+			<br>
 
-	<h3>Contatos</h3>
-		<section>
-		Facebook: 
-		<a href = "https://www.facebook.com/$arraydados[8]">https://www.facebook.com/$arraydados[8]<br> </a>
-		Skype: 
-		$arraydados[9] <br>
-		LinkedIn: 
-		<a href="https://br.linkedin.com/in/$arraydados[10]">https://br.linkedin.com/in/$arraydados[10]</a> <br>
-		Telefone:
-		$arraydados[12] <br>
-		Telefone Alternativo:
-		$arraydados[13] <br>
-		Email:
-		$arraydados[11] <br>
-		Email alternativo:
-		$arraydados[14] <br>
-	</section>
+			<h3>Contatos</h3>
+				<section>
+				Facebook: 
+				<a href = "https://www.facebook.com/$arraydados[8]">https://www.facebook.com/$arraydados[8]<br> </a>
+				Skype: 
+				$arraydados[9] <br>
+				LinkedIn: 
+				<a href="https://br.linkedin.com/in/$arraydados[10]">https://br.linkedin.com/in/$arraydados[10]</a> <br>
+				Telefone:
+				$arraydados[12] <br>
+				Telefone Alternativo:
+				$arraydados[13] <br>
+				Email:
+				$arraydados[11] <br>
+				Email alternativo:
+				$arraydados[14] <br>
+			</section>
 
-	<br>
+			<br>
 
-	<h3>Dados Acadêmicos</h3>
-	<section>
-		Período: 
-		$arraydados[17]º <br>
-		R.A.: 
-		$arraydados[15] <br>
-		Coeficiente: 
-		$arraydados[16] <br>
-		Data de admissão:
-		$arraydados[7] <br>		
-	</section>
+			<h3>Dados Acadêmicos</h3>
+			<section>
+				Período: 
+				$arraydados[17]º <br>
+				R.A.: 
+				$arraydados[15] <br>
+				Coeficiente: 
+				$arraydados[16] <br>
+				Data de admissão:
+				$arraydados[7] <br>		
+			</section>
 
-	<br>
+			<br>
 
-	<h3>Dados Empresariais</h3>
-	<section>
-		Vínculo: 
-		$arraydados[25] <br>
-		Cargo: 
-		$arraydados[26] <br>
-		Setor: 
-		$arraydados[27] <br>		
-	</section>
+			<h3>Dados Empresariais</h3>
+			<section>
+				Vínculo: 
+				$arraydados[25] <br>
+				Cargo: 
+				$arraydados[26] <br>
+				Setor: 
+				$arraydados[27] <br>		
+			</section>
 
-HEREDOC;
-?>
-</p>
+HEREDOC; //Mantenha "HEREDOC" sempre sem espaçamento da borda
+		?>
+	</p>
 
 </body>
 </html>
-
-
