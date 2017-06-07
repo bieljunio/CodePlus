@@ -19,9 +19,9 @@ HEREDOC;
 			$setor = $linha[1];
 			echo "<tbody>
 					<tr>
-						<td>$nome</td>
-						<td>$setor</td>
-						<td><a href=''><i class='fa fa-address-card' aria-hidden='true'></i></a>
+						<td id='nome'>$nome</td>
+						<td id='setor'>$setor</td>
+						<td id='ferramentas'><a href=''><i class='fa fa-user-o' aria-hidden='true'></i></a>
 							<a href=''><i class='fa fa-bars' aria-hidden='true'></i></a></td>
 					</tr>
 				</tbody>";

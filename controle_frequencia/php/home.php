@@ -21,17 +21,14 @@
         <!-- fontes do google -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico|Roboto+Slab:400,700" 
         rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="../css/layout.css">
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="../css/colaboradores.css">
+        
         <!--  JavaScript, Jquery, AJAX -->
 		<script src="../javascript/jquery-3.2.1.min.js" type="text/javascript"></script>
 		<script src="../javascript/ajax.js" type="text/javascript"></script>
 		<script src="https://use.fontawesome.com/3a0cc21044.js"></script>
 		
-		<style>	
-			a:visited{color: black; text-decoration:none;}
-			a:active{color: black; text-decoration:none;}
-			table{text-align: center; width: 900px; opacity: 0;}
-		</style>
     </head>
 
     <body>
@@ -80,12 +77,18 @@
         
         <section class="cont">
         <!-- Pesquisa por nome do colaborador -->
-        <form method="POST" class="form">
-			<p><input type="text" name="nameFilter" /></p>
-			<p><input type="submit" value="Pesquisar" /></p>
-		</form>
-		<div class="consultResult">
-			<table class="table">
+        <div id="busca">
+            <form method="POST" class="form">
+            
+                 <h3>FILTRAR BUSCA</h3>
+			     <input type="text" name="nameFilter" placeholder="Digite um nome" />
+			     <input type="submit" value="Pesquisar" />
+            
+            </form>
+        </div>
+            
+		
+			<table id="table" cellspacing="0">
 				<thead>
 					<tr>
 						<th>NOME</th>
@@ -96,8 +99,14 @@
 				<tbody>
 				</tbody>
 			</table>		
-		</div>
+			
         </section>
+    <div id="rodape">
+        
+            <br>
+            <p>Copyright &copy; 2017 - CodePlus</p>
+        
+    </div>
         
     </body>
 </html>
