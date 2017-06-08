@@ -244,9 +244,9 @@
                 <option name="1°" value="1">Marketing</option>
                 <option name="2°" value="2">Qualidade</option>
                 <option name="3°" value="3">RH</option>
-                <option name="1°" value="1">ADM/Financeiro</option>
-                <option name="2°" value="2">Vice-Presidência</option>
-                <option name="3°" value="3">Presidência</option>   
+                <option name="1°" value="4">ADM/Financeiro</option>
+                <option name="2°" value="5">Vice-Presidência</option>
+                <option name="3°" value="6">Presidência</option>   
             </select>
             
             </section>
