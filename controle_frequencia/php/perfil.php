@@ -161,7 +161,7 @@ if ($arraydados[4]==="M") {
 				$arraydados[27] <br>		
 			</section>
 
-HEREDOC; //Mantenha "HEREDOC" sempre sem espaçamento da borda
+HEREDOC;
 		?>
 	</p>
 
