@@ -237,11 +237,8 @@ input[type=submit]:hover {
 }
 #rodape {
     
-    display: block;
-    position: fixed;
-    bottom: 0;
-    height: 10%;
-    width: 100%;
+    padding-bottom: 40px;
+    padding-top: 10px;  
     text-align: center;
     background-color: #D3CBCB ;
 }
