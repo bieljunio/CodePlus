@@ -236,11 +236,13 @@ input[type=submit]:hover {
     border-bottom: 2px solid #FAA954;
 }
 #rodape {
-    
     padding-bottom: 40px;
     padding-top: 10px;  
     text-align: center;
-    background-color: #D3CBCB ;
+    background-color: #D3CBCB;
+    position: absolute;
+    bottom: 0; 
+    width: 100%;
 }
 
 table {
