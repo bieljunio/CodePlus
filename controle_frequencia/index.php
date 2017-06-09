@@ -73,7 +73,7 @@ require_once 'php/dict.inc.php';
                     <label for="senha">Senha:</label>
                     <input id="senha" type="password" name="senha" placeholder="**********"><br><br>
         <!--"BOTÕES" ESQUECI A SENHA E ENTRAR-->
-                    <a href="#">Esqueci minha senha?</a> 
+                    <a href="html/recuperarsenha.html">Esqueci minha senha?</a> 
                     <button id="enviar" type="submit" name="entrar">Entrar</button>
                 </form>
             </div>

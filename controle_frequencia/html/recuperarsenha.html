@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Recuperar Senha</title>
+	<meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico|Roboto+Slab:400,700" 
+        rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../css/RecSenhaCPF.css">
+    <script type="text/javascript" src="../javascript/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.min.js"></script>
+    
+    <script>$(document).ready(function(){
+            
+               $("input[name='cpfrecuperacao']").mask('000.000.000-00');
+    });
+    </script>
+</head>
+<body>
+    <header>
+            
+            <section class="logomarca">
+            <a href="../index.php">
+                <img class="logo" src="../img/logo.png" alt="logo">  
+                </a>
+            </section>
+            
+    </header>
+    
+    <div id="RecSenhaCPF">
+        
+        <form name="formrecuperacao" method="post" action="../php/recuperarsenha.php">
+    
+            <h1>RECUPERAR SENHA</h1>
+    
+            <h2>Digite seu email:
+                <input required type="email" name="emailrecuperacao" placeholder="Digite seu email" /></h2>
+            <h2>Digite seu CPF:
+	           <input required id="conf" type="text" name="cpfrecuperacao" placeholder="Ex: 123.456.789-10"></h2>
+
+            <button id="botao" type="submit" name="confirmar">Confirmar</button>
+    
+        </form>
+        
+    </div>
+    
+</body>
+</html>

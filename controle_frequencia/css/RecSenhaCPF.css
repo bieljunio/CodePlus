@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: whitesmoke;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+header{
+    height: 130px;
+    width: 100%;
+    display: inline-flex;
+}
+
+.logomarca{
+    height: 130px;
+    width: 350px;
+    float: left;
+    display: inline;
+    margin-right: auto;
+}
+
+.logo{
+    margin: 20px 0 0 550px;
+    height: 80px;
+}
+
+#RecSenhaCPF {
+    
+    height: 300px;
+    margin: 40px 400px 40px 400px;
+    padding: 20px 35px 20px 35px;
+    box-shadow: 0px 0px 10px rgba( 0, 0, 0, .2);
+    position: fixed;
+}
+
+h1{
+    
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 16pt;
+    border-bottom: 2px solid #6DBE4F;
+}
+h2{
+    
+    font-size: 12pt;
+    text-align: left;
+    margin: 5px;
+        
+}
+input[type=email],input[type=text]{ 
+    
+    border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    box-shadow: 1px 1px 2px #333333;    
+    -moz-box-shadow: 1px 1px 2px #333333;
+    -webkit-box-shadow: 1px 1px 2px #333333;
+    background: #cccccc; 
+    border:1px solid #000000;
+    width:250px;
+    height:30px;
+    margin: 30px 5px 0px 20px;
+}
+#conf{
+    
+    margin: 30px 5px 0px 36px;
+    
+}
+input[type=email],input[type=text]:hover, textarea:hover{ 
+         background: #ffffff; border:1px solid black;
+         
+}
+input[type=email],input[type=text]{
+    
+    padding-left: 5px;
+    
+}
+input[type=email],input[type=text]{
+        background: whitesmoke;
+        color:black;
+        font-size: 12pt;
+}
+#botao {
+
+   border-radius:4px;
+   -moz-border-radius:4px;
+   -webkit-border-radius:4px;
+   margin: 40px 0px 0px 340px;
+   width: 80px;
+   height: 30px;
+   font-weight: bolder;
+   color: #333;
+   border-bottom: 2px solid #EDEDED;
+   background-color: #d3cbcb;
+}
+#botao:hover {
+    
+    background-color: #D6D6D6;
+    color: #6D6D6D;
+    border-bottom: 2px solid #55A5DA;
+}
