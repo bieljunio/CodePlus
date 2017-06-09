@@ -265,9 +265,12 @@ table th{
 	padding: 5px 10px 15px 10px;
 }
 table td a{
-	
+    
 	color: black;
 }
-#ferramentas, #setor {
+#setor,#ferramentas {
 	text-align: center;
+}
+#ferramentas {
+    letter-spacing: 12px;
 }
