@@ -174,17 +174,53 @@ header{
 #menu ul li a:hover {
     
     border-bottom: 2px solid #ED3237;
-} 
+}
+#dadosperfil {
+    
+    width: 1100px;
+    height: auto;
+    margin: auto;
+    padding: 30px;
+    box-shadow: 0px 0px 10px rgba( 0, 0, 0, .6); 
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+}
+.dados{
+    
+     border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    font-family: helvetica;
+    background-color: #ddd2d2;
+    border: 1px solid black;
+    padding: 10px 10px 10px 10px;
+    margin-top: 0px;
+    
+}
+p{
+    margin-top: 10px;
+    font-size: 14pt;
+    
+}
+
+h3{
+     border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    font-family: helvetica;
+    background-color: rgba( 0, 0, 0, .7);
+    padding-left: 10px;
+    color: white;
+    margin-bottom: 0px;
+    font-size: 16pt;
+}
 
 #rodape {
     
-    display: block;
-    position: relative;
-    bottom: 0;
-    height: 10%;
-    width: 100%;
+    
     text-align: center;
     background-color: #D3CBCB ;
-    padding: 20px;
-    padding-bottom: 25px;
+    padding-bottom: 40px;
+    padding-top: 10px;
 }
