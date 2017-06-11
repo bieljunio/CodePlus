@@ -88,7 +88,12 @@ $sql = pg_query("SELECT cpf, ra, rg, email FROM funcionario WHERE cpf = '$S_cpf'
 
 
 if(pg_num_rows($sql)) {
-	echo "Já cadastrado";
+	echo <<<HEREDOC
+		<script type="text/javascript">
+	   		alert('Usuário já cadastrado!');
+	   		history.back(-1);
+	</script>
+HEREDOC;
 }else {
 	
 	$newCadastro = cadastrar_funcionario ($S_cpf, $S_rg, $S_nome, $S_nascimento, $C_sexo, $S_nome_pai, $S_nome_mae, $S_data_admissao,
@@ -162,12 +167,27 @@ if(pg_num_rows($sql)) {
 		$mail->Body = $arquivo;
 		
 		if(!$mail->Send()){
-			echo "Não foi possível enviar e-mail de cadastro de senha para $emailEnviar";
+			echo <<<HEREDOC
+		<script type="text/javascript">
+	   		alert('Não foi possível enviar e-mail para $emailenviar');
+	   		history.back(-1);
+	</script>
+HEREDOC;
 		}else{
-			echo "E-mail de cadastro de senha enviado com sucesso";
+			echo <<<HEREDOC
+		<script type="text/javascript">
+	   		alert('Cadastro efetuado. E-mail de cadastro de senha enviado com sucesso!');
+	   		history.back(-1);
+	</script>
+HEREDOC;
 		}
 	}else{
-		echo "Erro ao efetuar cadastro!";
+		echo <<<HEREDOC
+		<script type="text/javascript">
+	   		alert('Erro ao efetuar cadastro!');
+	   		history.back(-1);
+	</script>
+HEREDOC;
 	}
 }
 

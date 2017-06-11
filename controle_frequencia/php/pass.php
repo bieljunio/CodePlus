@@ -31,7 +31,7 @@
         <h1>CADASTRAR SENHA</h1>
            
           <h2>E-mail:
-		  <input required type="text" name="email" maxlength="25" size="25"  placeholder="Digite seu email" /></h2>
+		  <input required type="text" name="email" maxlength="50" size="25"  placeholder="Digite seu email" /></h2>
 		  <h2>Senha:
 		  <input required type="password" name="password" maxlength="25" size="25"  placeholder="Digite uma senha" /></h2>
 		  <h2>Confirmar Senha:

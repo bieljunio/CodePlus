@@ -15,14 +15,36 @@
 			if($S_password == $S_passwordConfirm){
 				$S_senha = password_hash($S_password, PASSWORD_DEFAULT);
 				pg_query("UPDATE login SET senha = '$S_senha' WHERE email = '$S_email'");
-				echo "Senha cadastrada com sucesso";
+				//Mensagem de senha cadastrada com sucesso.
+				echo <<<HEREDOC
+		<script type="text/javascript">
+	   		alert('Senha cadastrada com sucesso!');
+	   		location.href="../index.php";
+	</script>
+HEREDOC;
 			} else {
-				echo "As senhas não conferem!";
+				//Mensagem de senhas digitadas diferentes
+				echo <<<HEREDOC
+		<script type="text/javascript">
+	   		alert('As senhas não conferem');
+	   		history.back(-1);
+	</script>
+HEREDOC;
 			}
 		} else {
-			echo 'Link inválido';
+			//Senha já cadastrada
+			echo <<<HEREDOC
+		<script type="text/javascript">
+	   		alert('Link inválido');
+	</script>
+HEREDOC;
 		}
 	} else {
-		echo 'Link inválido';
+		//Link inválido
+		echo <<<HEREDOC
+		<script type="text/javascript">
+	   		alert('Link inválido');
+	</script>
+HEREDOC;
 	}
 ?>
