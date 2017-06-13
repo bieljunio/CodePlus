@@ -23,8 +23,7 @@ $date = date('d, M/Y');
 </head>
 <body>
 	<p>Nome: <?php echo $_SESSION['busca'][$_GET['id']]['nome']; ?></p>
-	<p>Setor: <?php echo $_SESSION['busca'][$_GET['id']]['setor']; ?></p>
-	<p>CPF: <?php echo $_SESSION['busca'][$_GET['id']]['user']; ?></p>
+	<p class="user" id="<?php echo $_GET['id']; ?>">Setor: <?php echo $_SESSION['busca'][$_GET['id']]['setor']; ?></p>
 	<p><?php echo $date; ?></p>
 	<form method="post" class="form">
 		<!-- colocar mask para data -->

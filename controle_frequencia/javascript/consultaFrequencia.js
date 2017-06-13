@@ -1,31 +1,31 @@
 /**
  * 
  */
-$(window).load(function(){
+$(function(){
+	var id = $(".user").attr("id");
 	$.ajax({
 		type: 'POST',
-		url: 'consultaFrequencia.php',
+		url: '../php/consultaFrequencia.php',
+		data: {'id':id},
 		success:function(html){
-			$('table').appendd(html);
+			$('table').append(html);
 			$('table').css('opacity', 1); 
 		},
 		error:function(){
 			alert("ERROR");
 		}
 	});
-});
-$(function(){
 	$('.form').bind('submit', function(e){
 		e.preventDefault();
-		var perido = $(this).serialize();
+		var periodo = $(this).serialize();
 		if(periodo != ""){
 			$('tbody').remove();
 			$.ajax({
 				type: 'POST',
-				url: 'consultaFrequencia.php',
+				url: '../php/consultaFrequencia.php',
 				data: periodo,
-				success:function(html){
-					$('table').append(html);
+				success:function(retorno){
+					$('table').append(retorno);
 					$('table').css('opacity', 1);
 				},
 				error:function(){
