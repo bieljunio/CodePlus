@@ -1,10 +1,5 @@
 <?php
-	header("Pragma: no-cache");
-	header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-	header("Cache-Control: no-cache, cachehack=".time());
-	header("Cache-Control: no-store, must-revalidate");
-	header("Cache-Control: post-check=-1, pre-check=-1", false);
+	require 'headers.php';
     require 'validationlogin.php';
     require_once 'dict.inc.php';
 ?>
@@ -26,6 +21,7 @@
         
         <!--  JavaScript, Jquery, AJAX -->
 		<script src="../javascript/jquery-3.2.1.min.js" type="text/javascript"></script>
+		<script src="../javascript/jquery.js"></script>
 		<script src="../javascript/ajax.js" type="text/javascript"></script>
 		<script src="https://use.fontawesome.com/3a0cc21044.js"></script>
 		
@@ -96,8 +92,6 @@
 						<th>FERRAMENTAS</th>
 					</tr>
 				</thead>
-				<tbody>
-				</tbody>
 			</table>		
 			
         </section>

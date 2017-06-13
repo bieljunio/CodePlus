@@ -1,46 +1,46 @@
 <?php
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
+require 'headers.php';
 require 'bd.php';
 require 'validationlogin.php';
 //declaração da data atual
 date_default_timezone_set('America/Sao_Paulo');
-echo $date = date('d, M/Y');
-//recupera o usário selecionado
-$user = $_SESSION['busca'][$_GET['id']];
-$sql = <<<HEREDOC
-SELECT F.NOME, S.NOME AS SETOR, F.CPF
-		FROM FUNCIONARIO F INNER JOIN SETOR S
-		ON F.ID_SETOR = S.ID_SETOR
-		WHERE F.CPF = '$user'
--- FIM QUERY
-HEREDOC;
-$sql = pg_query($sql);
-$label = pg_fetch_array($sql);
-$nome = $label[0];
+//$_SESSION['busca'][$i] esta e a sessao que armazena os dados do usuário selecionado
+//Dentro da session busca, existe o array(nome, setor, cpf)
+$date = date('d, M/Y');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Frequencia Colaborador</title>
 	<meta charset="utf-8" />
+	<!-- ajax e jquery -->
+	<script src="../javascript/jquery-3.2.1.min.js" type="text/javascript"></script>
+	<script src="../javascript/jquery.js"></script>
+	<script src="../javascript/consultaFrequencia.js" type="text/javascript"></script>
+	<style>
+	table{border:1px solid #000; opacity: 0;};
+	</style>
 </head>
 <body>
-	<p>Nome: <?php $label[0];?></p>
-	<p>Setor: <?php $label[1]; ?></p>
-	<p>CPF: <?php $label[2] ?></p>
-	<form method="post">
-	<!-- colocar mask para data -->
-	<input type="text" name="periodo" >
-	<button>Filtrar</button>
+	<p>Nome: <?php echo $_SESSION['busca'][$_GET['id']]['nome']; ?></p>
+	<p>Setor: <?php echo $_SESSION['busca'][$_GET['id']]['setor']; ?></p>
+	<p>CPF: <?php echo $_SESSION['busca'][$_GET['id']]['user']; ?></p>
+	<p><?php echo $date; ?></p>
+	<form method="post" class="form">
+		<!-- colocar mask para data -->
+		<input type="text" name="periodoInicio">
+		<input type="text" name="periodoFinal">
+		<input type="submit" value="Filtrar">	
+	</form>
 	
 	<table>
-		<thead>
+	<thead>
 		<tr>
-			<th>
-		</thead>
+			<th>Data</th>
+			<th>Entrada</th>
+			<th>Saída</th>
+		</tr>
+	</thead>
 	</table>
-</form>
 </body>
 </html>
