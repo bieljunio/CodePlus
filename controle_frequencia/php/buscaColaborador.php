@@ -16,15 +16,16 @@ HEREDOC;
 		session_start();
 		$i = 0;
 		while($linha = pg_fetch_array($sql)){
-			$nome =  $linha[0];
-			$setor = $linha[1];
-			$_SESSION['busca'][$i] = $linha[2];
+			$_SESSION['busca'][$i] = array(
+					'nome'=> $linha[0],
+					'setor'=> $linha[1],
+					'user'=> $linha[2]);
 			echo "<tbody>
 					<tr>
-						<td id='nome'>$nome</td>
+						<td id='nome'>".var_dump($_SESSION['nome'][$i])."</td>
 						<td id='setor'>$setor</td>
 						<td id='ferramentas'><a href=''><i class='fa fa-user-o' aria-hidden='true'></i></a>
-							<a href='dadosFrequencia.php?u={$i}'><i class='fa fa-bars' aria-hidden='true'></i></a></td>
+							<a href='dadosFrequencia.php?id={$i}'><i class='fa fa-bars' aria-hidden='true'></i></a></td>
 					</tr>
 				</tbody>";
 			$i++;
