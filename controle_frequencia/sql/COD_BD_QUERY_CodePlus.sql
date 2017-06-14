@@ -291,7 +291,7 @@ SELECT DATA, ENTRADA, SAIDA
 					AND '$DT_data_maxima' --CUIDADO COM AS ASPAS, DEVEM SER MANTIDAS
 -- FIM QUERY
 ----------------------------------------FIM------------------------------------------
-
+	
 
 ----------------------------------------FUNCIONÁRIOS(EPIC): DADOS CADASTRAIS---------
 -- QUERY QUE SELECIONA TODOS OS DADOS CADASTRAIS DO FUNCIONARIO A PARTIR DE UM CPF
@@ -370,5 +370,9 @@ SELECT ID_CARGO
 SELECT ID_ESTADO_CIVIL
 	FROM ESTADO_CIVIL
 		WHERE NOME = '$S_estado_civil'
+-- FIM QUERY
+
+-- QUERY
+
 -- FIM QUERY
 ----------------------------------------FIM------------------------------------------
