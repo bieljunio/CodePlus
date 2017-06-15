@@ -160,7 +160,7 @@ HEREDOC;
         <section class="cont">
             <div id="interface">
 
-                <form id="formNovoCad" name="formNovoCad" method="post" action="cadastro.php">
+                <form id="formNovoCad" name="formNovoCad" method="post" action="updatecadastro.php">
                     <br>
                     <h3>Dados Pessoais</h3>
 
