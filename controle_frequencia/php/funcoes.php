@@ -44,16 +44,19 @@ function update_e_log($s_Tabela, $array_Campo_Registro, $dt_Data,
   $s_Campo = '';
   $s_Registro = '';
   $cont = 0;
-  if ($s_Tabela <> "PONTO_FUNCIONARIO"){
-    $dt_Data_Ponto = "null";
-  }
   pg_query("BEGIN");
   foreach($array_Campo_Registro as $s_Campo => $s_Registro){
-    $sql = <<<HEREDOC
-            SELECT master_insert_log('$s_Tabela', '$s_Campo', '$s_Registro', '$dt_Data', '$s_CPF_Alterado',
-              '$s_CPF_Responsavel', '$dt_Data_Ponto');
+    if ($s_Tabela <> "PONTO_FUNCIONARIO"){
+      $sql = <<<HEREDOC
+              SELECT master_insert_log('$s_Tabela', '$s_Campo', '$s_Registro', '$dt_Data', '$s_CPF_Alterado',
+                '$s_CPF_Responsavel', null);
 HEREDOC;
-  
+    }else{
+      $sql = <<<HEREDOC
+              SELECT master_insert_log('$s_Tabela', '$s_Campo', '$s_Registro', '$dt_Data', '$s_CPF_Alterado',
+                '$s_CPF_Responsavel', '$dt_Data_Ponto');
+HEREDOC;
+    }
     $query = pg_query($sql);
     $result = pg_fetch_result($query, 0, 0);
     if ($result == 1 or $result == 0){
