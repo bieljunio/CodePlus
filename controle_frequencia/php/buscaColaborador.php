@@ -29,8 +29,8 @@ HEREDOC;
 					<tr>
 						<td id='nome'>$nome</td>
 						<td id='setor'>$setor</td>
-						<td id='ferramentas'><a href=''><i class='fa fa-user-o' aria-hidden='true'></i></a>
-							<a target='_blank' href='viewperfil.php?c=$i'><i class='fa fa-bars' aria-hidden='true'></i></a></td>
+						<td id='ferramentas'><a target='_blank' href='viewperfil.php?c=$i'><i class='fa fa-user-o' aria-hidden='true'></i></a>
+							<a ><i class='fa fa-bars' aria-hidden='true'></i></a></td>
 					</tr>
 				</tbody>";
 				$i++;
