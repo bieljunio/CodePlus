@@ -75,6 +75,10 @@ HEREDOC;
         </script>
 HEREDOC;
 }
+
+//CPF PARA UPDATE NO BANCO
+$_SESSION['cpfupdate'] = $arraydados[0];
+
 ?>
 
 <!DOCTYPE html>
