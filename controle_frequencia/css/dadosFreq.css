@@ -275,26 +275,28 @@ input[type=submit]:hover {
     position: static;
 }
 table {
-	opacity: 0;
+	opacity: 100;
 	width: 700px;
 	margin: 10px auto 40px auto;
     padding: 10px 35px 20px 35px;
     box-shadow: 0px 0px 10px rgba( 0, 0, 0, .2);
     
-    
 }
 table td{
 	border-bottom: 1px solid #000;
 	padding: 5px 10px 5px 10px;
-	
+    text-align: center;
+    
 }
 table th{
+    
 	border-bottom: 1px solid #000;
 	padding: 5px 10px 15px 10px;
 }
 table td a{
     
-	color: black;
+	color: black;	
+    
 }
 #rodape {
     
@@ -305,4 +307,27 @@ table td a{
     width: 100%;
     text-align: center;
     background-color: #D3CBCB ;
+}
+
+#imprimir {
+    padding: 2.5px;
+    padding-left: 5px;
+    border-style: outset;
+    border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border: 2px solid #EDEDED;
+    width: 80px;
+    height: 30px;
+    font-weight: bolder;
+    color: #333;
+    border-bottom: 2px solid #EDEDED;
+    background-color: #d3cbcb;
+    border-right-color: #6D6D6D;
+    position: center;
+}
+#imprimir:hover {
+    background-color: #D6D6D6;
+    color: #6D6D6D;
+    border-bottom: 2px solid #ED3237;
 }
