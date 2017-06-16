@@ -46,7 +46,7 @@ DECLARE
 	contcpf INTEGER;
 BEGIN
 	SELECT COUNT(CPF) INTO contcpf FROM FUNCIONARIO WHERE CPF = cpf_alterado OR CPF = cpf_responsavel;
-	IF contcpf > 1 THEN -- MAIOR QUE 1 POIS DEVE HAVER CPF_ALTERADO E CPF_RESPONSAVEL, PORTANTO DEVE SER 2
+	IF contcpf >= 1 THEN
 		tabela = UPPER(tabela);
 		registro_novo = UPPER(registro_novo);
 		IF tabela = 'LOGIN' THEN
@@ -742,7 +742,7 @@ BEGIN
 
 		INSERT INTO FUNCIONARIO
 		VALUES
-			(cpf_novo, var_rg, var_nome, var_nascimento, var_sexo, var_nome_pai, var_nome_mae,
+			('ATIVO', cpf_novo, var_rg, var_nome, var_nascimento, var_sexo, var_nome_pai, var_nome_mae,
 			var_admissao, var_desligamento, var_facebook, var_skype, var_linkedin, var_email,
 			var_telefone, var_telefone_alt, var_email_alt, var_ra, var_coeficiente, var_periodo,
 			var_end_rua, var_end_bairro, var_end_numero, var_end_complemento, var_end_cep,
@@ -758,7 +758,7 @@ BEGIN
 		
 		INSERT INTO FUNCIONARIO
 		VALUES
-			(cpf_novo, var_rg, var_nome, var_nascimento, var_sexo, var_nome_pai, var_nome_mae,
+			('ATIVO', cpf_novo, var_rg, var_nome, var_nascimento, var_sexo, var_nome_pai, var_nome_mae,
 			var_admissao, var_desligamento, var_facebook, var_skype, var_linkedin, var_email,
 			var_telefone, var_telefone_alt, var_email_alt, var_ra, var_coeficiente, var_periodo,
 			var_end_rua, var_end_bairro, var_end_numero, var_end_complemento, var_end_cep,
@@ -932,5 +932,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 -- FIM FUNÇÃO
+
 
 --------------------------------------------------------------------------------------------------------------

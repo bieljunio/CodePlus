@@ -22,8 +22,8 @@ HEREDOC;
 			echo "<tr>
 						<td class='nome'>{$_SESSION['busca'][$i]['nome']}</td>
 						<td class='setor'>{$_SESSION['busca'][$i]['setor']}</td>
-						<td class='ferramentas'><a href=''><i class='fa fa-user-o' aria-hidden='true'></i></a>
-							<a href='dadosFrequencia.php?id={$i}'><i class='fa fa-bars' aria-hidden='true'></i></a></td>
+						<td class='ferramentas'><a target='_blank' href='viewperfil.php?c=$i'><i class='fa fa-user-o' aria-hidden='true'></i></a>
+							<a target='_blank' href='dadosFrequencia.php?id={$i}'><i class='fa fa-bars' aria-hidden='true'></i></a></td>
 					</tr>";
 			$i++;
 		}

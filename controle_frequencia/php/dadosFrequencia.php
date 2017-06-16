@@ -11,6 +11,17 @@ $date = date('d, M/Y');
 <!DOCTYPE html>
 <html>
 <head>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../img/favicon.png" type="image/png">
+    <!-- inclusões iniciais do arquivo html -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fontes do google -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico|Roboto+Slab:400,700" 
+    rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../css/dadosFreq.css">
+        
+    
 	<title>Frequencia Colaborador</title>
 	<meta charset="utf-8" />
 	<!-- ajax e jquery -->
@@ -22,15 +33,70 @@ $date = date('d, M/Y');
 	</style>
 </head>
 <body>
-	<p>Nome: <?php echo $_SESSION['busca'][$_GET['id']]['nome']; ?></p>
-	<p class="user" id="<?php echo $_GET['id']; ?>">Setor: <?php echo $_SESSION['busca'][$_GET['id']]['setor']; ?></p>
+    <header>
+            
+            <section class="logomarca">
+                <a href="home.php">
+                    <img class="logo" src="../img/logo.png" alt="logo">
+                </a>
+            </section>
+            
+            <section>
+                <nav id="registros">
+                    <ul>
+                        <li><a href="" onclick="return registerEntry();">Registrar Entrada</a></li>
+                        <li><a href="" onclick="return registerExit();">Registrar Saída</a></li>
+                    </ul>
+                </nav>
+            </section>
+            
+            <section class="box">
+                <div class="dropdown">
+                    <img class="seta" src="../img/seta.png" alt="seta" />
+                    <img class="redondo" src="../img/perfil.png"   alt="Foto Perfil" />
+                    <div class="dropdown_content">
+                        <a class="ac_perfil" href="perfil.php">Acessar perfil</a>
+                        <a class="al_senha" href="AlteracaoSenhaFront.php">Alterar senha</a>
+                        <a class="sair" href="logout.php">Sair</a>
+                    </div>
+                </div>
+            </section>
+
+        </header>
+
+        <section>
+
+            <nav id="menu">
+                <ul>
+                    <li><a href="funcionarios.php">COLABORADORES</a></li>
+                    <li><a href="dadosFrequenciaUser.php">CONSULTAR FREQUÊNCIA</a></li>
+                    <li><a href="form_cadastro.php">NOVO CADASTRO</a></li>
+                </ul>
+            </nav>
+
+        </section>
+    
+    <section id="dadosbusca">
+    
+    <div id="dadoscolab">
+	<p><b>Nome:&nbsp;&nbsp;</b> <?php echo $_SESSION['busca'][$_GET['id']]['nome']; ?></p>
+	<p class="user" id="<?php echo $_GET['id']; ?>"><b>Setor:&nbsp;&nbsp;</b> <?php echo $_SESSION['busca'][$_GET['id']]['setor']; ?></p>
 	<p><?php echo $date; ?></p>
+    </div>
+    
+    <div id="busca">
+    <h3>FILTRAR BUSCA POR PERÍODO</h3>
 	<form method="post" class="form">
 		<!-- colocar mask para data -->
         <h4>Data Inicial:<input required type="date" name="periodoInicio" id="inicio" placeholder="Digite a data inicial"></h4>
         <h4>Data Final:<input required type="date" name="periodoFinal" id="final" placeholder="Digite a data final"></h4>
-		<input type="submit" value="Filtrar">	
+        <input type="submit" value="Filtrar">
 	</form>
+    </div>
+        
+    </section>
+    
+    <section id="consultresult">
 	
 	<table>
 	<thead>
@@ -41,5 +107,14 @@ $date = date('d, M/Y');
 		</tr>
 	</thead>
 	</table>
+        <center><a onclick="window.print()" id="imprimir">Imprimir</a></center>
+    </section>
+    
+    <div id="rodape">
+        
+            <br>
+            <p>Copyright &copy; 2017 - CodePlus</p>
+        
+    </div>
 </body>
 </html>

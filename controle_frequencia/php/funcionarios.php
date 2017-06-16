@@ -45,7 +45,7 @@
                 </nav>
             </section>
             
-            <section class="box">
+             <section class="box">
                 <div class="dropdown">
                     <img class="seta" src="../img/seta.png" alt="seta" />
                     <img class="redondo" src="../img/perfil.png"   alt="Foto Perfil" />
@@ -56,11 +56,11 @@
                     </div>
                 </div>
             </section>
-            
-       </header>
-            
+
+        </header>
+
         <section>
-            
+
             <nav id="menu">
                 <ul>
                     <li><a href="funcionarios.php">COLABORADORES</a></li>
@@ -68,11 +68,19 @@
                     <li><a href="form_cadastro.php">NOVO CADASTRO</a></li>
                 </ul>
             </nav>
-        
+
         </section>
-        
         <section class="cont">
-        
+        <!-- Pesquisa por nome do colaborador -->
+        <div id="busca">
+            <form method="POST" class="form">
+            
+                 <h3>FILTRAR BUSCA</h3>
+			     <input type="text" name="nameFilter" placeholder="Digite um nome" />
+			     <input type="submit" value="Pesquisar" />
+            
+            </form>
+        </div>
             
 		
 			<table id="table" cellspacing="0">

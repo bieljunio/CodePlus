@@ -29,4 +29,3 @@ HEREDOC;
         }
     echo "</tbody>";
 }
-?>
