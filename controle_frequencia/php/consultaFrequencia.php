@@ -4,12 +4,14 @@ require 'bd.php';
 require 'validationlogin.php';
 date_default_timezone_set('America/Sao_Paulo');
 //recupera o id
-$id = @filter_input(INPUT_POST, 'id');
-//verifica se há algum valor atribuído as variaveis se houver, faz a pesquisa no período informado
-if($id != NULL) {
+$id = filter_input(INPUT_POST, 'id');
+if($_SESSION['busca'][$id] == null) {
+    echo "<script> location.href='home.php' </script>";
+} else {
     //Faz o get do periodo a ser consultado
     $periodoInicio = filter_input(INPUT_POST, 'periodoInicio');
     $periodoFinal = filter_input(INPUT_POST, 'periodoFinal');
+    //verifica se há algum valor atribuído as variaveis se houver, faz a pesquisa no período informado
     if ($periodoInicio && $periodoFinal) {
         $sql = <<<HEREDOC
     SELECT DATA, ENTRADA, SAIDA
@@ -54,6 +56,5 @@ HEREDOC;
         }
         echo "</tbody>";
     }
-} else
-    header('Location: home.php');
+}
 ?>
