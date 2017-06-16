@@ -148,7 +148,7 @@ $_SESSION['cpfupdate'] = $arraydados[0];
             
             <nav id="menu">
                 <ul>
-                    <li><a href="funcionarios.php">COLABORADORES</a></li>
+                    <li><a href="colaboradores.php">COLABORADORES</a></li>
                     <li><a href="dadosFrequenciaUser.php">CONSULTAR FREQUÊNCIA</a></li>
                     <li><a href="form_cadastro.php">NOVO CADASTRO</a></li>
                 </ul>
