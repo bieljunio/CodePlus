@@ -6,7 +6,7 @@ $id = filter_input(INPUT_POST, 'id');
 echo $periodoInicio = filter_input(INPUT_POST, 'inicio');
 echo $periodoFinal = filter_input(INPUT_POST, 'final');
 //verifica se há algum valor atribuído as variaveis se houver, faz a pesquisa no período informado
-if ($periodoInicio == null && $periodoFinal == null) ||($periodoInicio > $periodoFinal))
+if ($periodoInicio == null && $periodoFinal == null)
     echo "<script>alert('Insira um período válido!');</script>";
 else if($periodoInicio != $periodoFinal){
     $sql = <<<HEREDOC
@@ -42,5 +42,8 @@ HEREDOC;
                 </tr>";
     }
     echo "</tbody>";
-}
+} else if ($periodoInicio > $periodoFinal)
+    echo "<script>alert('Insira um período válido!');</script>";
+else
+    echo "<script>alert('Insira um período válido!');</script>";
 ?>
