@@ -107,7 +107,7 @@ $date = date('d, M/Y');
 		</tr>
 	</thead>
 	</table>
-    
+        <center><a onclick="window.print()" id="imprimir">Imprimir</a></center>
     </section>
     
     <div id="rodape">
