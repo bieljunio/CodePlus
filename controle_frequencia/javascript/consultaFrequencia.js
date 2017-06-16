@@ -9,7 +9,7 @@ $(function(){
 		data: {'id':id},
 		success:function(html){
 			$('table').append(html);
-			$('table').css('opacity', 1); 
+			$('table').css('opacity', 1);
 		},
 		error:function(){
 			alert("ERROR");
@@ -17,23 +17,18 @@ $(function(){
 	});
 	$('.form').bind('submit', function(e){
 		e.preventDefault();
-		var periodo = $(this).serialize();
-		if(periodo != ""){
-			$('tbody').remove();
-			$.ajax({
-				type: 'POST',
-				url: '../php/consultaFrequencia.php',
-				data: periodo,
-				success:function(retorno){
-					$('table').append(retorno);
-					$('table').css('opacity', 1);
-				},
-				error:function(){
-					alert("Período inválido!");
-				}
-			});
-		} else {
-			alert("Período inválido!");
-		}
+		$('tbody').remove();
+		$.ajax({
+			type: 'POST',
+			url: '../php/consultaFrequenciaFiltro.php',
+			data: {periodo,'id':id},
+			success:function(retorno){
+				$('table').append(retorno);
+				$('table').css('opacity', 1);
+			},
+			error:function(){
+				alert("Período inválido!");
+			}
+		});
 	});
 });
