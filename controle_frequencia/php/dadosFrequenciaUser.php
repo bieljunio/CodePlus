@@ -17,7 +17,7 @@ $setor = pg_fetch_result(pg_query("SELECT nome FROM setor WHERE id_setor='$idset
 //verifica se há algum valor atribuído as variaveis se houver, faz a pesquisa no período informado
             if ($periodoInicio && $periodoFinal) {
                 $sql = <<<HEREDOC
-SELECT DATA, ENTRADA, SAIDA
+SELECT TO_CHAR(DATA, 'DD/MM/YYYY'), ENTRADA, SAIDA
     FROM PONTO_FUNCIONARIO
     WHERE CPF = '{$_SESSION['user']}'
         AND DATA BETWEEN '{$periodoInicio}' AND '{$periodoFinal}'
@@ -29,7 +29,7 @@ HEREDOC;
 //$_SESSION['busca'][$i] esta e a sessao que armazena os dados do usuário selecionado
 //Dentro da session busca, existe o array(nome, setor, cpf)
                 $sql = <<<HEREDOC
-SELECT DATA, ENTRADA, SAIDA
+SELECT TO_CHAR(DATA, 'DD/MM/YYYY'), ENTRADA, SAIDA
     FROM PONTO_FUNCIONARIO
     WHERE CPF = '{$_SESSION['user']}'
         AND DATA BETWEEN '{$lastMounth}' AND '{$date}'
@@ -110,7 +110,7 @@ HEREDOC;
             <div id="dadoscolab">
                 <p><b>Nome:&nbsp;&nbsp;</b> <?php echo $nome; ?></p>
                 <p class="user" id=""><b>Setor:&nbsp;&nbsp;</b> <?php echo $setor; ?></p>
-                <p><?php echo $date; ?></p>
+                <p><?php echo $date = date('d, M/Y'); ?></p>
             </div>
 
             <div id="busca">
@@ -141,7 +141,7 @@ if (pg_num_rows($sql)) {
         ";
     while ($result = pg_fetch_array($sql)) {
         echo "<tr>
-                    <td><a><input type='date' value='$result[0]' readonly></input></a></td>
+                    <td>$result[0]</td>
 
                     <td>$result[1]</td>
           
