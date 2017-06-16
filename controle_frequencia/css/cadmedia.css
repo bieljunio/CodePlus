@@ -5,7 +5,7 @@
 }
 div#interface {
     
-    width: 1100px;
+    width: 900px;
     height: auto;
     margin: auto;
     padding: 10px;
@@ -78,48 +78,10 @@ h3
     color: white;
     margin-bottom: 0px;
 }
-
-#botao {
-    border-style: outset;
-    border-radius:4px;
-    -moz-border-radius:4px;
-    -webkit-border-radius:4px;
-    border: 2px solid #EDEDED;
-    margin: 30px auto auto 80px;
-    width: 80px;
-    height: 30px;
-    font-weight: bolder;
-    color: #333;
-    border-bottom: 2px solid #EDEDED;
-    background-color: #d3cbcb;
-    border-right-color: #6D6D6D;
+#botao, #imprimir {
+    
+    visibility: hidden;
 }
-#botao:hover {
-    background-color: #D6D6D6;
-    color: #6D6D6D;
-    border-bottom: 2px solid #FAA954;
-}
-#imprimir {
-    border-style: outset;
-    border-radius:4px;
-    -moz-border-radius:4px;
-    -webkit-border-radius:4px;
-    border: 2px solid #EDEDED;
-    margin: 30px 0px 0px 850px;
-    width: 80px;
-    height: 30px;
-    font-weight: bolder;
-    color: #333;
-    border-bottom: 2px solid #EDEDED;
-    background-color: #d3cbcb;
-    border-right-color: #6D6D6D;
-}
-#imprimir:hover {
-    background-color: #D6D6D6;
-    color: #6D6D6D;
-    border-bottom: 2px solid #ED3237;
-}
-
 form {
     margin-top: 5px;
 }
