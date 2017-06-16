@@ -20,6 +20,7 @@ $date = date('d, M/Y');
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico|Roboto+Slab:400,700" 
     rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../css/dadosFreq.css">
+    <link rel="stylesheet" type="text/css" href="../css/dadosFreqMedia.css" media="print">
         
     
 	<title>Frequencia Colaborador</title>
@@ -36,7 +37,7 @@ $date = date('d, M/Y');
     <header>
             
             <section class="logomarca">
-                <a href="home.php">
+                <a href="dadosFrequenciaUser.php">
                     <img class="logo" src="../img/logo.png" alt="logo">
                 </a>
             </section>
@@ -55,26 +56,26 @@ $date = date('d, M/Y');
                     <img class="seta" src="../img/seta.png" alt="seta" />
                     <img class="redondo" src="../img/perfil.png"   alt="Foto Perfil" />
                     <div class="dropdown_content">
-                        <a class="ac_perfil" href="#">Acessar perfil</a>
+                        <a class="ac_perfil" href="perfil.php">Acessar perfil</a>
                         <a class="al_senha" href="AlteracaoSenhaFront.php">Alterar senha</a>
                         <a class="sair" href="logout.php">Sair</a>
                     </div>
                 </div>
             </section>
-            
-       </header>
-    
-     <section>
-            
+
+        </header>
+
+        <section>
+
             <nav id="menu">
                 <ul>
-                    <li><a href="#">FUNCIONÁRIOS</a></li>
-                    <li><a href="#">CONSULTAR FREQUÊNCIA</a></li>
+                    <li><a href="colaboradores.php">COLABORADORES</a></li>
+                    <li><a href="dadosFrequenciaUser.php">CONSULTAR FREQUÊNCIA</a></li>
                     <li><a href="form_cadastro.php">NOVO CADASTRO</a></li>
                 </ul>
             </nav>
-        
-    </section>
+
+        </section>
     
     <section id="dadosbusca">
     
@@ -88,9 +89,9 @@ $date = date('d, M/Y');
     <h3>FILTRAR BUSCA POR PERÍODO</h3>
 	<form method="post" class="form">
 		<!-- colocar mask para data -->
-		<h4>Data Inicial:<input required type="date" name="periodoInicio" placeholder="Digite a data inicial"></h4>
-		<h4>Data Final:<input id="final" required type="date" name="periodoFinal" placeholder="Digite a data final"></h4>
-		<input type="submit" value="Filtrar">	
+        <h4>Data Inicial:<input required type="date" name="periodoInicio" id="inicio" placeholder="Digite a data inicial"></h4>
+        <h4>Data Final:<input required type="date" name="periodoFinal" id="final" placeholder="Digite a data final"></h4>
+        <input type="submit" value="Filtrar">
 	</form>
     </div>
         
@@ -107,7 +108,7 @@ $date = date('d, M/Y');
 		</tr>
 	</thead>
 	</table>
-    
+        <center><a onclick="window.print()" id="imprimir">Imprimir</a></center>
     </section>
     
     <div id="rodape">
