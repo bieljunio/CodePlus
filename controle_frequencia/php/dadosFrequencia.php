@@ -27,8 +27,8 @@ $date = date('d, M/Y');
 	<p><?php echo $date; ?></p>
 	<form method="post" class="form">
 		<!-- colocar mask para data -->
-        <h4>Data Inicial:<input required type="date" name="periodoInicio" placeholder="Digite a data inicial"></h4>
-        <h4>Data Final:<input id="ajuste" required type="date" name="periodoFinal" placeholder="Digite a data final"></h4>
+        <h4>Data Inicial:<input required type="date" name="periodoInicio" id="inicio" placeholder="Digite a data inicial"></h4>
+        <h4>Data Final:<input required type="date" name="periodoFinal" id="final" placeholder="Digite a data final"></h4>
 		<input type="submit" value="Filtrar">	
 	</form>
 	

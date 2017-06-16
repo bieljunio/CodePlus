@@ -19,16 +19,14 @@ SELECT TO_CHAR(DATA, 'DD/MM/YYYY'), ENTRADA, SAIDA
 -- FIM QUERY
 HEREDOC;
     $sql = pg_query($sql);
-    if (pg_num_rows($sql)) {
         echo "<tbody>";
         while ($result = pg_fetch_array($sql)) {
-            echo "<tr>
-                    <td>$result[0]</td>
-                    <td>$result[1]</td>
-                    <td>$result[2]</td>
-                </tr>";
+        echo "<tr>
+                <td>$result[0]</td>
+                <td>$result[1]</td>
+                <td>$result[2]</td>
+            </tr>";
         }
-    }
     echo "</tbody>";
 }
 ?>
