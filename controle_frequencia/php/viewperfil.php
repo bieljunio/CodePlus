@@ -1,62 +1,58 @@
 <?php
 require 'validationlogin.php';
 require 'bd.php';
-
 $c = $_GET['c'];
 if (isset($_SESSION['busca'][$c])) {
-
     $cpfbusca = $_SESSION['busca'][$c]['user'];
-
     //SQL para retornar todos os dados cadastrais
     $sql = <<<HEREDOC
-    			SELECT F.CPF,
-    	   F.RG,
-    	   F.NOME,
-    	   F.NASCIMENTO,
-    	   F.SEXO,
-    	   F.NOME_PAI,
-    	   F.NOME_MAE,
-    	   F.ADMISSAO,
-    	   F.FACEBOOK,
-    	   F.SKYPE,
-    	   F.LINKEDIN,
-    	   F.EMAIL,
-    	   F.TELEFONE,
-    	   F.TELEFONE_ALT,
-    	   F.EMAIL_ALT,
-    	   F.RA,
-    	   F.COEFICIENTE,
-    	   F.PERIODO,
-    	   F.END_RUA,
-    	   F.END_BAIRRO,
-    	   F.END_NUMERO,
-    	   F.END_COMPLEMENTO,
-    	   F.END_CEP,
-    	   CIDADE.NOME AS CIDADE,
-    	   E.NOME AS ESTADO,
-    	   V.NOME AS VINCULO,
-    	   C.NOME AS CARGO,
-    	   S.NOME AS SETOR,
-    	   ES.NOME AS ESTADO_CIVIL
-    	FROM FUNCIONARIO F
-    		INNER JOIN CIDADE
-    			ON F.ID_CIDADE = CIDADE.ID_CIDADE
-    			INNER JOIN ESTADO E
-    				ON CIDADE.UF = E.UF
-    				INNER JOIN VINCULO V
-    					ON F.ID_VINCULO = V.ID_VINCULO
-    					INNER JOIN CARGO C
-    						ON F.ID_CARGO = C.ID_CARGO
-    						INNER JOIN SETOR S
-    							ON F.ID_SETOR = S.ID_SETOR
-    							INNER JOIN ESTADO_CIVIL ES
-    								ON F.ID_ESTADO_CIVIL = ES.ID_ESTADO_CIVIL
-    		WHERE CPF = '$cpfbusca'
+                SELECT F.CPF,
+           F.RG,
+           F.NOME,
+           F.NASCIMENTO,
+           F.SEXO,
+           F.NOME_PAI,
+           F.NOME_MAE,
+           F.ADMISSAO,
+           F.FACEBOOK,
+           F.SKYPE,
+           F.LINKEDIN,
+           F.EMAIL,
+           F.TELEFONE,
+           F.TELEFONE_ALT,
+           F.EMAIL_ALT,
+           F.RA,
+           F.COEFICIENTE,
+           F.PERIODO,
+           F.END_RUA,
+           F.END_BAIRRO,
+           F.END_NUMERO,
+           F.END_COMPLEMENTO,
+           F.END_CEP,
+           CIDADE.NOME AS CIDADE,
+           E.NOME AS ESTADO,
+           V.NOME AS VINCULO,
+           C.NOME AS CARGO,
+           S.NOME AS SETOR,
+           ES.NOME AS ESTADO_CIVIL
+        FROM FUNCIONARIO F
+            INNER JOIN CIDADE
+                ON F.ID_CIDADE = CIDADE.ID_CIDADE
+                INNER JOIN ESTADO E
+                    ON CIDADE.UF = E.UF
+                    INNER JOIN VINCULO V
+                        ON F.ID_VINCULO = V.ID_VINCULO
+                        INNER JOIN CARGO C
+                            ON F.ID_CARGO = C.ID_CARGO
+                            INNER JOIN SETOR S
+                                ON F.ID_SETOR = S.ID_SETOR
+                                INNER JOIN ESTADO_CIVIL ES
+                                    ON F.ID_ESTADO_CIVIL = ES.ID_ESTADO_CIVIL
+            WHERE CPF = '$cpfbusca'
 HEREDOC;
     //Query do sql
     $dados = pg_query($sql);
     $arraydados = pg_fetch_array($dados);
-
     $fem = "";
     $masc = "";
     $outro = "";
@@ -66,7 +62,6 @@ HEREDOC;
         $masc = "selected";
     elseif ($arraydados[4] === 'O')
         $outro = "selected";
-
 } else {
     echo <<<HEREDOC
         <script>
@@ -75,26 +70,26 @@ HEREDOC;
         </script>
 HEREDOC;
 }
-
 //CPF PARA UPDATE NO BANCO
 $_SESSION['cpfupdate'] = $arraydados[0];
-
 ?>
 
 <!DOCTYPE html>
 <html lang="pt_br">
 
     <head>
-        <title>Editar perfil</title>
+        <title id="title">Editar perfil</title>
 
         <meta charset="utf-8">
         <!-- Favicon page -->
         <link rel="icon" href="../img/favicon.png" sizes="16x16" type="image/png">
         <!-- Folhas de estilos -->
-        <link rel="stylesheet" type="text/css" href="../css/cadastro.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico|Roboto+Slab:400,700"
               rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="../css/layout.css">
+        <link rel="stylesheet" type="text/css" href="../css/cadastro.css">
+        <link rel="stylesheet" type="text/css" href="../css/cadmedia.css" media="print">
+        <link rel="stylesheet" type="text/css" href="../css/laymedia.css" media="print">
         <!-- Inserção de jquery -->
         <script src="../javascript/jquery-3.2.1.min.js"></script>
         <!--  Inserção de funções para os botões -->
@@ -146,11 +141,11 @@ $_SESSION['cpfupdate'] = $arraydados[0];
                     </div>
                 </div>
             </section>
-
-        </header>
-
+            
+       </header>
+            
         <section>
-
+            
             <nav id="menu">
                 <ul>
                     <li><a href="funcionarios.php">COLABORADORES</a></li>
@@ -158,7 +153,7 @@ $_SESSION['cpfupdate'] = $arraydados[0];
                     <li><a href="form_cadastro.php">NOVO CADASTRO</a></li>
                 </ul>
             </nav>
-
+        
         </section>
 
         <section class="cont">
@@ -231,7 +226,7 @@ $_SESSION['cpfupdate'] = $arraydados[0];
                         //Busca as cidades cadastradas no banco
                         $sql = pg_query("SELECT nome FROM cidade ORDER BY id_cidade");
                         echo <<<HEREDOC
-				<select name="cidade">
+                <select name="cidade">
 HEREDOC;
                         //Dropdown de cidades com cidade cadastrada pré-selecionada
                         $j = 1;
@@ -241,7 +236,7 @@ HEREDOC;
                             if ($arraydados[23] == $array[0])
                                 $selected = "selected";
                             echo <<<HEREDOC
-					<option $selected value="$j">$array[0]</option>
+                    <option $selected value="$j">$array[0]</option>
 HEREDOC;
                             $j++;
                         }
@@ -286,7 +281,7 @@ HEREDOC;
                                 $selected = "selected";
                             }
                             echo <<<HEREDOC
-					<option $selected value="$j">$j</option>
+                    <option $selected value="$j">$j</option>
 HEREDOC;
                             $j++;
                         }
@@ -309,7 +304,7 @@ HEREDOC;
                         //Dropdown vínculo
                         $sql = pg_query("SELECT nome FROM vinculo ORDER BY id_vinculo");
                         echo <<<HEREDOC
-				<select name="vinculo">
+                <select name="vinculo">
 HEREDOC;
                         $j = 1;
                         for ($i = 0; $i < 2; $i++) {
@@ -319,7 +314,7 @@ HEREDOC;
                                 $selected = "selected";
                             }
                             echo <<<HEREDOC
-					<option $selected value="$j">$array[0]</option>
+                    <option $selected value="$j">$array[0]</option>
 HEREDOC;
                             $j++;
                         }
@@ -331,7 +326,7 @@ HEREDOC;
                         //Dropdown cargo
                         $sql = pg_query("SELECT nome FROM cargo ORDER BY id_cargo");
                         echo <<<HEREDOC
-				<select name="cargo">
+                <select name="cargo">
 HEREDOC;
                         $j = 1;
                         for ($i = 0; $i < 3; $i++) {
@@ -341,7 +336,7 @@ HEREDOC;
                                 $selected = "selected";
                             }
                             echo <<<HEREDOC
-					<option $selected value="$j">$array[0]</option>
+                    <option $selected value="$j">$array[0]</option>
 HEREDOC;
                             $j++;
                         }
@@ -353,7 +348,7 @@ HEREDOC;
                         //Dropdown setor
                         $sql = pg_query("SELECT nome FROM setor ORDER BY id_setor");
                         echo <<<HEREDOC
-				<select name="setor">
+                <select name="setor">
 HEREDOC;
                         $j = 1;
                         for ($i = 0; $i < 6; $i++) {
@@ -363,7 +358,7 @@ HEREDOC;
                                 $selected = "selected";
                             }
                             echo <<<HEREDOC
-					<option $selected value="$j">$array[0]</option>
+                    <option $selected value="$j">$array[0]</option>
 HEREDOC;
                             $j++;
                         }
@@ -372,10 +367,12 @@ HEREDOC;
                         Data de Admissão:
                         <input required value="<?php echo $arraydados[7] ?>" type="date" name="data_admissao" placeholder="Ex: DD/MM/AA">
 
-                    </section>                    
+                    </section>
+                     <a onclick="window.print()" id="imprimir">Imprimir</a>
                     <input id="botao" type="submit" name="Entrar" value="Atualizar"/>
-                </form>
 
+                </form>
+                
             </div>
         </section>
         <div id="rodape">
