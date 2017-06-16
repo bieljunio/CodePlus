@@ -11,11 +11,35 @@ $cpf = $_SESSION['user'];
 $nome = pg_fetch_result(pg_query("SELECT nome FROM funcionario WHERE cpf='$cpf'"), 0, 0);
 $idsetor = pg_fetch_result(pg_query("SELECT id_setor FROM funcionario WHERE cpf='$cpf'"), 0, 0);
 $setor = pg_fetch_result(pg_query("SELECT nome FROM setor WHERE id_setor='$idsetor'"), 0, 0);
-?>
+
+            $periodoInicio = filter_input(INPUT_POST, 'periodoInicio');
+            $periodoFinal = filter_input(INPUT_POST, 'periodoFinal');
+//verifica se há algum valor atribuído as variaveis se houver, faz a pesquisa no período informado
+            if ($periodoInicio && $periodoFinal) {
+                $sql = <<<HEREDOC
+SELECT DATA, ENTRADA, SAIDA
+    FROM PONTO_FUNCIONARIO
+    WHERE CPF = '{$_SESSION['user']}'
+        AND DATA BETWEEN '{$periodoInicio}' AND '{$periodoFinal}'
+HEREDOC;
+            } else { //se nao tiver periodo informado, faz a pesquisa dos ultimos 30 dias
+                
+                $date = date('Y-m-d');
+                $lastMounth = date('Y-m-d', mktime(0, 0, 0, date("m") - 1, date("d"), date("Y")));
+//$_SESSION['busca'][$i] esta e a sessao que armazena os dados do usuário selecionado
+//Dentro da session busca, existe o array(nome, setor, cpf)
+                $sql = <<<HEREDOC
+SELECT DATA, ENTRADA, SAIDA
+    FROM PONTO_FUNCIONARIO
+    WHERE CPF = '{$_SESSION['user']}'
+        AND DATA BETWEEN '{$lastMounth}' AND '{$date}'
+-- FIM QUERY
+HEREDOC;
+            }
+            ?>
 <!DOCTYPE html>
 <html>
     <head>
-
         <!-- Favicon -->
         <link rel="icon" href="../img/favicon.png" type="image/png">
         <!-- inclusões iniciais do arquivo html -->
@@ -34,7 +58,8 @@ $setor = pg_fetch_result(pg_query("SELECT nome FROM setor WHERE id_setor='$idset
         <!--<script src="../javascript/consultaFrequencia.js" type="text/javascript"></script>-->
         <style>
             table{border:1px solid #000; opacity: 0;};
-        </style>
+        </style>        
+
     </head>
     <body>
         <header>
@@ -92,8 +117,8 @@ $setor = pg_fetch_result(pg_query("SELECT nome FROM setor WHERE id_setor='$idset
                 <h3>FILTRAR BUSCA POR PERÍODO</h3>
                 <form method="post" class="form" action="dadosFrequenciaUser.php">
                     <!-- colocar mask para data -->
-                    <h4>Data Inicial:<input required type="date" name="periodoInicio" placeholder="Digite a data inicial"></h4>
-                    <h4>Data Final:<input id="ajuste" required type="date" name="periodoFinal" placeholder="Digite a data final"></h4>
+                    <h4>Data Inicial:<input required type="date" name="periodoInicio" placeholder="Digite a data inicial" value="<?php echo $periodoInicio; ?>"></h4>
+                    <h4>Data Final:<input id="ajuste" required type="date" name="periodoFinal" placeholder="Digite a data final" value="<?php echo $periodoFinal; ?>"></h4>
                     <input type="submit" value="Filtrar">   
                 </form>
             </div>
@@ -101,31 +126,7 @@ $setor = pg_fetch_result(pg_query("SELECT nome FROM setor WHERE id_setor='$idset
         </section>
 
         <section id="consultresult">
-            <?php
-            $periodoInicio = filter_input(INPUT_POST, 'periodoInicio');
-            $periodoFinal = filter_input(INPUT_POST, 'periodoFinal');
-//verifica se há algum valor atribuído as variaveis se houver, faz a pesquisa no período informado
-            if ($periodoInicio && $periodoFinal) {
-                $sql = <<<HEREDOC
-SELECT DATA, ENTRADA, SAIDA
-    FROM PONTO_FUNCIONARIO
-    WHERE CPF = '{$_SESSION['user']}'
-        AND DATA BETWEEN '{$periodoInicio}' AND '{$periodoFinal}'
-HEREDOC;
-            } else { //se nao tiver periodo informado, faz a pesquisa dos ultimos 30 dias
-                $date = date('Y-m-d');
-                $lastMounth = date('Y-m-d', mktime(0, 0, 0, date("m") - 1, date("d"), date("Y")));
-//$_SESSION['busca'][$i] esta e a sessao que armazena os dados do usuário selecionado
-//Dentro da session busca, existe o array(nome, setor, cpf)
-                $sql = <<<HEREDOC
-SELECT DATA, ENTRADA, SAIDA
-    FROM PONTO_FUNCIONARIO
-    WHERE CPF = '{$_SESSION['user']}'
-        AND DATA BETWEEN '{$lastMounth}' AND '{$date}'
--- FIM QUERY
-HEREDOC;
-            }
-            ?>
+            
             <table style="opacity: 1;">
                 <thead>
                     <tr>
@@ -152,6 +153,8 @@ echo "</tbody>";
 ?>
                 </thead>
             </table>
+
+                     <center><a onclick="window.print()" id="imprimir">Imprimir</a></center>
 
         </section>
 
