@@ -59,7 +59,7 @@ $setor = pg_fetch_result(pg_query("SELECT nome FROM setor WHERE id_setor='$idset
                     <img class="seta" src="../img/seta.png" alt="seta" />
                     <img class="redondo" src="../img/perfil.png"   alt="Foto Perfil" />
                     <div class="dropdown_content">
-                        <a class="ac_perfil" href="#">Acessar perfil</a>
+                        <a class="ac_perfil" href="perfil.php">Acessar perfil</a>
                         <a class="al_senha" href="AlteracaoSenhaFront.php">Alterar senha</a>
                         <a class="sair" href="logout.php">Sair</a>
                     </div>
@@ -72,8 +72,8 @@ $setor = pg_fetch_result(pg_query("SELECT nome FROM setor WHERE id_setor='$idset
 
             <nav id="menu">
                 <ul>
-                    <li><a href="#">FUNCIONÁRIOS</a></li>
-                    <li><a href="#">CONSULTAR FREQUÊNCIA</a></li>
+                    <li><a href="funcionarios.php">COLABORADORES</a></li>
+                    <li><a href="dadosFrequenciaUser.php">CONSULTAR FREQUÊNCIA</a></li>
                     <li><a href="form_cadastro.php">NOVO CADASTRO</a></li>
                 </ul>
             </nav>

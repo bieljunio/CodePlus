@@ -67,19 +67,19 @@
                     </div>
                 </div>
             </section>
-            
-       </header>
-            
+
+        </header>
+
         <section>
-            
+
             <nav id="menu">
                 <ul>
-                    <li><a href="#">FUNCIONÁRIOS</a></li>
-                    <li><a href="#">CONSULTAR FREQUÊNCIA</a></li>
-                    <li><a href="#">NOVO CADASTRO</a></li>
+                    <li><a href="funcionarios.php">COLABORADORES</a></li>
+                    <li><a href="dadosFrequenciaUser.php">CONSULTAR FREQUÊNCIA</a></li>
+                    <li><a href="form_cadastro.php">NOVO CADASTRO</a></li>
                 </ul>
             </nav>
-        
+
         </section>
         
         <section class="cont">
