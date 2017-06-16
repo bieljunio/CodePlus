@@ -82,7 +82,7 @@ if ($arraydados[4]==="M") {
  <header>
             
         <section class="logomarca">
-                <a  href="home.php"><img class="logo" src="../img/logo.png" alt="logo"> </a>
+                <a  href="dadosFrequenciaUser.php"><img class="logo" src="../img/logo.png" alt="logo"> </a>
         </section>
             
         <section>

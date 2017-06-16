@@ -116,7 +116,7 @@ $_SESSION['cpfupdate'] = $arraydados[0];
         <header>
 
             <section class="logomarca">
-                <a href="home.php">
+                <a href="dadosFrequenciaUser.php">
                     <img class="logo" src="../img/logo.png" alt="logo">
                 </a>
             </section>
