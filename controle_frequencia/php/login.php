@@ -35,7 +35,7 @@ HEREDOC;
 
         pg_query($sql);
         
-        header('Location: home.php');
+        header('Location: dadosFrequenciaUser.php');
 
         } else {
             $_SESSION['logged'] = false;

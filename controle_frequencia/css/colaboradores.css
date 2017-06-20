@@ -267,9 +267,9 @@ table td a{
     
 	color: black;
 }
-#setor,#ferramentas {
+.setor, .ferramentas {
 	text-align: center;
 }
-#ferramentas {
+.ferramentas {
     letter-spacing: 12px;
 }

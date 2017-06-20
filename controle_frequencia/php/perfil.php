@@ -82,7 +82,7 @@ if ($arraydados[4]==="M") {
  <header>
             
         <section class="logomarca">
-                <a  href="home.php"><img class="logo" src="../img/logo.png" alt="logo"> </a>
+                <a  href="dadosFrequenciaUser.php"><img class="logo" src="../img/logo.png" alt="logo"> </a>
         </section>
             
         <section>
@@ -104,20 +104,20 @@ if ($arraydados[4]==="M") {
                         <a class="sair" href="logout.php">Sair</a>
                     </div>
                 </div>
-        </section>
-            
-</header>
-            
+            </section>
+
+        </header>
+
         <section>
-            
+
             <nav id="menu">
                 <ul>
-                    <li><a href="#">FUNCIONÁRIOS</a></li>
-                    <li><a href="#">CONSULTAR FREQUÊNCIA</a></li>
+                    <li><a href="colaboradores.php">COLABORADORES</a></li>
+                    <li><a href="dadosFrequenciaUser.php">CONSULTAR FREQUÊNCIA</a></li>
                     <li><a href="form_cadastro.php">NOVO CADASTRO</a></li>
                 </ul>
             </nav>
-        
+
         </section>
     
 <div id="dadosperfil">

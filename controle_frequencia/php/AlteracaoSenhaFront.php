@@ -49,7 +49,7 @@
         <header>
             
             <section class="logomarca">
-                <a href="home.php">
+                <a href="dadosFrequenciaUser.php">
                     <img class="logo" src="../img/logo.png" alt="logo">
                 </a>
             </section>
@@ -74,19 +74,19 @@
                     </div>
                 </div>
             </section>
-            
-       </header>
-            
+
+        </header>
+
         <section>
-            
+
             <nav id="menu">
                 <ul>
-                    <li><a href="#">FUNCIONÁRIOS</a></li>
-                    <li><a href="#">CONSULTAR FREQUÊNCIA</a></li>
+                    <li><a href="colaboradores.php">COLABORADORES</a></li>
+                    <li><a href="dadosFrequenciaUser.php">CONSULTAR FREQUÊNCIA</a></li>
                     <li><a href="form_cadastro.php">NOVO CADASTRO</a></li>
                 </ul>
             </nav>
-        
+
         </section>
         
         <!--FAÇA O CONTEUDO DO CODIGO A PARTIR DESSE PONTO-->
