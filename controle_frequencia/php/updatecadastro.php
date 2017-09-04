@@ -116,14 +116,14 @@ if($update > 0){
         echo <<<HEREDOC
         <script>
         alert("Atualização dos dados cadastrais de $S_nome efetuada com sucesso. Faça o login novamente.");
-        location.href="logout.php";
+        location.href="dadosFrequenciaUser.php";
         </script>
 HEREDOC;
     } else{
     echo <<<HEREDOC
         <script>
         alert("Atualização dos dados cadastrais de $S_nome efetuada com sucesso.");
-        location.href="home.php";
+        location.href="dadosFrequenciaUser.php";
         </script>
 HEREDOC;
     }
@@ -131,7 +131,7 @@ HEREDOC;
     echo <<<HEREDOC
         <script>
         alert("Atualização dos dados cadastrais de $S_nome não efetuada.");
-        location.href="home.php";
+        location.href="dadosFrequenciaUser.php";
         </script>
 HEREDOC;
 }
